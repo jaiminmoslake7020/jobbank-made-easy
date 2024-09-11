@@ -1,0 +1,11 @@
+.auto-complete-wrapper{
+    @apply w-full relative;
+}
+
+.auto-complete-container{
+    @apply absolute left-0 right-0 bg-content overflow-scroll flex flex-col gap-2 px-2 py-2 rounded;
+}
+
+.auto-complete-item-btn{
+    @apply w-full px-4 py-2 text-bkg bg-content flex justify-start hover:bg-bkg hover:text-content rounded;
+}

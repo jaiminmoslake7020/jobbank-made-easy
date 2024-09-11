@@ -1,0 +1,12 @@
+.btn{
+    @apply py-2 px-4 shadow bg-bkg text-content ;
+    @apply bg-theme-btn-bg text-theme-btn-text px-8 py-3 border-theme-btn-border border-2 rounded hover:shadow;
+}
+
+.btn.active{
+    @apply bg-theme-btn-active-bg text-theme-btn-active-text border-theme-btn-active-border;
+}
+
+.btn[disabled]{
+    @apply bg-opacity-20 cursor-not-allowed text-opacity-20 border-opacity-20 hover:shadow-none;
+}

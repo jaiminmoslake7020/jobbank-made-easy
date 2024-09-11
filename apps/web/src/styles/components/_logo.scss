@@ -1,0 +1,40 @@
+.logo-box{
+  @apply flex flex-col gap-0 font-extrabold text-content;
+  img{
+    @apply max-w-16;
+  }
+}
+
+.App[data-theme="dark"], .App[data-theme="blue"], .App[data-theme="green"], .App[data-theme="purple"] {
+  .logo-box{
+    .logo-main{
+      @apply hidden;
+    }
+    .logo-inverse{
+      @apply block;
+    }
+  }
+}
+
+.App[data-theme="light"]{
+  .logo-box{
+    .logo-main{
+      @apply block;
+    }
+    .logo-inverse{
+      @apply hidden;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo-box{
+    .logo-main{
+      @apply hidden;
+    }
+    .logo-inverse{
+      @apply block;
+    }
+  }
+}
+

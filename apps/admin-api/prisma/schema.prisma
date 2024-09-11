@@ -1,0 +1,186 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["typedSql"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int              @id @default(autoincrement())
+  email          String           @unique @db.VarChar(255)
+  name           String           @db.VarChar(255)
+  JobApplication JobApplication[]
+}
+
+model Job {
+  id                     Int                      @id @default(autoincrement())
+  created_at             DateTime                 @default(now())
+  updated_at             DateTime                 @updatedAt
+  jobbank_link_id        Int
+  jobbank_id             Int
+  posted_on              DateTime
+  last_date_to_apply     DateTime
+  title                  String                   @db.VarChar(255)
+  number_of_vacancies    Int
+  location               String                   @db.VarChar(255)
+  work_type_situation    String                   @db.VarChar(255)
+  is_lmia                Boolean
+  how_to_apply_email     String                   @db.VarChar(255)
+  company_id             Int
+  street_address         String?                  @db.VarChar(255)
+  address_locality       String                   @db.VarChar(255)
+  address_region         String                   @db.VarChar(255)
+  postal_code            String?                  @db.VarChar(255)
+  employment_type        String                   @db.VarChar(255)
+  published              Boolean                  @default(true)
+  Company                Company                  @relation(fields: [company_id], references: [id])
+  JobRequiredItem        JobRequiredItem[]
+  JobApplication         JobApplication[]
+  JobSearchResults       JobSearchResults[]
+  JobDetail              JobDetail[]
+  JobWage                JobWage[]
+  JobAdditionalQuestions JobAdditionalQuestions[]
+
+  @@unique([jobbank_link_id, is_lmia])
+}
+
+model JobAdditionalQuestions {
+  id       Int    @id @default(autoincrement())
+  question String
+  Job      Job    @relation(fields: [job_id], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  job_id   Int
+}
+
+model JobWage {
+  id         Int       @id @default(autoincrement())
+  min_value  Float
+  max_value  Float?
+  unit_text  String?   @db.VarChar(255)
+  work_hours String?   @db.VarChar(255)
+  WageUnit   WageUnit? @relation(fields: [wage_id], references: [id])
+  wage_id    Int?
+  Job        Job?      @relation(fields: [job_id], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  job_id     Int?
+}
+
+model WageUnit {
+  id      Int       @id @default(autoincrement())
+  name    String    @unique @db.VarChar(255)
+  JobWage JobWage[]
+}
+
+model JobDetail {
+  id              Int     @id @default(autoincrement())
+  job             Job     @relation(fields: [job_id], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  job_id          Int
+  language        String? @db.VarChar(255)
+  education       String? @db.VarChar(255)
+  experience      String? @db.VarChar(255)
+  asset_languages String? @db.VarChar(255)
+  work_setting    String? @db.VarChar(255)
+}
+
+model Industry {
+  id         Int       @id @default(autoincrement())
+  created_at DateTime  @default(now())
+  name       String    @unique @db.VarChar(255)
+  Company    Company[]
+}
+
+model CompanySize {
+  id          Int       @id @default(autoincrement())
+  created_at  DateTime  @default(now())
+  name        String    @unique @db.VarChar(255)
+  description String    @db.VarChar(255)
+  Company     Company[]
+}
+
+model Company {
+  id                            Int          @id @default(autoincrement())
+  created_at                    DateTime     @default(now())
+  name                          String       @db.VarChar(255)
+  location                      String       @db.VarChar(255)
+  website                       String?      @db.VarChar(255)
+  number_of_operating_locations Int?
+  Industry                      Industry?    @relation(fields: [industry_id], references: [id], onUpdate: NoAction, onDelete: Restrict)
+  industry_id                   Int?
+  CompanySize                   CompanySize? @relation(fields: [company_size_id], references: [id], onUpdate: NoAction, onDelete: Restrict)
+  company_size_id               Int?
+  Job                           Job[]
+
+  @@unique([name, location, industry_id])
+}
+
+model JobRequiredItem {
+  id               Int          @id @default(autoincrement())
+  job              Job          @relation(fields: [job_id], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  job_id           Int
+  RequiredItem     RequiredItem @relation(fields: [required_item_id], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  required_item_id Int
+}
+
+model JobApplication {
+  id                      Int                       @id @default(autoincrement())
+  created_at              DateTime                  @default(now())
+  job                     Job                       @relation(fields: [job_id], references: [id])
+  job_id                  Int
+  user                    User                      @relation(fields: [user_id], references: [id])
+  user_id                 Int
+  job_application_proof   String                    @db.VarChar(255)
+  JobApplicationAddedItem JobApplicationAddedItem[]
+}
+
+model JobApplicationAddedItem {
+  id                 Int            @id @default(autoincrement())
+  job_application    JobApplication @relation(fields: [job_application_id], references: [id])
+  job_application_id Int
+  AddedItem          RequiredItem   @relation(fields: [added_item_id], references: [id])
+  added_item_id      Int
+}
+
+model RequiredItem {
+  id                      Int                       @id @default(autoincrement())
+  name                    String                    @unique @db.VarChar(255)
+  JobRequiredItem         JobRequiredItem[]
+  JobApplicationAddedItem JobApplicationAddedItem[]
+}
+
+model Search {
+  id                Int                 @id @default(autoincrement())
+  search_date       DateTime            @default(now())
+  search_string     String              @db.VarChar(255)
+  location_string   String              @db.VarChar(255)
+  filter_string     String              @db.VarChar(255)
+  sort_string       String?             @db.VarChar(255)
+  JobSearchResults  JobSearchResults[]
+  ExcludedJobSearch ExcludedJobSearch[]
+}
+
+model JobSearchResults {
+  id              Int      @id @default(autoincrement())
+  created_at      DateTime @default(now())
+  jobbank_link_id Int
+  is_lmia         Boolean
+  job             Job?     @relation(fields: [job_id], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  job_id          Int?
+  search          Search   @relation(fields: [search_id], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  search_id       Int
+
+  @@unique([jobbank_link_id, is_lmia])
+}
+
+model ExcludedJobSearch {
+  id              Int      @id @default(autoincrement())
+  created_at      DateTime @default(now())
+  reason          String
+  search          Search   @relation(fields: [search_id], references: [id])
+  search_id       Int
+  jobbank_link_id Int
+  jobbank_id      Int
+}

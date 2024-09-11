@@ -1,12 +1,19 @@
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { AppModule } from './modules/app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 declare const module: any;
 async function bootstrap() {
   const logger = new Logger('EntryPoint');
   const app = await NestFactory.create(AppModule);
+
+  // Enable CORS
+  app.enableCors({
+    origin: ['http://localhost:3001'],
+    methods: 'GET,POST,PUT,DELETE', // Specify allowed methods,
+    credentials: true,
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Leaves Tracker')
@@ -17,7 +24,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
 
-  const PORT = 5002;
+  const PORT = 5003;
 
   await app.listen(PORT);
 

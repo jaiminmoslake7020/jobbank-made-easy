@@ -1,0 +1,27 @@
+.tooltip-wrapper {
+  @apply hidden absolute min-w-64 h-fit top-10 opacity-0 border-content border-2 md:group-hover:flex flex-col gap-0 group-hover:opacity-100 transition-opacity overflow-visible;
+
+  .title {
+    @apply p-4 text-bkg bg-content font-bold;
+  }
+
+  .content {
+    @apply pt-4 px-4 bg-bkg text-content;
+  }
+
+  .arrow-wrapper{
+    @apply w-full flex justify-center h-4;
+
+    .arrow-container{
+      @apply relative w-4;
+
+      .arrow-div-one{
+        @apply absolute top-0 left-2 w-8 h-4 bg-bkg z-20;
+      }
+      .arrow-div-two{
+        @apply absolute top-2 left-4 w-4 h-4 z-10 bg-content rotate-45;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,34 @@
+.job-search-container{
+  @apply flex w-full max-w-container;
+
+  form{
+    @apply flex flex-col gap-4 w-full;
+  }
+
+  .first-row-form {
+    @apply flex flex-col sm:flex-row flex-wrap lg:flex-nowrap gap-4 justify-center items-center w-full ;
+
+    .keywords-input, .location-input{
+      @apply w-full sm:w-[calc(50%_-_1rem)] md:w-[40%];
+    }
+
+    .btn-box{
+      @apply w-full md:w-1/5 flex justify-center items-center;
+    }
+
+    input{
+      @apply py-4 px-4 !important ;
+      @apply min-w-48 !important;
+    }
+
+
+  }
+
+  .second-row-form{
+    .label {
+      @apply flex gap-4 justify-center items-center w-fit ;
+    }
+  }
+
+
+}

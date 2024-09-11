@@ -1,0 +1,33 @@
+.main-header{
+  @apply flex gap-4 px-6 lg:px-24 py-3 justify-between items-center absolute w-full;
+
+  .nav-main{
+    @apply hidden lg:flex;
+  }
+
+  .color-theme-selector{
+    @apply hidden lg:flex;
+  }
+
+  .sidebar-opener{
+    @apply block lg:hidden;
+
+    &.btn{
+      @apply px-4 py-2;
+    }
+  }
+
+}
+
+
+.color-theme-selector{
+  @apply flex gap-4;
+}
+
+
+
+.nav{
+  .nav-link{
+    @apply px-8 py-3 text-content;
+  }
+}

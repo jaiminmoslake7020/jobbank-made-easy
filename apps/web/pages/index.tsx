@@ -1,13 +1,12 @@
-import { Button } from "ui";
-import { useHelloQuery } from "../src/store/services/api";
+"use client";
+
+import JobSearch from '../src/components/JobSearch/JobSearch';
+import MainContent from '../src/components/MainContent/MainContent';
 
 export default function Web() {
-  const { data } = useHelloQuery();
-
   return (
-    <div>
-      <h1>{data?.message}</h1>
-      <Button />
-    </div>
+      <MainContent pageNameClass={"index-page"} >
+          <JobSearch />
+      </MainContent>
   );
 }

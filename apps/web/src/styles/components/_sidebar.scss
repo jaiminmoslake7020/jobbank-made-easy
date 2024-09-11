@@ -1,0 +1,53 @@
+.sidebar{
+  @apply flex flex-col lg:hidden justify-between;
+  @apply w-screen h-[100dvh];
+  @apply fixed left-0 z-0;
+  @apply bg-content/95;
+  @apply p-6;
+  @apply translate-x-[100vw] transition-transform;
+
+  .sidebar-control-wrapper{
+    @apply w-12 h-fit flex justify-end absolute right-6 z-10 top-4;
+  }
+
+  &.open{
+    @apply translate-x-0 z-10;
+  }
+
+  .nav-main{
+    @apply flex flex-col w-full gap-6;
+
+    .nav-link{
+      @apply text-bkg text-xl font-bold;
+    }
+  }
+
+  .sidebar-closer{
+    @apply block;
+
+    &.btn{
+      @apply px-4 py-2;
+    }
+  }
+
+  .color-theme-selector{
+    @apply w-full justify-between px-4;
+
+    .color-theme-btn{
+      @apply w-12 h-12 text-2xl;
+    }
+  }
+
+  .website-info{
+    @apply text-bkg flex justify-center;
+  }
+
+  .social-media-links-wrapper{
+    @apply w-full justify-between sm:justify-center p-4;
+    a{
+      @apply text-bkg text-3xl;
+    }
+  }
+
+
+}

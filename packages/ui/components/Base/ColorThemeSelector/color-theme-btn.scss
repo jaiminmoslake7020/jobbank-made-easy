@@ -1,0 +1,23 @@
+.color-theme-btn{
+    @apply w-8 h-8 border-2 rounded-full border-white flex justify-center items-center text-sm text-content;
+}
+
+.color-theme-btn.light{
+     @apply bg-slate-200 ;
+ }
+
+.color-theme-btn.dark{
+     @apply bg-gray-800;
+ }
+
+.color-theme-btn.green{
+     @apply bg-green-400;
+ }
+
+.color-theme-btn.purple{
+     @apply bg-purple-400;
+ }
+
+.color-theme-btn.blue{
+     @apply bg-blue-400;
+ }

@@ -1,0 +1,17 @@
+@layer  base {
+
+  .App[data-theme="blue"] {
+    --color-bkg: 96 165 250;
+    --color-content: 245 245 244;
+
+    --color-theme-btn-bg: 248 250 252;
+    --color-theme-btn-text: 96 165 250;
+    --color-theme-btn-border: 255 255 255;
+
+    --color-theme-btn-active-bg: 96 165 250;
+    --color-theme-btn-active-text: 248 250 252;
+    --color-theme-btn-active-border: 255 255 255;
+  }
+
+
+}

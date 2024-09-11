@@ -1,0 +1,22 @@
+.social-media-links-wrapper{
+  @apply w-full justify-between sm:justify-center p-4;
+  a{
+    @apply text-bkg text-3xl;
+  }
+}
+
+.social-media-links-wrapper{
+  @apply flex gap-4;
+  a{
+    @apply text-lg;
+  }
+}
+
+.main-footer{
+  .social-media-links-wrapper{
+    @apply flex gap-8 lg:gap-4;
+    a{
+      @apply text-2xl lg:text-lg;
+    }
+  }
+}
