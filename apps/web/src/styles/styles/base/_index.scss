@@ -1,0 +1,32 @@
+@import "tailwind";
+@import "themes/index";
+@import "input";
+
+@layer base {
+  .goup-start{
+    animation: goup 2s forwards;
+  }
+
+  .max-w-container{
+    @apply 2xl:max-w-screen-xl xl:max-w-screen-lg lg:max-w-screen-md md:max-w-screen-sm max-w-[90vw];
+  }
+}
+
+@keyframes goup {
+  0% {
+    transform: translateY(100%) scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+}
+
+
+.loading-wrapper {
+  @apply flex w-full justify-center items-center my-4;
+  .loading-icon{
+    @apply text-2xl;
+  }
+}
