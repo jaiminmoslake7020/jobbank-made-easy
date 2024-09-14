@@ -1,15 +1,16 @@
-import React, {useEffect} from 'react';
-import {useJobSearch} from './../JobSearch/useJobSearch';
-import ResultLine from './ResultLine';
+import React from 'react';
+import { useJobSearch} from '../JobSearch/useJobSearch';
 import Results from './Results';
+import { ResultLine } from 'ui';
+import JobSearchApp from '../JobSearch/JobSearchApp';
 
 const JobSearchResults = () => {
-    const { query } = useJobSearch();
-    const fetchResults = query ? (query.search !== '' || query.location !== '') : false;
+    const { query, searchString } = useJobSearch();
+    const fetchResults = query ? query.search !== '' : false;
     return (
         <div className={"job-search-results-container"} >
-            <ResultLine searchQuery={query} />
-            { fetchResults ? <Results searchQuery={query} /> : null }
+            <JobSearchApp />
+            { fetchResults ? <Results searchString={searchString} /> : <ResultLine searchQuery={searchString} isLoading={true}  /> }
         </div>
     );
 }

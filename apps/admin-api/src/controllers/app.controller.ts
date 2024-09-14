@@ -8,10 +8,7 @@ import {
 } from '@nestjs/common';
 import { AppService } from '../services/';
 import { JobDetailsDbManagerService } from '../services';
-import {
-  JobDetailsAllType,
-  JobSearchResultsType,
-} from 'types';
+import { JobDetailsAllType, JobSearchResultsType } from 'types';
 
 @Controller()
 export class AppController {
@@ -73,10 +70,12 @@ export class AppController {
   ): Promise<JobDetailsAllType> {
     let isLmiaParsed = isLmia === 'true';
     const jobLinkIdParsed = Number(jobLinkId);
-    isLmiaParsed = await this.appService.quickLmiaCheck(
-      jobLinkIdParsed,
-      isLmiaParsed,
-    );
+    if (isLmiaParsed === false) {
+      isLmiaParsed = await this.appService.quickLmiaCheck(
+        jobLinkIdParsed,
+        isLmiaParsed,
+      );
+    }
     if (typeof jobLinkIdParsed === 'number') {
       this.jobDetailsDbManagerService.initiateConnection();
       const jobId = await this.jobDetailsDbManagerService.findJobByJobLinkId(

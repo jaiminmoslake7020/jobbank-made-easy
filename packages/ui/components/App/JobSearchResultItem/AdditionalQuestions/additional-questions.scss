@@ -1,0 +1,8 @@
+.additional-questions-wrapper{
+  @apply flex flex-col gap-2 mb-4;
+
+  .additional-questions-container{
+    @apply flex flex-col gap-4;
+  }
+
+}

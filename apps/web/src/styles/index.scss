@@ -1,6 +1,14 @@
-@import "base/index";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .max-w-container{
+    @apply 2xl:max-w-screen-xl xl:max-w-screen-lg lg:max-w-screen-md md:max-w-screen-sm max-w-[90vw];
+  }
+}
+
 @import "components/index";
-@import "base/input";
 
 @layer components {
   .App{
@@ -8,6 +16,8 @@
     @apply bg-bkg w-screen flex flex-col relative font-mono text-content;
   }
 }
+
+
 
 
 

@@ -2,9 +2,7 @@ import React, {useState} from 'react';
 import {SearchQueryType} from '../../types/app';
 import {useSearchJobsQuery} from '../../store/services/api';
 import JobResultItem from './JobResultItem';
-import Loading from 'packages/ui/components/Base/Loading/Loading';
-import ResultLine from './ResultLine';
-import {Alert} from 'ui';
+import {Alert, ResultLine, Loading} from 'ui';
 
 export type ResultsPropTypes = {
     searchQuery: SearchQueryType
@@ -38,7 +36,7 @@ const Results = (props: ResultsPropTypes) => {
                         if (index > findMin + 2) {
                             return <Loading key={"Loading-"+jobLinkId} />;
                         }
-                        return <JobResultItem key={"JobResultItem-"+jobLinkId+"-"+index} jobLinkId={jobLinkId} isLmia={isLmia} processed={() => {
+                        return <JobResultItem key={"JobResultItem-"+jobLinkId+"-"+index} jobLinkId={Number(jobLinkId)} isLmia={isLmia} processed={() => {
                             if (!processedQueue.includes(index)) {
                                 setProcessedQueue((prev) => [...prev, index]);
                             }

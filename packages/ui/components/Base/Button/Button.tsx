@@ -3,7 +3,12 @@ import {
 } from 'react';
 import './button.scss';
 
-export const Button = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
+export type CustomAttributes = {
+  contentEditable?: 'inherit' | boolean
+};
+
+
+export const Button = (props: ButtonHTMLAttributes<HTMLButtonElement> & CustomAttributes) => {
   const { children } = props;
-  return <button className=" btn " {...props} >{children}</button>;
+  return <button role={"button"} className=" btn " {...props} >{children}</button>;
 };

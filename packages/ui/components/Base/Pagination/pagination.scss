@@ -1,0 +1,25 @@
+.pagination-wrapper{
+  @apply flex flex-row gap-4 items-center;
+
+  .pagination-child{
+    @apply w-full sm:w-1/2 lg:w-1/3;
+    @apply flex flex-row gap-4;
+  }
+
+  .empty-space{
+    @apply hidden lg:flex;
+  }
+
+  .prev-next-wrapper{
+    @apply justify-center;
+  }
+
+  .page-size{
+    @apply justify-end;
+
+    select{
+      @apply max-w-24;
+    }
+  }
+
+}

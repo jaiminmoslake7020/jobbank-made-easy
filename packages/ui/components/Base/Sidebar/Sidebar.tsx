@@ -1,6 +1,6 @@
 import React from 'react';
-import ColorThemeSelector, {ThemeType} from '../ColorThemeSelector/ColorThemeSelector';
-import FaIcon from '../FaIcon/FaIcon';
+import {ColorThemeSelector, ThemeType} from '../';
+import { FaIcon } from '../FaIcon/FaIcon';
 import {WebsiteInfo} from '../Footer/Footer';
 import './sidebar.scss'
 
@@ -13,7 +13,7 @@ export type SidebarPropTypes = {
     themes: ThemeType[]
 };
 
-const Sidebar = (props: SidebarPropTypes) => {
+export const Sidebar = (props: SidebarPropTypes) => {
     const {
         sidebar,
         showSidebar,
@@ -39,5 +39,3 @@ const Sidebar = (props: SidebarPropTypes) => {
         </aside>
     );
 }
-
-export default Sidebar;

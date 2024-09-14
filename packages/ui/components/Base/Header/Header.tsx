@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import ColorThemeSelector, {ThemeType} from '../ColorThemeSelector/ColorThemeSelector';
-import FaIcon from '../FaIcon/FaIcon';
-import Sidebar from '../Sidebar/Sidebar';
+import {ColorThemeSelector, ThemeType} from '../';
+import { FaIcon } from '../FaIcon/FaIcon';
+import { Sidebar } from '../Sidebar/Sidebar';
 import './header.scss'
 
 
@@ -12,7 +12,7 @@ export type HeaderPropTypes = {
     themes: ThemeType[]
 };
 
-const Header = (props: HeaderPropTypes) => {
+export const Header = (props: HeaderPropTypes) => {
     const {
         setTheme,
         theme,
@@ -26,7 +26,7 @@ const Header = (props: HeaderPropTypes) => {
         <>
             <header className={"main-header"} >
                 <div className={"logo"}>
-                    <a className={"logo-box"} href={"https://jaimin-pandya.netlify.app/"}>
+                    <a className={"logo-box"} href={'http://localhost:3001/'}>
                         <h1>Logo</h1>
                     </a>
                 </div>
@@ -45,4 +45,3 @@ const Header = (props: HeaderPropTypes) => {
     );
 }
 
-export default Header;

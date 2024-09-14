@@ -1,18 +1,17 @@
-import Alert from './Alert/Alert';
-import ColorThemeButton from './ColorThemeSelector/ColorThemeButton';
-import ColorThemeSelector, {ThemeType} from './ColorThemeSelector/ColorThemeSelector';
-import FaIcon from './FaIcon/FaIcon';
-import Footer from './Footer/Footer';
-import Header from './Header/Header';
-import Loading from './Loading/Loading';
-import Sidebar from './Sidebar/Sidebar';
-import SocialLinks from './SocialiLinks/SocialLinks';
+export * from './Alert/Alert';
+export * from  './AutoComplete/AutoComplete';
+export * from './Badge/Badge';
+export * from './Button/Button';
+export *  from './ColorThemeSelector';
+export *  from './FaIcon/FaIcon';
+export *  from './Footer/Footer';
+export *  from './Header/Header';
+export *  from './Loading/Loading';
+export * from './Sidebar/Sidebar';
+export * from  './SocialiLinks/SocialLinks';
+export * from  './Tooltip/Tooltip';
+export * from  './Pagination';
 
 
-export {
-    ColorThemeSelector, ColorThemeButton, FaIcon, Footer, Header, Sidebar, SocialLinks, Alert, Loading
-};
 
-export type {
-    ThemeType
-};
+

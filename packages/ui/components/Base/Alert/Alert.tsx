@@ -1,5 +1,5 @@
 import React from 'react';
-import FaIcon from '../FaIcon/FaIcon';
+import { FaIcon } from '../FaIcon/FaIcon';
 import './alert.scss'
 
 export type AlertType = 'error' | 'info' | 'warning' | 'success';
@@ -25,7 +25,7 @@ export const getIcon= (type: AlertType) => {
     return 'xmark';
 }
 
-const Alert = (props: AlertPropTypes) => {
+export const Alert = (props: AlertPropTypes) => {
     const {
         type,
         message
@@ -42,4 +42,3 @@ const Alert = (props: AlertPropTypes) => {
     );
 }
 
-export default Alert;

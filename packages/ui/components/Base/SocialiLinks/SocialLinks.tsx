@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import FaIcon from '../FaIcon/FaIcon';
+import { FaIcon } from '../FaIcon/FaIcon';
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
-import Tooltip, {TooltipType} from '../Tooltip/Tooltip';
+import {Tooltip,TooltipType} from '../Tooltip/Tooltip';
+
+export type SocialLinkType = {
+    label: string,
+    link: string,
+    icon: IconProp,
+    tooltip?: TooltipType
+}
 
 export type SocialLinksPropTypes = {
-
+    socialLinks: SocialLinkType[]
 };
 
 
@@ -37,14 +44,13 @@ const socialLinks = [
         link: "https://stackoverflow.com/users/2542806/jaimin-moslake",
         icon: "stack-overflow"
     },
-] as {
-    label: string,
-    link: string,
-    icon: IconProp,
-    tooltip?: TooltipType
-}[];
+] as SocialLinkType[];
 
-const SocialLinks = (props: SocialLinksPropTypes) => {
+export const SocialLinks = (props: SocialLinksPropTypes) => {
+
+    const {
+        socialLinks
+    } = props;
 
     const [activeItem, setActiveItem] = useState<null | string>(null);
 
@@ -69,5 +75,3 @@ const SocialLinks = (props: SocialLinksPropTypes) => {
         </nav>
     );
 }
-
-export default SocialLinks;

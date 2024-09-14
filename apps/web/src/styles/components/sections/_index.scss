@@ -18,6 +18,6 @@
   @apply flex flex-col items-center justify-center gap-16;
 
   &.results-page{
-    @apply justify-start pt-20;
+    @apply justify-start pt-20 pb-20;
   }
 }

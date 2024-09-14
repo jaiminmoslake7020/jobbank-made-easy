@@ -8,8 +8,12 @@ export type WebCrawlingReturnType = string | ErrorType;
 export class WebcrawlingService {
   async get(url): Promise<WebCrawlingReturnType> {
     try {
+      console.log('start', url);
+      const t = new Date().getTime() / 1000;
       // Fetch the HTML from the website
       const { data } = await axios.get(url);
+      const t1 = new Date().getTime() / 1000;
+      console.log(url, t1 - t);
       return data;
     } catch (error) {
       console.error(error);
@@ -35,11 +39,14 @@ export class WebcrawlingService {
         seekeractivity: 'seekeractivity',
       } as Record<string, string>);
       // Fetch the HTML from the website
+      const t = new Date().getTime() / 1000;
       const { data } = await axios.post(howToApplyUrl, formData, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
+      const t1 = new Date().getTime() / 1000;
+      console.log('howToApplyUrl', howToApplyUrl, t1 - t);
       // Output the extracted titles
       return data;
     } catch (error) {

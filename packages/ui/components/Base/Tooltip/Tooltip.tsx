@@ -6,7 +6,7 @@ export type TooltipType = {
     content: string
 };
 
-const Arrow = () => {
+export const Arrow = () => {
     return   <div className={"arrow-wrapper"}>
         <div className={" arrow-container "}>
             <div className={"arrow-div-one"}></div>
@@ -16,7 +16,7 @@ const Arrow = () => {
 }
 
 
-const Tooltip = (props : {
+export const Tooltip = (props : {
     tooltip: TooltipType,
     active: boolean
 }) => {
@@ -39,5 +39,3 @@ const Tooltip = (props : {
         <Arrow />
     </div>
 }
-
-export default Tooltip;

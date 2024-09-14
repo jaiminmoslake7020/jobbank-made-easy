@@ -3,7 +3,7 @@ import {
     FontAwesomeIconProps
 } from '@fortawesome/react-fontawesome';
 
-const FaIcon = (props: FontAwesomeIconProps) => {
+export const FaIcon = (props: FontAwesomeIconProps) => {
     const {
         icon,
         className,
@@ -26,5 +26,3 @@ const FaIcon = (props: FontAwesomeIconProps) => {
         <i className={iconClass+' '+className+' '+sizeClass} ></i>
     );
 }
-
-export default FaIcon;

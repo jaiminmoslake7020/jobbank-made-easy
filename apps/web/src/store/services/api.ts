@@ -1,30 +1,32 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {JobDetailsAllType} from 'types';
+
+export const apiFreeze = {
+  searchJobs: 0,
+  getJobDetails: 2,
+  searchKeys: 5
+};
 
 export const api = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:5002/'
+    baseUrl: 'http://localhost:5003/'
   }),
   tagTypes: [],
   endpoints: (builder) => ({
-    hello: builder.query<{ message: string }, void>({
-      query: () => ({
-        url: "/",
-      }),
-    }),
-    new: builder.query<{ message: string }, void>({
-      query: () => ({
-        url: "/",
-      }),
-    }),
-    searchJobs: builder.query<{ message: string }, string>({
+    searchJobs: builder.query<JobDetailsAllType[], string>({
       query: (search) => ({
         url: `/search${search}`,
       }),
-      keepUnusedDataFor: 5, // Keep the data fresh for 5 seconds
-      refetchOnMountOrArgChange: false, // Prevent refetching on mount or arg change
+      keepUnusedDataFor: apiFreeze.searchJobs, // Keep the data fresh for 5 seconds
+    }),
+    getSearchKeys: builder.query<string[], string>({
+      query: () => ({
+        url: `/search-keys`,
+      }),
+      keepUnusedDataFor: apiFreeze.searchKeys, // Keep the data fresh for 5 seconds
     }),
   }),
 });
 
-export const { useHelloQuery, useNewQuery, useSearchJobsQuery } = api;
+export const { useSearchJobsQuery, useGetSearchKeysQuery } = api;

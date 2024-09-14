@@ -1,29 +1,42 @@
 import React from 'react';
-import {SearchQueryType} from '../../types/app';
 import {useSearchJobsQuery} from '../../store/services/api';
-import JobResultItem from './JobResultItem';
+import {Alert, ResultLine, Loading, JobItem, Pagination} from 'ui';
 
 export type ResultsPropTypes = {
-    searchQuery: SearchQueryType
+    searchString: string
 };
 
 const Results = (props: ResultsPropTypes) => {
     const {
-        searchQuery
-    } = props
-    const {
-        search, location, isLmia
-    } = searchQuery;
-    const searchString = `?search=${search}&location=${location}${isLmia  ? '&isLmia=true' : '&isLmia=' }`
+        searchString
+    } = props;
 
     // Call the hook with the userId parameter
-    // const { data: posts, error, isLoading } = useSearchJobsQuery(searchString);
-    const data = [{"jobLinkId":"41326350","isLmia":true},{"jobLinkId":"41063814","isLmia":true}];
-
+    const { data, error, isLoading, isError, isFetching } = useSearchJobsQuery(`?${searchString}`);
+    const jobCount = data && Array.isArray(data) && data.length > 0 ? data[0]['jobCount'] : 0;
     return (
-        <div className={"results-wrapper"} >{
-            data.map(({jobLinkId, isLmia}, index) => <JobResultItem key={Number(jobLinkId)} jobLinkId={jobLinkId} isLmia={isLmia} />)
-        }</div>
+        <>
+            <ResultLine searchQuery={searchString} isLoading={isFetching} number={jobCount} />
+            <div className={"results-wrapper"} >
+                {
+                    !isFetching && data && Array.isArray(data) && data.map((jobDetails, index) => {
+                        const {
+                            jobbank_link_id
+                        } = jobDetails;
+                        return <JobItem key={"JobResultItem-"+jobbank_link_id+"-"+index} jobLinkId={jobbank_link_id} jobDetails={{...jobDetails, query: true}} />
+                    })
+                }
+                {
+                    !isFetching && !isLoading && isError && error ? <Alert type={"error"} message={"There is some error loading jobs."} /> : ''
+                }
+                {
+                    isFetching && <Loading />
+                }
+                {
+                    !isFetching && data && Array.isArray(data) && <Pagination maxItems={jobCount} />
+                }
+            </div>
+        </>
     );
 }
 

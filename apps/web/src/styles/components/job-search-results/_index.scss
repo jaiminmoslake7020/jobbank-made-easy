@@ -1,5 +1,9 @@
-
-
 .job-search-results-container{
-  @apply flex flex-col gap-2;
+  @apply max-w-container w-full;
+  @apply flex flex-col gap-6;
+
+  .results-wrapper{
+    @apply  flex flex-col gap-6;
+  }
+
 }

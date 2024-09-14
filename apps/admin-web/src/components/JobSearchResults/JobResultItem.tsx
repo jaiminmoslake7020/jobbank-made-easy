@@ -3,14 +3,11 @@ import {
   useGetJobDetailsQuery,
   useLazyGetJobDetailsQuery,
 } from "../../store/services/api";
-import Alert from "packages/ui/components/Base/Alert/Alert";
-import JobItemAction from "./JobItemAction";
-import JobItem from "./JobItem";
 import { JobDetailsAllType } from "types/dist";
-import { Loading } from "ui";
+import { Loading, Alert, JobItemAction, JobItem } from "ui";
 
 export type JobResultItemPropTypes = {
-  jobLinkId: string;
+  jobLinkId: number;
   isLmia: boolean;
   processed: Function;
 };
@@ -45,9 +42,9 @@ const JobResultItem = (props: JobResultItemPropTypes) => {
   // Use useCallback to memoize the fetchJobDetails function
   const fetchJobDetails = useCallback(
     () => {
-      trigger(jobInfo);
+      refetch();
     },
-    [trigger, jobInfo], // Depend on the trigger function from useLazyGetJobDetailsQuery
+    [refetch], // Depend on the trigger function from useLazyGetJobDetailsQuery
   );
 
   useEffect(() => {

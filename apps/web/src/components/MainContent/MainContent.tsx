@@ -1,10 +1,35 @@
 import React, {useEffect, useState, ReactNode} from 'react';
-import {Footer, Header} from '../base';
+import Nav from './Nav'
+import {
+    Header, Footer
+} from "ui";
 
 export type MainContentPropTypes = {
     pageNameClass: string,
     children: ReactNode
 };
+
+const menuLinks = [
+    {
+        label: "Job Search",
+        href: "/",
+    },
+    {
+        label: "Login",
+        href: "/login",
+    },
+];
+
+const themes = [
+    {
+        btnLabel: 'Light',
+        btnTheme: 'light'
+    },
+    {
+        btnLabel: 'Dark',
+        btnTheme: 'dark'
+    }
+];
 
 const MainContent = (props: MainContentPropTypes) => {
     const {
@@ -36,10 +61,15 @@ const MainContent = (props: MainContentPropTypes) => {
 
     return (
         <div data-theme={theme} className="App">
-            <Header theme={theme} setTheme={(x:string) => {
-                setTheme(x);
-                localStorage.setItem('theme', x);
-            }} />
+            <Header
+                themes={themes}
+                theme={theme}
+                setTheme={(x:string) => {
+                    setTheme(x);
+                    localStorage.setItem('theme', x);
+                }}
+                nav={<Nav menuLinks={menuLinks} /> }
+            />
             <main className={"main-content "+pageNameClass}>
                 {children}
             </main>

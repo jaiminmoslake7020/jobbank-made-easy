@@ -10,7 +10,9 @@ import {
     SearchJobType,
     JobSearchResultsType,
     SearchConfigType,
-    SearchQueryType
+    SearchQueryType,
+    LocationObjectKeyType,
+    WageObjectkeyType
 } from "./src/admin-api"
 
 export type {
@@ -25,5 +27,7 @@ export type {
     SearchJobType,
     JobSearchResultsType,
     SearchConfigType,
-    SearchQueryType
+    SearchQueryType,
+    LocationObjectKeyType,
+    WageObjectkeyType
 };

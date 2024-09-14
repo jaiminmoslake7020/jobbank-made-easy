@@ -1,8 +1,7 @@
-@import "btn";
 @import "sections/index";
-@import "header";
-@import "sidebar";
-@import "footer";
 @import "logo";
-@import "job-search";
 @import "job-search-results/index";
+
+.nav .nav-link{
+  @apply px-8 py-3 text-content;
+}

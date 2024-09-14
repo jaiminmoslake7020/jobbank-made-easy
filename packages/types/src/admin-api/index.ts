@@ -14,6 +14,8 @@ export type LocationObjectType = {
     postalCode?: string;
 };
 
+export type LocationObjectKeyType = keyof LocationObjectType;
+
 export type WageObjectType = {
     currency?: string;
     minValue?: number;
@@ -21,6 +23,8 @@ export type WageObjectType = {
     workHours?: string;
     maxValue?: number;
 };
+
+export type WageObjectkeyType = keyof WageObjectType;
 
 export type HowToApplyResponseType = {
     email: string;
@@ -59,7 +63,8 @@ export type JobDetailsAllType = JobDetailsType &
     is_lmia: boolean;
 } & {
     job_id?: number | ErrorType;
-    query?: boolean
+    query?: boolean,
+    jobCount?: number
 };
 
 export type SearchJobType = {

@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "config": "*",
+    "types": "*",
     "tsconfig": "*",
     "typescript": "^5.1.6"
   }

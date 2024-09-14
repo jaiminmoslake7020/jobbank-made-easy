@@ -5,7 +5,7 @@ export type LoadingPropTypes = {
     loadingIconClass?: string
 };
 
-const Loading = (props: LoadingPropTypes) => {
+export const Loading = (props: LoadingPropTypes) => {
     const {
         loadingWraporClass,
         loadingIconClass
@@ -16,5 +16,3 @@ const Loading = (props: LoadingPropTypes) => {
         </div>
     );
 }
-
-export default Loading;

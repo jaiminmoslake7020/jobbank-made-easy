@@ -59,7 +59,6 @@ export class AppService {
         jobs = [...jobs, ...jobs1];
       }
       if (jobs1.length === 0) {
-        console.log('exiting as ', jobs1.length);
         hasMoreJobs = false;
       }
       page++;

@@ -2,137 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-  :root {
-    --color-bkg: 226 232 240;
-    --color-content: 39 39 42;
-    --color-theme-btn-bg: 229 231 235;
-    --color-theme-btn-text: 30 41 59;
-    --color-theme-btn-border: 156 163 175;
-    --color-theme-btn-active-bg: 87 83 78;
-    --color-theme-btn-active-text: 244 244 245;
-    --color-theme-btn-active-border: 214 211 209;
-  }
-  .App[data-theme=light] {
-    --color-bkg: 226 232 240;
-    --color-content: 39 39 42;
-    --color-theme-btn-bg: 229 231 235;
-    --color-theme-btn-text: 30 41 59;
-    --color-theme-btn-border: 156 163 175;
-    --color-theme-btn-active-bg: 87 83 78;
-    --color-theme-btn-active-text: 244 244 245;
-    --color-theme-btn-active-border: 214 211 209;
-  }
-}
-@layer base {
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-bkg: 2 6 23;
-      --color-content: 243 244 246;
-    }
-  }
-  .App[data-theme=dark] {
-    --color-bkg: 2 6 23;
-    --color-content: 243 244 246;
-    --color-theme-btn-active-bg: 229 231 235;
-    --color-theme-btn-active-text: 30 41 59;
-    --color-theme-btn-active-border: 156 163 175;
-    --color-theme-btn-bg: 87 83 78;
-    --color-theme-btn-text: 244 244 245;
-    --color-theme-btn-border: 214 211 209;
-  }
-}
-@layer base {
-  .App[data-theme=blue] {
-    --color-bkg: 96 165 250;
-    --color-content: 245 245 244;
-    --color-theme-btn-bg: 248 250 252;
-    --color-theme-btn-text: 96 165 250;
-    --color-theme-btn-border: 255 255 255;
-    --color-theme-btn-active-bg: 96 165 250;
-    --color-theme-btn-active-text: 248 250 252;
-    --color-theme-btn-active-border: 255 255 255;
-  }
-}
-@layer base {
-  .App[data-theme=green] {
-    --color-bkg: 74 222 128;
-    --color-content: 245 245 244;
-    --color-theme-btn-bg: 248 250 252;
-    --color-theme-btn-text: 74 222 128;
-    --color-theme-btn-border: 255 255 255;
-    --color-theme-btn-active-bg: 74 222 128;
-    --color-theme-btn-active-text: 248 250 252;
-    --color-theme-btn-active-border: 255 255 255;
-  }
-}
-@layer base {
-  .App[data-theme=purple] {
-    --color-bkg: 168 85 247;
-    --color-content: 245 245 244;
-    --color-theme-btn-bg: 248 250 252;
-    --color-theme-btn-text: 168 85 247;
-    --color-theme-btn-border: 255 255 255;
-    --color-theme-btn-active-bg: 168 85 247;
-    --color-theme-btn-active-text: 248 250 252;
-    --color-theme-btn-active-border: 255 255 255;
-  }
-}
-input {
-  @apply w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-}
-input[type=text] {
-  @apply w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-}
-input[type=checkbox] {
-  @apply h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded;
-}
-input[type=radio] {
-  @apply h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300;
-}
-
-select {
-  @apply w-full p-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-}
-
-@layer base {
-  .goup-start {
-    animation: goup 2s forwards;
-  }
-}
-@keyframes goup {
-  0% {
-    transform: translateY(100%) scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0%) scale(1);
-    opacity: 1;
-  }
-}
-@layer components {
-  .btn {
-    @apply bg-theme-btn-bg text-theme-btn-text px-8 py-3 border-theme-btn-border border-2 rounded hover:shadow;
-  }
-  .btn.active {
-    @apply bg-theme-btn-active-bg text-theme-btn-active-text border-theme-btn-active-border;
-  }
-  .color-theme-btn {
-    @apply w-8 h-8 border-2 rounded-full border-white flex justify-center items-center text-sm text-content;
-  }
-  .color-theme-btn.light {
-    @apply bg-slate-200;
-  }
-  .color-theme-btn.dark {
-    @apply bg-gray-800;
-  }
-  .color-theme-btn.green {
-    @apply bg-green-400;
-  }
-  .color-theme-btn.purple {
-    @apply bg-purple-400;
-  }
-  .color-theme-btn.blue {
-    @apply bg-blue-400;
+  .max-w-container {
+    @apply 2xl:max-w-screen-xl xl:max-w-screen-lg lg:max-w-screen-md md:max-w-screen-sm max-w-[90vw];
   }
 }
 .section {
@@ -151,98 +22,7 @@ select {
   @apply flex flex-col items-center justify-center gap-16;
 }
 .main-content.results-page {
-  @apply justify-start pt-20;
-}
-
-.main-header {
-  @apply flex gap-4 px-6 lg:px-24 py-3 justify-between items-center absolute w-full;
-}
-.main-header .nav-main {
-  @apply hidden lg:flex;
-}
-.main-header .color-theme-selector {
-  @apply hidden lg:flex;
-}
-.main-header .sidebar-opener {
-  @apply block lg:hidden;
-}
-.main-header .sidebar-opener.btn {
-  @apply px-4 py-2;
-}
-
-.color-theme-selector {
-  @apply flex gap-4;
-}
-
-.nav .nav-link {
-  @apply px-8 py-3 text-content;
-}
-
-.sidebar {
-  @apply flex flex-col lg:hidden justify-between;
-  @apply w-screen h-[100dvh];
-  @apply fixed left-0 z-0;
-  @apply bg-content/95;
-  @apply p-6;
-  @apply translate-x-[100vw] transition-transform;
-}
-.sidebar .sidebar-control-wrapper {
-  @apply w-12 h-fit flex justify-end absolute right-6 z-10 top-4;
-}
-.sidebar.open {
-  @apply translate-x-0 z-10;
-}
-.sidebar .nav-main {
-  @apply flex flex-col w-full gap-6;
-}
-.sidebar .nav-main .nav-link {
-  @apply text-bkg text-xl font-bold;
-}
-.sidebar .sidebar-closer {
-  @apply block;
-}
-.sidebar .sidebar-closer.btn {
-  @apply px-4 py-2;
-}
-.sidebar .color-theme-selector {
-  @apply w-full justify-between px-4;
-}
-.sidebar .color-theme-selector .color-theme-btn {
-  @apply w-12 h-12 text-2xl;
-}
-.sidebar .website-info {
-  @apply text-bkg flex justify-center;
-}
-.sidebar .social-media-links-wrapper {
-  @apply w-full justify-between sm:justify-center p-4;
-}
-.sidebar .social-media-links-wrapper a {
-  @apply text-bkg text-3xl;
-}
-
-.main-footer {
-  @apply flex gap-6 lg:gap-4 px-6 lg:px-24 py-8 lg:py-4 justify-between items-center w-full;
-  @apply static lg:absolute lg:bottom-0;
-  @apply flex-col lg:flex-row;
-}
-.main-footer .website-info {
-  @apply w-full lg:w-fit flex justify-center lg:justify-start;
-}
-.main-footer .website-info p {
-  @apply text-center;
-}
-.main-footer .social-media-links-wrapper {
-  @apply flex gap-8 lg:gap-4;
-}
-.main-footer .social-media-links-wrapper a {
-  @apply text-2xl lg:text-lg;
-}
-
-.social-media-links-wrapper {
-  @apply flex gap-4;
-}
-.social-media-links-wrapper a {
-  @apply text-lg;
+  @apply justify-start pt-20 pb-20;
 }
 
 .logo-box {
@@ -274,44 +54,19 @@ select {
     @apply block;
   }
 }
-.job-search-container {
-  @apply flex w-full max-w-screen-lg;
+.job-search-results-container {
+  @apply max-w-container w-full;
+  @apply flex flex-col gap-6;
 }
-.job-search-container form {
-  @apply flex flex-col gap-4 w-full;
+.job-search-results-container .results-wrapper {
+  @apply flex flex-col gap-6;
 }
-.job-search-container .first-row-form {
-  @apply flex flex-row gap-4 justify-center items-center w-full;
-}
-.job-search-container .first-row-form .keywords-input, .job-search-container .first-row-form .location-input {
-  @apply w-[40%];
-}
-.job-search-container .first-row-form .btn-box {
-  @apply w-1/5;
-}
-.job-search-container .first-row-form input {
-  @apply py-4 px-4 !important;
-  @apply min-w-48 !important;
-}
-.job-search-container .second-row-form .label {
-  @apply flex gap-4 justify-center items-center w-fit;
+.job-search-results-container .job-result-item-container {
+  @apply p-4 rounded border-content border-2;
 }
 
-input {
-  @apply w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-}
-input[type=text] {
-  @apply w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-}
-input[type=checkbox] {
-  @apply h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded;
-}
-input[type=radio] {
-  @apply h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300;
-}
-
-select {
-  @apply w-full p-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+.nav .nav-link {
+  @apply px-8 py-3 text-content;
 }
 
 @layer components {

@@ -1,5 +1,5 @@
 import React from 'react';
-import FaIcon from '../FaIcon/FaIcon';
+import { FaIcon } from '../FaIcon/FaIcon';
 import './footer.scss';
 
 export const WebsiteInfo = () => {
@@ -12,7 +12,7 @@ export type FooterPropTypes = {
 
 };
 
-const Footer = (props: FooterPropTypes) => {
+export const Footer = (props: FooterPropTypes) => {
     return (
         <footer className={"main-footer"}>
             <WebsiteInfo />
@@ -20,4 +20,3 @@ const Footer = (props: FooterPropTypes) => {
     );
 }
 
-export default Footer;
