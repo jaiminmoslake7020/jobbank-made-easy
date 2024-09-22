@@ -1,0 +1,110 @@
+.section.section-projects {
+  @apply flex flex-col items-start justify-start gap-8;
+
+  .section-projects-content{
+    @apply flex py-8 w-full;
+
+    .projects-wrapper{
+      @apply flex flex-row flex-wrap gap-16 md:gap-8 2xl:gap-16;
+      @apply w-full;
+
+      .project-box-wrapper{
+        @apply w-full md:w-[calc(50%_-_16px)] xl:w-[calc(33.33%_-_24px)] 2xl:w-[calc(33.33%_-_48px)];
+        @apply lg:scale-95 transition-transform overflow-hidden;
+        @apply lg:hover:scale-100 rotate-0;
+
+        &:nth-of-type(2n+1){
+          @apply lg:-rotate-2;
+          @apply lg:hover:rotate-0;
+        }
+
+        &:nth-of-type(2n){
+          @apply lg:rotate-2;
+          @apply lg:hover:rotate-0;
+        }
+
+      }
+
+      .project-box{
+        @apply border-4 border-content text-content p-4 rounded-lg shadow-lg cursor-pointer;
+        @apply flex flex-col gap-4 w-full;
+        @apply hover:text-bkg hover:bg-content transition;
+
+        &.empty-box{
+          @apply h-48 flex justify-center items-center p-0;
+          min-height: 100%;
+
+          button {
+            @apply text-2xl font-bold w-full h-full;
+          }
+        }
+
+        .project-name{
+          @apply font-semibold;
+        }
+
+        .project-url{
+          a{
+            @apply underline;
+          }
+        }
+
+        .project-logo{
+          @apply flex justify-center -ml-4 -mt-4 py-4;
+          width: calc(100% + 32px);
+
+          &.is-array{
+            a{
+              @apply text-6xl py-2;
+            }
+          }
+
+          a{
+            @apply w-full flex justify-center py-4;
+          }
+
+          img{
+            max-height: 100px;
+            max-width: 180px;
+          }
+
+        }
+
+
+
+      }
+
+
+
+    }
+
+
+  }
+}
+
+
+.App[data-theme="light"] {
+  .project-box-wrapper{
+    .project-logo {
+      &.white-text{
+        @apply bg-content;
+      }
+      &.black-text{
+
+      }
+    }
+  }
+}
+
+.App[data-theme="dark"], .App[data-theme="purple"], .App[data-theme="green"], .App[data-theme="blue"] {
+  .project-box-wrapper{
+    .project-logo {
+      &.white-text{
+
+      }
+      &.black-text{
+        @apply bg-bkg;
+      }
+    }
+  }
+}

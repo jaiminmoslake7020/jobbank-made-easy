@@ -1,22 +1,35 @@
-import React, {useEffect, useState, ReactNode} from 'react';
+import React, {useEffect, useState, ReactNode, useContext} from 'react';
 import Nav from './Nav'
 import {
     Header, Footer
 } from "ui";
+import {getLoginHref} from '../../utils/login';
+import SessionHandler from '../SessionHandler/SessionHandler';
+import SessionContext from '../../contexts/SessionContext';
+import ThemeContext from '../../contexts/ThemeContext';
+import darkColourUrl from '../../assets/logo/job.png';
+import lightColourUrl from '../../assets/logo/job-inverse.png';
 
 export type MainContentPropTypes = {
     pageNameClass: string,
     children: ReactNode
 };
 
-const menuLinks = [
+const menuLinksHeader = [
     {
-        label: "Job Search",
+        label: "Home",
         href: "/",
     },
+];
+
+const menuLinksFooter = [
     {
-        label: "Login",
-        href: "/login",
+        label: "Privacy",
+        href: "/privacy-policy",
+    },
+    {
+        label: "Terms Of Service",
+        href: "/terms-of-service",
     },
 ];
 
@@ -36,44 +49,38 @@ const MainContent = (props: MainContentPropTypes) => {
         pageNameClass, children
     } = props;
 
-    const [theme, setTheme] = useState<string>('light');
-
-    useEffect(() => {
-        const mount = () => {
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (prefersDarkScheme) {
-                const x = localStorage.getItem('theme');
-                if (x === 'light') {
-                    setTheme('dark');
-                    localStorage.setItem('theme', 'dark');
-                } else if (x) {
-                    setTheme(x);
-                }
-            } else {
-                const x = localStorage.getItem('theme');
-                if (x) {
-                    setTheme(x);
-                }
-            }
-        }
-        return mount();
-    }, [])
+    const { theme, setTheme } = useContext(ThemeContext);
+    const { appSession, removeSessionCall } = useContext(SessionContext);
 
     return (
         <div data-theme={theme} className="App">
             <Header
+                logoObject={{
+                    lightColourUrl,
+                    darkColourUrl
+                }}
                 themes={themes}
                 theme={theme}
                 setTheme={(x:string) => {
                     setTheme(x);
-                    localStorage.setItem('theme', x);
                 }}
-                nav={<Nav menuLinks={menuLinks} /> }
+                nav={<Nav menuLinks={menuLinksHeader} /> }
+                userComponent={
+                    {
+                        user: appSession ? {
+                            name: appSession.name,
+                            email: appSession.email
+                        } : undefined,
+                        loginHref: getLoginHref(),
+                        onLogout: removeSessionCall
+                    }
+                }
             />
             <main className={"main-content "+pageNameClass}>
+                <SessionHandler />
                 {children}
             </main>
-            <Footer />
+            <Footer nav={<Nav menuLinks={menuLinksFooter} />} />
         </div>
     );
 }

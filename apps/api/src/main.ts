@@ -10,7 +10,11 @@ async function bootstrap() {
 
   // Enable CORS
   app.enableCors({
-    origin: ['http://localhost:3001'],
+    origin: [
+      'http://localhost:3001',
+      'https://jobbank.netlify.app',
+      'https://jobbank.immigration-report.ca',
+    ],
     methods: 'GET,POST,PUT,DELETE', // Specify allowed methods,
     credentials: true,
   });

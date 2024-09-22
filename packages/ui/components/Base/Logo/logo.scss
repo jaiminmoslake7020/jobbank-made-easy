@@ -1,0 +1,28 @@
+[data-theme="light"]{
+  .logo-img{
+    &.light-color-image {
+      @apply hidden;
+    }
+    &.dark-color-image {
+      @apply block;
+    }
+  }
+}
+[data-theme="dark"]{
+  .logo-img{
+    &.light-color-image {
+      @apply block;
+    }
+    &.dark-color-image {
+      @apply hidden;
+    }
+  }
+}
+
+
+.logo-box{
+  @apply w-full;
+  img{
+    @apply w-[150px];
+  }
+}

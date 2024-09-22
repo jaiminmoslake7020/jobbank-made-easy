@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from '../Button/Button';
 import './pagination.scss';
-import {usePagination} from './usePagination';
+import {usePagination} from '../../../hooks';
 
 export type PaginationPropsTypes = {
     maxItems: number
@@ -18,11 +18,11 @@ export const Pagination = (props: PaginationPropsTypes) => {
         prevPage,
         pageSize
     } = usePagination();
-    const numberOfPages = maxItems / pageSize;
+    const numberOfPages = Math.ceil( maxItems / pageSize );
     const isItLastPage = maxItems <= ((page + 1) * pageSize);
     return (  numberOfPages > 1 ?
         <div className={"pagination-wrapper"}>
-            <div className={"empty-space pagination-child"} >{page}</div>
+            <div className={"empty-space pagination-child"} ><strong>{page}</strong> of {numberOfPages}</div>
             <div className={"prev-next-wrapper pagination-child"}>
                 <Button disabled={page === 1}  onClick={() => {
                     prevPage();

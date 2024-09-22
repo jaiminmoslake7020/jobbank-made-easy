@@ -1,8 +1,9 @@
 import React from 'react';
-import {ColorThemeSelector, ThemeType} from '../';
+import {ColorThemeSelector, SocialLinkType, ThemeType} from '../';
 import { FaIcon } from '../FaIcon/FaIcon';
 import {WebsiteInfo} from '../Footer/Footer';
 import './sidebar.scss'
+import { SocialLinks } from '../SocialiLinks/SocialLinks';
 
 export type SidebarPropTypes = {
     sidebar: boolean,
@@ -10,7 +11,8 @@ export type SidebarPropTypes = {
     theme: string,
     setTheme: Function,
     nav: React.JSX.Element,
-    themes: ThemeType[]
+    themes: ThemeType[],
+    socialLinks?: SocialLinkType[]
 };
 
 export const Sidebar = (props: SidebarPropTypes) => {
@@ -20,7 +22,8 @@ export const Sidebar = (props: SidebarPropTypes) => {
         theme,
         setTheme,
         nav,
-        themes
+        themes,
+        socialLinks
     } = props;
     return (
         <aside className={`sidebar ${sidebar ? 'open' : ''} `}>
@@ -35,6 +38,7 @@ export const Sidebar = (props: SidebarPropTypes) => {
             </div>
             {nav}
             <ColorThemeSelector themes={themes} theme={theme} setTheme={setTheme} />
+            { socialLinks && <SocialLinks socialLinks={socialLinks} /> }
             <WebsiteInfo />
         </aside>
     );

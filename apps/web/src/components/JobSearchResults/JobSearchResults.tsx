@@ -1,5 +1,5 @@
 import React from 'react';
-import { useJobSearch} from '../JobSearch/useJobSearch';
+import { useJobSearch} from '../../hooks/useJobSearch';
 import Results from './Results';
 import { ResultLine } from 'ui';
 import JobSearchApp from '../JobSearch/JobSearchApp';

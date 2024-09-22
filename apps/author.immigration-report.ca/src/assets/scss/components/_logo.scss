@@ -1,0 +1,40 @@
+.logo-box{
+  @apply flex flex-col gap-0 font-extrabold text-content;
+  img{
+    @apply max-w-24 lg:max-w-16 2xl:max-w-24;
+  }
+}
+
+.App[data-theme="dark"], .App[data-theme="blue"], .App[data-theme="green"], .App[data-theme="purple"] {
+  .logo-box{
+    .light-color-image{
+      @apply block;
+    }
+    .dark-color-image{
+      @apply hidden;
+    }
+  }
+}
+
+.App[data-theme="light"]{
+  .logo-box{
+    .light-color-image{
+      @apply hidden;
+    }
+    .dark-color-image{
+      @apply block;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo-box{
+    .light-color-image{
+      @apply block;
+    }
+    .dark-color-image{
+      @apply hidden;
+    }
+  }
+}
+

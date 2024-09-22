@@ -3,13 +3,17 @@ import {ColorThemeSelector, ThemeType} from '../';
 import { FaIcon } from '../FaIcon/FaIcon';
 import { Sidebar } from '../Sidebar/Sidebar';
 import './header.scss'
+import UserComponent, {UserComponentPropTypes} from '../UserComponent/UserComponent';
+import {Logo, LogoObjectType} from '../Logo/Logo';
 
 
 export type HeaderPropTypes = {
     theme: string,
     setTheme: Function,
     nav: React.JSX.Element,
-    themes: ThemeType[]
+    themes: ThemeType[],
+    userComponent?: UserComponentPropTypes,
+    logoObject: LogoObjectType
 };
 
 export const Header = (props: HeaderPropTypes) => {
@@ -17,7 +21,9 @@ export const Header = (props: HeaderPropTypes) => {
         setTheme,
         theme,
         nav,
-        themes
+        themes,
+        userComponent,
+        logoObject
     } = props;
 
     const [sidebar, showSidebar] = useState<boolean>(false);
@@ -25,13 +31,14 @@ export const Header = (props: HeaderPropTypes) => {
     return (
         <>
             <header className={"main-header"} >
-                <div className={"logo"}>
-                    <a className={"logo-box"} href={'http://localhost:3001/'}>
-                        <h1>Logo</h1>
-                    </a>
+                <div className={"logo-wrapper"}>
+                    <Logo logoObject={logoObject} />
                 </div>
-                {nav}
+                <div className={"nav-wrapper"}>
+                    {nav}
+                </div>
                 <ColorThemeSelector themes={themes} theme={theme} setTheme={setTheme} />
+                { userComponent && <UserComponent {...userComponent} /> }
                 <button type={"button"} className={"btn sidebar-opener"}
                     onClick={() => {
                         showSidebar(true);

@@ -1,0 +1,36 @@
+@layer components {
+  .btn {
+    @apply bg-theme-btn-bg text-theme-btn-text px-8 py-3 border-theme-btn-border border-2 rounded hover:shadow;
+
+    &.active{
+      @apply bg-theme-btn-active-bg text-theme-btn-active-text border-theme-btn-active-border;
+    }
+
+  }
+
+
+  .color-theme-btn{
+    @apply w-8 h-8 border-2 rounded-full border-white flex justify-center items-center text-sm text-content;
+
+    &.light{
+      @apply bg-slate-200 ;
+    }
+
+    &.dark{
+      @apply bg-gray-800;
+    }
+
+    &.green{
+      @apply bg-green-400;
+    }
+
+    &.purple{
+      @apply bg-purple-400;
+    }
+
+    &.blue{
+      @apply bg-blue-400;
+    }
+
+  }
+}

@@ -33,7 +33,7 @@ export const JobItem = (props: JobItemPropTypes) => {
 
   return (
     <div className={"job-result-item-container"}>
-      <div className={"flex flex-col gap-2"}>
+      <div className={"job-result-item"}>
         {typeof job_id === "object" ? (
           <Alert message={job_id.message} type={"error"} />
         ) : (

@@ -39,7 +39,8 @@
     "cors": "2.8.5",
     "date-fns": "^3.6.0",
     "types": "*",
-    "common": "*"
+    "common": "*",
+    "db": "*"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.1.11",
@@ -65,7 +66,7 @@
     "ts-node": "^10.9.1",
     "tsconfig": "*",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.1.6",
+    "typescript": "5.5.3",
     "webpack": "^5.88.2",
     "webpack-node-externals": "^3.0.0"
   },

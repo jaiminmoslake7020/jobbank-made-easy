@@ -1,8 +1,16 @@
-import { BadRequestException, Controller, Get, Query } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Post,
+  Query, Req,
+  UseGuards,
+} from '@nestjs/common';
 import { AppService, SearchJobsDbManager } from '../services/';
-import { JobDetailsAllType } from 'types';
-import NextAuth from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
+import { JobDetailsAllType, SessionBodyDto } from '../types';
+import { AuthGuard } from '../guards';
+import {User} from '@prisma/client';
 
 export type ExampleResponseType = {
   message: string;
@@ -23,17 +31,16 @@ export class AppController {
     return results;
   }
 
-  @Get('/session')
-  async authSession() {
-    const p = await NextAuth({
-      providers: [
-        GoogleProvider({
-          clientId: process.env.GOOGLE_ID,
-          clientSecret: process.env.GOOGLE_SECRET,
-        }),
-      ],
-    });
-    return p.res;
+  @Post('/session')
+  async authSession(@Body() session: SessionBodyDto): Promise<any> {
+    return await this.appService.processSession(session);
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('/refresh-token')
+  async refreshToken(@Req() request: Request): Promise<any> {
+    const user = (request as any).user as User;
+    return await this.appService.processRefreshToken(user);
   }
 
   @Get('/search')

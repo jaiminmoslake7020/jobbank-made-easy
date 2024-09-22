@@ -12,8 +12,12 @@ import {
     SearchConfigType,
     SearchQueryType,
     LocationObjectKeyType,
-    WageObjectkeyType
-} from "./src/admin-api"
+    WageObjectkeyType,
+    SessionBodyDto,
+} from "./src/admin-api";
+import {
+    SessionResponseType
+} from './src/api';
 
 export type {
     ExampleResponseType,
@@ -29,5 +33,7 @@ export type {
     SearchConfigType,
     SearchQueryType,
     LocationObjectKeyType,
-    WageObjectkeyType
+    WageObjectkeyType,
+    SessionBodyDto,
+    SessionResponseType
 };

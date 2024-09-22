@@ -88,3 +88,4 @@ export type SearchConfigType = SearchQueryType & {
     page?: number,
     limit?: number
 };
+

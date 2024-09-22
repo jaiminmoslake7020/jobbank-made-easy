@@ -21,8 +21,8 @@ export const FaIcon = (props: FontAwesomeIconProps) => {
     }
 
     const sizeClass = size ? `fa-${size}` : '';
-
+    const classNameFinal = ` ${iconClass} ${className || ''} ${sizeClass} `;
     return (
-        <i className={iconClass+' '+className+' '+sizeClass} ></i>
+        <i className={classNameFinal} ></i>
     );
 }

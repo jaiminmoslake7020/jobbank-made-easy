@@ -2,9 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { DbService } from './db.service';
 import { PrismaClient } from '@prisma/client';
 import { ErrorType } from 'types';
-import {
-  Prisma,
-} from '.prisma/client';
+import { Prisma } from '.prisma/client';
 
 @Injectable()
 export class JobDbService extends DbService {

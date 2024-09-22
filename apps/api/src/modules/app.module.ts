@@ -1,9 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from '../controllers/app.controller';
-import { AppService, SearchJobsDbManager } from '../services';
+import {
+  AppService,
+  SearchJobsDbManager,
+  SessionService,
+  GmailService,
+  AuthService,
+  UserDbService,
+} from '../services';
 import { validationSchemaForEnv } from '../config/environment-variables';
 import { PersistenceModule } from '../persistence/persistence.module';
+import { AuthGuard } from '../guards';
 
 @Module({
   imports: [
@@ -14,6 +22,14 @@ import { PersistenceModule } from '../persistence/persistence.module';
     PersistenceModule,
   ],
   controllers: [AppController],
-  providers: [AppService, SearchJobsDbManager],
+  providers: [
+    AppService,
+    SearchJobsDbManager,
+    SessionService,
+    GmailService,
+    AuthService,
+    UserDbService,
+    AuthGuard,
+  ],
 })
 export class AppModule {}

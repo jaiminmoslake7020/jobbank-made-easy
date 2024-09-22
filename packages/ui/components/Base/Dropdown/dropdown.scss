@@ -1,0 +1,12 @@
+.dropdown-wrapper{
+  @apply w-full relative;
+}
+
+.dropdown-container{
+  @apply absolute left-0 right-0 overflow-scroll p-0 m-0 hidden bg-transparent;
+
+  &.show{
+    @apply flex;
+  }
+
+}

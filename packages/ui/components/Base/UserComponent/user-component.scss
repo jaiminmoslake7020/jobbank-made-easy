@@ -1,0 +1,36 @@
+.user-component{
+  @apply flex justify-end;
+
+  .user-component-round{
+    @apply flex w-12 h-12 items-center justify-center bg-content text-bkg rounded-full cursor-pointer relative;
+    p {
+      @apply text-lg font-bold;
+    }
+  }
+
+  .user-component-dropdown{
+    @apply w-fit bg-content text-bkg p-4 flex flex-col gap-1 rounded-lg;
+
+    .user-component-item{
+      @apply flex gap-4 items-center justify-start;
+      &.name{
+        @apply capitalize;
+      }
+
+      &.normal{
+        @apply px-4 py-2;
+      }
+
+      &.with-btn{
+        @apply px-0 py-0;
+      }
+
+      .log-out-btn{
+        @apply flex gap-4 items-center w-full hover:bg-bkg hover:text-content px-4 py-2 rounded-lg;
+      }
+    }
+
+  }
+
+
+}

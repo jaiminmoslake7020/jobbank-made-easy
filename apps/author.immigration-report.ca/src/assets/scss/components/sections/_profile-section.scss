@@ -1,0 +1,27 @@
+.section-profile-content{
+  @apply flex flex-col-reverse lg:flex-row ;
+
+  .part{
+    @apply lg:w-1/2 w-full;
+    @apply flex justify-center items-center;
+    @apply p-4;
+
+    @apply min-h-[calc(calc(100dvh_-_96px)_/_2)] lg:min-h-fit;
+
+    h2{
+      @apply tracking-wide leading-normal text-xl lg:text-2xl text-content;
+    }
+
+    .image-wrapper{
+      @apply w-64 aspect-square lg:w-2/3 rounded-full overflow-hidden;
+      @apply border-8 border-content;
+    }
+
+    &:nth-of-type(2){
+      @apply justify-center lg:justify-end;
+    }
+
+  }
+
+
+}

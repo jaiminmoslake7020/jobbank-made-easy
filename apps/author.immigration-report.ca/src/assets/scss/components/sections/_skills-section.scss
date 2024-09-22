@@ -1,0 +1,32 @@
+.section.section-skills {
+  @apply flex flex-col items-start justify-start gap-16 overflow-hidden;
+  max-width: 100dvw;
+
+  .section-skills-content{
+    @apply flex flex-col gap-8 overflow-hidden w-full;
+
+    .skills-wrapper{
+      @apply flex flex-row flex-nowrap gap-8 ;
+      @apply w-full;
+
+      .skills-box-wrapper{
+        @apply min-w-fit;
+        @apply scale-90 transition-transform overflow-hidden;
+        @apply lg:hover:scale-100;
+      }
+
+      .skills-box{
+        @apply border-2 border-content bg-bkg text-content py-4 px-6 rounded-lg shadow-lg cursor-pointer;
+        @apply flex w-full justify-center;
+        @apply lg:hover:border-bkg lg:hover:bg-content lg:hover:text-bkg;
+
+        p{
+          @apply text-2xl font-bold;
+        }
+
+      }
+
+    }
+  }
+}
+

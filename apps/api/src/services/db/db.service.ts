@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
-import { ErrorType } from 'types';
+import { ErrorType } from '../../types';
 
 export type ContextType = 'creating' | 'searching' | 'updating' | string;
 

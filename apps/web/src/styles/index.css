@@ -24,45 +24,16 @@
 .main-content.results-page {
   @apply justify-start pt-20 pb-20;
 }
-
-.logo-box {
-  @apply flex flex-col gap-0 font-extrabold text-content;
-}
-.logo-box img {
-  @apply max-w-16;
+.main-content.legal-page {
+  @apply justify-start pt-20 pb-20;
 }
 
-.App[data-theme=dark] .logo-box .logo-main, .App[data-theme=blue] .logo-box .logo-main, .App[data-theme=green] .logo-box .logo-main, .App[data-theme=purple] .logo-box .logo-main {
-  @apply hidden;
-}
-.App[data-theme=dark] .logo-box .logo-inverse, .App[data-theme=blue] .logo-box .logo-inverse, .App[data-theme=green] .logo-box .logo-inverse, .App[data-theme=purple] .logo-box .logo-inverse {
-  @apply block;
-}
-
-.App[data-theme=light] .logo-box .logo-main {
-  @apply block;
-}
-.App[data-theme=light] .logo-box .logo-inverse {
-  @apply hidden;
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo-box .logo-main {
-    @apply hidden;
-  }
-  .logo-box .logo-inverse {
-    @apply block;
-  }
-}
 .job-search-results-container {
   @apply max-w-container w-full;
   @apply flex flex-col gap-6;
 }
 .job-search-results-container .results-wrapper {
   @apply flex flex-col gap-6;
-}
-.job-search-results-container .job-result-item-container {
-  @apply p-4 rounded border-content border-2;
 }
 
 .nav .nav-link {

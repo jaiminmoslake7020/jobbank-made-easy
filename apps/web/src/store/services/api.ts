@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import {JobDetailsAllType} from 'types';
+import {JobDetailsAllType, SessionBodyDto, SessionResponseType} from 'types';
+
 
 export const apiFreeze = {
   searchJobs: 0,
@@ -26,7 +27,28 @@ export const api = createApi({
       }),
       keepUnusedDataFor: apiFreeze.searchKeys, // Keep the data fresh for 5 seconds
     }),
+    refreshToken: builder.query<SessionResponseType, string>({
+      query: (token:string) => ({
+        url: `/refresh-token`,
+        headers: {
+          'Authorization': 'Bearer '+token
+        }
+      }),
+      keepUnusedDataFor: apiFreeze.searchKeys, // Keep the data fresh for 5 seconds
+    }),
+    session: builder.query<SessionResponseType, SessionBodyDto>({
+      query: (data) => ({
+        url: `/session`,
+        method: 'POST',
+        body: data,
+        headers: {
+          "Content-Type": 'application/json',
+          "Accept": 'application/json'
+        }
+      }),
+      keepUnusedDataFor: apiFreeze.searchKeys, // Keep the data fresh for 5 seconds
+    }),
   }),
 });
 
-export const { useSearchJobsQuery, useGetSearchKeysQuery } = api;
+export const { useSearchJobsQuery, useLazyRefreshTokenQuery, useGetSearchKeysQuery, useLazySessionQuery } = api;

@@ -1,11 +1,6 @@
 import React from 'react';
-import { ColorThemeButton } from '../ColorThemeButton/ColorThemeButton';
+import {ColorThemeButton, ThemeType} from '../ColorThemeButton/ColorThemeButton';
 import './color-theme-selector.scss'
-
-export type ThemeType = {
-    btnLabel: string,
-    btnTheme: string
-};
 
 export type ColorThemeSelectorPropTypes = {
     theme: string,

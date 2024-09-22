@@ -5,10 +5,14 @@
   @apply flex-col lg:flex-row;
 
   .website-info{
-    @apply w-full lg:w-fit flex justify-center lg:justify-start;
+    @apply w-full lg:w-fit flex justify-center lg:justify-start ;
+
+    i{
+      @apply text-red-400;
+    }
 
     p{
-      @apply text-center;
+      @apply text-center flex gap-1 items-center;
     }
   }
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState} from 'react';
 import {AutoCompleteItemProp, Loading} from 'ui';
-import {getJobSearch} from './useJobSearch';
+import {getJobSearch} from '../../hooks/useJobSearch';
 import { JobSearch } from "ui";
 import {useRouter} from 'next/router';
 import {SearchQueryType} from '../../types/app';

@@ -1,0 +1,69 @@
+{
+  "name": "jaimin-pandya-dev",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@testing-library/jest-dom": "6.5.0",
+    "@testing-library/react": "16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@uidotdev/usehooks": "^2.4.1",
+    "next": "14.2.12",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "ui": "*",
+    "sass": "1.79.1",
+    "typescript": "^5.6.2"
+  },
+  "scripts": {
+    "dev": "next dev -p 3003",
+    "build": "next build",
+    "stage": "next build && netlify deploy",
+    "prod": "next build && netlify deploy --prod",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --ci",
+    "sass": "sass ./src/styles/index.scss ./src/styles/index.css --watch",
+    "prepare": "node .husky/install.mjs"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.0-placeholder-for-preset-env.2",
+    "@craco/craco": "^7.1.0",
+    "@craco/types": "^7.1.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.2.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "husky": "^9.1.4",
+    "postcss": "^8.4.41",
+    "sass": "1.79.1",
+    "tailwindcss": "^3.4.9"
+  }
+}

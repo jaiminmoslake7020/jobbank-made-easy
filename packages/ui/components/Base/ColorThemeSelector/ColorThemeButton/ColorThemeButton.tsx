@@ -2,10 +2,13 @@ import React from 'react';
 import { FaIcon } from '../../';
 import './color-theme-btn.scss';
 
-export type ThemeButtonPropTypes = {
-    currentTheme: string,
+export type ThemeType = {
     btnLabel: string,
-    btnTheme: string,
+    btnTheme: string
+};
+
+export type ThemeButtonPropTypes = ThemeType & {
+    currentTheme: string,
     setTheme: Function,
 };
 

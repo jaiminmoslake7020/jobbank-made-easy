@@ -1,0 +1,92 @@
+.section.section-education {
+  @apply flex flex-col items-start justify-start gap-8 ;
+
+  .section-education-content{
+    @apply flex py-8 w-full;
+
+    .education-wrapper{
+      @apply flex flex-col gap-8;
+      @apply w-full;
+
+      .education-box-wrapper{
+        @apply w-full;
+        @apply transition-transform overflow-hidden;
+      }
+
+      .education-box{
+        @apply bg-content text-bkg p-4 rounded-lg shadow-lg cursor-pointer;
+        @apply flex flex-col md:flex-row gap-4 w-full;
+
+        .left {
+          @apply w-full md:w-1/3;
+        }
+
+        .right{
+          @apply w-full md:w-2/3 flex flex-col gap-4;
+        }
+
+        .degree-name{
+          @apply font-semibold;
+        }
+
+        .collage-logo{
+          @apply flex w-full justify-center ;
+
+          a{
+            @apply w-full flex justify-center py-4;
+          }
+
+          img{
+            max-height: 100px;
+            max-width: 180px;
+          }
+
+        }
+
+
+
+      }
+
+
+
+    }
+
+
+  }
+}
+
+@keyframes move-rtl {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+.App[data-theme="light"] {
+  .education-box-wrapper{
+    .collage-logo {
+      &.white-text{
+
+      }
+      &.black-text{
+        @apply bg-bkg;
+      }
+    }
+  }
+}
+
+.App[data-theme="dark"], .App[data-theme="purple"], .App[data-theme="green"], .App[data-theme="blue"] {
+  .education-box-wrapper{
+    .collage-logo {
+      &.white-text{
+        @apply bg-bkg;
+      }
+      &.black-text{
+      }
+    }
+  }
+}

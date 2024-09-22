@@ -1,20 +1,42 @@
 .main-header{
-  @apply flex gap-4 px-6 lg:px-24 py-3 justify-between items-center absolute w-full;
+  @apply flex gap-12 px-6 lg:px-12 2xl:px-24 py-3 justify-between items-center absolute w-full;
+
+  .logo{
+    @apply max-w-96 flex justify-center;
+  }
+
+  .nav-wrapper{
+    @apply flex justify-center flex-1;
+    .nav-main{
+      @apply hidden lg:flex ;
+    }
+  }
+
+  .color-theme-selector{
+    @apply hidden lg:flex;
+  }
+
+  .sidebar-opener{
+    @apply block lg:hidden;
+
+
+    &.btn{
+      @apply px-4 py-2;
+    }
+  }
+
+
+
 }
 
-.main-header .nav-main{
-  @apply hidden lg:flex;
+
+.color-theme-selector{
+  @apply flex gap-4;
 }
 
-.main-header .color-theme-selector{
-  @apply hidden lg:flex;
-}
 
-.main-header .sidebar-opener{
-  @apply block lg:hidden;
+.nav{
+  .nav-link{
+    @apply px-8 py-3 text-content;
+  }
 }
-
-.main-header .sidebar-opener.btn{
-  @apply px-4 py-2;
-}
-

@@ -1,6 +1,5 @@
 import React, {
     ChangeEvent,
-    forwardRef,
     InputHTMLAttributes,
     useEffect,
     useRef,

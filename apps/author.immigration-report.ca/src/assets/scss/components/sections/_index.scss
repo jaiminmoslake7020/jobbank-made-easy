@@ -1,0 +1,25 @@
+@import "profile-section";
+@import "experience-section";
+@import "education-section";
+@import "skills-section";
+@import "projects-section";
+
+.section {
+
+  @apply min-h-[100dvh] lg:min-h-[100vh];
+  @apply px-4 sm:px-6 md:px-8 xl:px-0 py-8;
+  @apply 2xl:w-[1280px] xl:w-[1024px];
+
+  @apply flex justify-center items-center;
+
+  h1{
+    @apply text-4xl;
+  }
+
+}
+
+.main-content{
+  @apply min-w-[100dvw] lg:min-w-[100vw];
+  @apply min-h-[100dvh] lg:min-h-[100vh];
+  @apply flex flex-col items-center justify-center;
+}
