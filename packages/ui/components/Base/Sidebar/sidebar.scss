@@ -14,7 +14,7 @@
     @apply translate-x-0 z-10;
   }
 
-  .nav-main {
+  .nav.nav-main {
     @apply flex flex-col w-full gap-6;
 
     .nav-link {

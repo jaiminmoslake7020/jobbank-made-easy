@@ -7,7 +7,8 @@ import {FaIcon} from '../FaIcon/FaIcon';
 export type CustomAttributes = {
   contentEditable?: 'inherit' | boolean,
   size?: 'xs' | 'sm' | 'md',
-  round?: boolean
+  round?: boolean,
+  colorType?: 'type-2'
 };
 
 const getSizeClas = (size: 'xs' | 'sm' | 'md' | undefined) => {
@@ -30,10 +31,11 @@ const getRoundClass = (round: boolean |  undefined) => {
 
 
 export const Button = (props: ButtonHTMLAttributes<HTMLButtonElement> & CustomAttributes) => {
-  const { children, size, round, className } = props;
+  const { children, size, round, className, colorType } = props;
   const sClass = getSizeClas(size);
   const rClass = getRoundClass(round);
-  const classNameFinal = ` btn ${sClass} ${rClass} ${className || ''} `;
+  const btnColorType = colorType ? `btn-color-${colorType}` : '';
+  const classNameFinal = ` btn ${sClass} ${rClass} ${className || ''} ${btnColorType} `;
   return <button type={"button"} role={"button"} className={classNameFinal} {...props} >{children}</button>;
 };
 

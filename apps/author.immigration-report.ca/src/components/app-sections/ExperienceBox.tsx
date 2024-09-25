@@ -1,17 +1,8 @@
 import React, {useContext } from 'react';
 import Image from 'next/image';
-import {Button, CloseButton, ModalsContext} from 'ui';
+import {Button, ModalsContext} from 'ui';
 import {ModalFooterWrapper, ModalHeader} from 'ui/components/Base/Modal';
-
-export type ExperienceBoxPropTypes = {
-    companyName: string,
-    location: string,
-    duration: string,
-    jobTitle: string,
-    companyLogo: string,
-    companyLink: string,
-    companyLogoAppearance: string
-};
+import {ExperienceBoxPropTypes} from '../../types';
 
 export type ExperienceBoxEmptyPropTypes = {
     setShowMore: Function,
@@ -60,33 +51,36 @@ const ExperienceBox = (props: ExperienceBoxPropTypes) => {
                              modalZIndex: 0,
                              modalHeader: <ModalHeader onCloseClick={() => {
                                  removeModal(modalKey);
-                             }} title={jobTitle+' at '+companyName} />,
+                             }} title={jobTitle} />,
                              modalFooter: <ModalFooterWrapper>
                                  <Button size={"md"} onClick={() => {
                                      removeModal(modalKey);
                                  }} >Close</Button>
+                                 <Button colorType={"type-2"} size={"md"} onClick={() => {
+                                     window.open(companyLink, '_blank');
+                                 }} >
+                                     Visit
+                                 </Button>
                              </ModalFooterWrapper>,
-                             modalBody: <div className={"flex flex-col gap-4 text-bkg p-4"}>
-                                 <div className={"job-title text-bkg"}>
-                                     <h4>{jobTitle} pp</h4>
+                             modalBody: <div className={"flex flex-col gap-4 text-content p-4 min-w-[100dvw] md:min-w-[640px] lg:min-w-[768px] "}>
+                                 <div className={"job-title text-content "}>
+                                     <h4>{companyName}</h4>
                                  </div>
-                                 <div className={"duration text-bkg"}>
+                                 <div className={"duration text-content "}>
                                      <p>{duration}</p>
                                  </div>
-                                 <div className={"companyName text-bkg"}>
-                                     <p>{companyName} - {location}</p>
+                                 <div className={"companyName text-content "}>
+                                     <p>{location}</p>
                                  </div>
                                  <div className={`company-logo max-w-[200px] ${companyLogoAppearance} `}>
-                                     <a rel="noreferrer" href={companyLink} target={"_blank"} >
-                                         <Image src={companyLogo}  alt={companyName} />
-                                     </a>
+                                     <Image src={companyLogo}  alt={companyName} />
                                  </div>
                              </div>
                          });
                      }}
                 >
                     <div className={"job-title"}>
-                        <h4>{jobTitle} pp</h4>
+                        <h4>{jobTitle}</h4>
                     </div>
                     <div className={"duration"}>
                         <p>{duration}</p>

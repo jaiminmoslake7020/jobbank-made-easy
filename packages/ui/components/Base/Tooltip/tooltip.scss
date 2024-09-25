@@ -1,5 +1,18 @@
 .tooltip-wrapper {
-  @apply hidden absolute min-w-64 h-fit top-10 opacity-0 border-content border-2 md:group-hover:flex flex-col gap-0 group-hover:opacity-100 transition-opacity overflow-visible;
+  @apply absolute min-w-64 w-fit h-fit top-10 opacity-0 border-content border-2 md:group-hover:flex flex-col gap-0 group-hover:opacity-100 transition-opacity overflow-visible;
+
+  &.item-first-visible{
+    @apply block;
+  }
+
+  &.item-true {
+
+  }
+
+  &.item-false {
+    @apply hidden;
+  }
+
 
   .title {
     @apply p-4 text-bkg bg-content font-bold;

@@ -16,7 +16,11 @@
   .social-media-links-wrapper{
     @apply flex gap-8 lg:gap-4;
     a{
-      @apply text-2xl lg:text-lg;
+      @apply text-2xl lg:text-lg w-fit h-fit text-content;
     }
   }
+}
+
+.social-link{
+  @apply relative;
 }

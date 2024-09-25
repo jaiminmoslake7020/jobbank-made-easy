@@ -1,27 +1,26 @@
 .modal-wrapper{
   @apply fixed top-0 left-0 w-screen bottom-0 max-h-screen;
-  @apply bg-content/40 ;
+  @apply bg-content/80 ;
   @apply flex justify-center items-center;
 
   .modal{
-    @apply min-w-12 min-h-12 bg-content flex flex-col rounded;
-    @apply shadow shadow-bkg border border-bkg;
+    @apply min-w-12 min-h-12 bg-bkg flex flex-col rounded;
+    @apply shadow shadow-content border border-content;
 
     .modal-header{
       @apply flex justify-between p-4 items-center gap-8;
 
       .modal-title{
-        @apply text-bkg;
+        @apply text-content;
       }
 
     }
 
     .modal-body{
-
     }
 
     .modal-footer{
-      @apply flex justify-end p-4;
+      @apply flex justify-end p-4 gap-8;
     }
 
   }

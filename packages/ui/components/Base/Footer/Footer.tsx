@@ -22,7 +22,7 @@ export const Footer = (props: FooterPropTypes) => {
             <div className={"nav-wrapper-footer"}>
                 {nav}
             </div>
-            <div className={"social-media-links-wrapper"}>
+            <div className={"social-media-links-wrapper-container"}>
                 { socialLinks && <SocialLinks socialLinks={socialLinks} /> }
             </div>
         </footer>

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useScreenType} from '../../utils/utils';
-import {useWindowSize} from '@uidotdev/usehooks';
+import {useWindowSize} from 'ui';
 
 const skillsList = [
     'PHP', 'MySql', 'JavaScript', 'TypeScript', 'ReactJs', 'Redux', 'Rest API', 'Swagger', 'OpenAPI V3', 'React Native', 'NodeJS', 'ExpressJs', 'NestJs', 'TypeOrm', 'Sequelize',

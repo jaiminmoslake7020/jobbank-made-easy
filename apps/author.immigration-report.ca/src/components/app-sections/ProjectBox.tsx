@@ -2,18 +2,8 @@ import React from 'react';
 import { FaIcon } from 'ui';
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import Image from 'next/image';
+import {ProjectBoxPropTypes} from '../../types';
 
-export type ProjectBoxPropTypes = {
-    projectName: string,
-    companyName: string,
-    projectUrl: {
-        icon: IconProp,
-        url: string
-    }[] | string,
-    projectTech: string,
-    projectLogo: string,
-    logoAppearance: string
-};
 
 export type ProjectBoxEmptyPropTypes = {
     setShowMore: Function,

@@ -1,9 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-
-export type MenuLinkType = {
-    label: string,
-    content: string
-}
+import {MenuLinkType} from '../types';
 
 export type NavPropTypes = {
     showSidebar?: Function,

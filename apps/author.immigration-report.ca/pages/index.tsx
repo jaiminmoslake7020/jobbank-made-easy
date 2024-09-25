@@ -1,5 +1,3 @@
-"use client";
-
 import Profile from '../src/components/app-sections/Profile';
 import Experience from '../src/components/app-sections/Experience';
 import Projects from '../src/components/app-sections/Projects';
