@@ -17,7 +17,7 @@ jobs:
         run: yarn install  # or your package manager (yarn, pnpm, etc.)
 
       - name: Build the project
-        run: cd apps/author.immigration-report.ca && ./scripts/prod-new.sh  # or the command you use to build your project
+        run: cd apps/author.immigration-report.ca && ./scripts/prod-new.sh "${{ github.ref_name }}-${{ github.sha }}"  # or the command you use to build your project
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID__AUTHOR_SITE }}  # Add this if you want to specify the site
