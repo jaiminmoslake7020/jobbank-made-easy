@@ -23,3 +23,7 @@
   @apply min-h-[100dvh] lg:min-h-[100vh];
   @apply flex flex-col items-center justify-center;
 }
+
+.main-content-wrapper{
+  @apply pt-20 pb-20;
+}

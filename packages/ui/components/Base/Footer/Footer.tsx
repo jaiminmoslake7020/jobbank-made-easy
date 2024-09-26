@@ -3,9 +3,12 @@ import { FaIcon } from '../FaIcon/FaIcon';
 import './footer.scss';
 import {SocialLinks, SocialLinkType} from '../SocialiLinks/SocialLinks';
 
-export const WebsiteInfo = () => {
+export const WebsiteInfo = ({versionName}: {versionName?: string | null}) => {
     return <div className={"website-info"}>
         <p><span>Built with&nbsp;</span><FaIcon icon={"heart"} className={""} /><span>&nbsp;in Vancouver, BC.</span></p>
+        {
+            versionName && <div className={"version-wrapper"}><VersionInfo versionName={versionName} /></div>
+        }
     </div>
 }
 
@@ -25,16 +28,13 @@ export const Footer = (props: FooterPropTypes) => {
     const { nav, socialLinks, versionName } = props;
     return (
         <footer className={"main-footer"}>
-            <WebsiteInfo />
+            <WebsiteInfo versionName={versionName} />
             <div className={"nav-wrapper-footer"}>
                 {nav}
             </div>
             <div className={"social-media-links-wrapper-container"}>
                 { socialLinks && <SocialLinks socialLinks={socialLinks} /> }
             </div>
-            {
-                versionName && <div className={"version-wrapper"}><VersionInfo versionName={versionName} /></div>
-            }
         </footer>
     );
 }

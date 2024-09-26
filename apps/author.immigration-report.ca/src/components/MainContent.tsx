@@ -48,7 +48,7 @@ const MainContent = (props: MainContentPropTypes) => {
     return (
         <ThemeWrapper>
             <HeaderWrapper />
-            <main className={"main-content "+pageNameClass}>
+            <main className={"main-content-wrapper "+pageNameClass}>
                 {children}
             </main>
             <Footer socialLinks={socialLinks} versionName={versionName} />
