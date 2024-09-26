@@ -1,6 +1,25 @@
 .section.section-experience {
   @apply flex flex-col items-start justify-start gap-8;
 
+  h1{
+    @apply translate-y-32 opacity-0 transition-all duration-500 ease-in;
+  }
+
+  &.scroll-active{
+    h1{
+      @apply translate-y-0 opacity-100;
+    }
+
+    .section-experience-content{
+      .experience-wrapper{
+        .experience-box{
+          @apply translate-x-0 translate-y-0 opacity-100;
+        }
+      }
+    }
+  }
+
+
   .section-experience-content{
     @apply flex py-8;
 
@@ -29,6 +48,8 @@
         @apply bg-content text-bkg p-4 rounded-lg shadow-lg cursor-pointer;
         @apply flex flex-col gap-4 w-full;
         @apply lg:before:-skew-x-12 lg:before:absolute lg:before:inset-0 lg:before:-translate-x-full lg:before:bg-gradient-to-r lg:before:from-transparent lg:before:via-bkg/10 lg:before:to-transparent;
+
+        @apply translate-x-32 translate-y-32 opacity-0 transition-all duration-1000 ease-in-out;
 
         &.empty-box{
           @apply h-48 flex justify-center items-center p-0;

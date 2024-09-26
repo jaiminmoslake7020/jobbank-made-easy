@@ -1,6 +1,24 @@
 .section.section-projects {
   @apply flex flex-col items-start justify-start gap-8;
 
+  h1{
+    @apply translate-x-16 opacity-0 transition-all duration-200 ease-in;
+  }
+
+  &.scroll-active{
+    h1{
+      @apply translate-x-0 opacity-100;
+    }
+
+    .section-projects-content{
+      .projects-wrapper{
+        .project-box{
+          @apply scale-100 opacity-100;
+        }
+      }
+    }
+  }
+
   .section-projects-content{
     @apply flex py-8 w-full;
 
@@ -29,6 +47,8 @@
         @apply border-4 border-content text-content p-4 rounded-lg shadow-lg cursor-pointer;
         @apply flex flex-col gap-4 w-full;
         @apply hover:text-bkg hover:bg-content transition;
+
+        @apply scale-50 origin-center opacity-0 transition-all duration-1000 ease-in-out;
 
         &.empty-box{
           @apply h-48 flex justify-center items-center p-0;

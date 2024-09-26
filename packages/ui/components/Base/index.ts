@@ -13,6 +13,7 @@ export * from  './Tooltip/Tooltip';
 export * from  './Pagination';
 export * from  './Modal/Modal';
 export * from  './DownloadLink/DownloadLink';
+export * from  './ScrollElement/ScrollElement';
 
 
 
