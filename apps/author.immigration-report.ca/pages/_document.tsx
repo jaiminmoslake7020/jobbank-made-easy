@@ -2,7 +2,6 @@ import { Html, Head, Main, NextScript } from 'next/document'
 import {inDevEnvironment} from '../src/utils/utils';
 
 export default function Document() {
-    console.log("inDevEnvironment", inDevEnvironment, process.env.NEXT_PUBLIC_GTM_ID);
     return (
         <Html lang="en">
             <Head>

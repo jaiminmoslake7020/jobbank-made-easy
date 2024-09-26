@@ -9,13 +9,20 @@ export const WebsiteInfo = () => {
     </div>
 }
 
+export const VersionInfo = ({versionName}: {versionName: string}) => {
+    return <div className={"website-info"}>
+        <p>{versionName}</p>
+    </div>
+}
+
 export type FooterPropTypes = {
     nav?: React.JSX.Element,
-    socialLinks?: SocialLinkType[]
+    socialLinks?: SocialLinkType[],
+    versionName?: string | null
 };
 
 export const Footer = (props: FooterPropTypes) => {
-    const { nav, socialLinks } = props;
+    const { nav, socialLinks, versionName } = props;
     return (
         <footer className={"main-footer"}>
             <WebsiteInfo />
@@ -25,6 +32,9 @@ export const Footer = (props: FooterPropTypes) => {
             <div className={"social-media-links-wrapper-container"}>
                 { socialLinks && <SocialLinks socialLinks={socialLinks} /> }
             </div>
+            {
+                versionName && <div className={"version-wrapper"}><VersionInfo versionName={versionName} /></div>
+            }
         </footer>
     );
 }
