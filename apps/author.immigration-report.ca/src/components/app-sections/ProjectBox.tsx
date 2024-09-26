@@ -57,7 +57,7 @@ const ProjectBox = (props: ProjectBoxPropTypes) => {
                     <h4>{projectName}</h4>
                 </div>
                 <div className={"project-url"}>
-                    <p>{!Array.isArray(projectUrl) ? <a rel="noreferrer" href={"projectUrl"}>{projectUrl}</a> : "App Stores"}</p>
+                    <p>{!Array.isArray(projectUrl) ? <a rel="noreferrer" href={projectUrl}>{projectUrl}</a> : "App Stores"}</p>
                 </div>
                 <div className={"company-name"}>
                     <p>{companyName}</p>
