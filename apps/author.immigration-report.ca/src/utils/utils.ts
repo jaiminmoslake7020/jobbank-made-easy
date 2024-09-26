@@ -14,3 +14,5 @@ export const useScreenType = (width: number) => {
         return  "2xl";
     }
 }
+
+export const inDevEnvironment = !!process && process.env.NODE_ENV === 'development';

@@ -33,7 +33,6 @@ export const Tooltip = (props : {
         setTimeout(() => {
             const widthIn = divRef.current?.getBoundingClientRect().width || undefined;
             const heightIn = divRef.current?.getBoundingClientRect().height || undefined;
-            console.log("divRef", divRef, divRef.current?.getBoundingClientRect());
             if (widthIn) {
                 setWidth(widthIn);
             }

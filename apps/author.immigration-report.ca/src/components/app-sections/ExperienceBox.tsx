@@ -49,6 +49,7 @@ const ExperienceBox = (props: ExperienceBoxPropTypes) => {
                              isOpen: true,
                              modalKey: modalKey,
                              modalZIndex: 0,
+                             removeModal: removeModal,
                              modalHeader: <ModalHeader onCloseClick={() => {
                                  removeModal(modalKey);
                              }} title={jobTitle} />,

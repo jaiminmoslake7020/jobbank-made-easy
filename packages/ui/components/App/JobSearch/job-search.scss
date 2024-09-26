@@ -1,5 +1,5 @@
 .job-search-container{
-  @apply flex w-full max-w-container;
+  @apply flex w-full 2xl:max-w-screen-xl xl:max-w-screen-lg lg:max-w-screen-md md:max-w-screen-sm max-w-[90vw];
 
   form{
     @apply flex flex-col gap-4 w-full;

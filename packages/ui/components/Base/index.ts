@@ -12,6 +12,7 @@ export * from  './SocialiLinks/SocialLinks';
 export * from  './Tooltip/Tooltip';
 export * from  './Pagination';
 export * from  './Modal/Modal';
+export * from  './DownloadLink/DownloadLink';
 
 
 

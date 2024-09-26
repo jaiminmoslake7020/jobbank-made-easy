@@ -1,7 +1,7 @@
 .logo-box{
   @apply flex flex-col gap-0 font-extrabold text-content;
   img{
-    @apply max-w-24 lg:max-w-16 2xl:max-w-24;
+    @apply w-24 xl:w-32 #{!important};
   }
 }
 
