@@ -16,11 +16,8 @@ jobs:
       - name: Install dependencies
         run: yarn install  # or your package manager (yarn, pnpm, etc.)
 
-      - name: Go to Author folder
-        run: cd apps/author.immigration-report.ca  # or your package manager (yarn, pnpm, etc.)
-
       - name: Build the project
-        run: yarn build  # or the command you use to build your project
+        run: cd apps/author.immigration-report.ca && yarn run build  # or the command you use to build your project
 
       - name: Deploy to Netlify
         run: npx netlify deploy --prod --dir=./out  # or your output directory
