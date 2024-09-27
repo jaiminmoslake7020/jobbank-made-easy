@@ -1,0 +1,18 @@
+@keyframes bounce {
+  0%, 100% {
+    opacity: 100%;
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  25% {
+    opacity: 20%;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+  50% {
+    opacity: 60%;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.typing-text-cursor{
+  animation: bounce 1s infinite;
+}
