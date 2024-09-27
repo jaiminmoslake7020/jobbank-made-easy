@@ -1,0 +1,2 @@
+cd apps/author.immigration-report.ca
+yarn run build
