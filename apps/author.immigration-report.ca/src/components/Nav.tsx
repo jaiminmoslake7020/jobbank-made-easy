@@ -87,7 +87,8 @@ const Nav = ({showSidebar, menuLinks}: NavPropTypes) => {
                         <div className={` text-lg `}>
                             <p>Thank you for downloading my resume.</p>
                         </div>
-                    </div>
+                    </div>,
+                    hasFireworksBg: true
                 });
             }}
                 fileName={ResumeObject.name}

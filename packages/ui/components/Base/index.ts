@@ -14,7 +14,6 @@ export * from  './Pagination';
 export * from  './Modal/Modal';
 export * from  './DownloadLink/DownloadLink';
 export * from  './ScrollElement/ScrollElement';
-export * from  './TypingText/TypingText';
 
 
 

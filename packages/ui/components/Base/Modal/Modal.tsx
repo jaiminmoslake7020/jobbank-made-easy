@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import './modal.scss';
+import {Fireworks} from '../../Animations';
 
 export type ModalPropTypes = {
     modalKey: string,
@@ -8,7 +9,8 @@ export type ModalPropTypes = {
     modalHeader?: React.ReactNode,
     modalBody?: React.ReactNode,
     modalFooter?: React.ReactNode,
-    removeModal: Function
+    removeModal: Function,
+    hasFireworksBg?: boolean
 };
 
 export type ModalBodyWrapperPropTypes = {
@@ -21,7 +23,7 @@ export const ModalBodyWrapper = ({children}: ModalBodyWrapperPropTypes) => {
 
 export const Modal = (props: ModalPropTypes) => {
     const {
-        isOpen, modalKey, modalHeader, modalBody, modalFooter, modalZIndex, removeModal
+        isOpen, modalKey, modalHeader, modalBody, modalFooter, modalZIndex, removeModal, hasFireworksBg
     } = props;
 
     const modalRef = useRef<HTMLDivElement>(null);
@@ -53,6 +55,11 @@ export const Modal = (props: ModalPropTypes) => {
                 removeModal(modalKey);
             }
         }} >
+            {
+                hasFireworksBg && <Fireworks numberOfExplosions={50} zIndex={-1} onClick={() => {
+                    removeModal(modalKey);
+                }} />
+            }
             <div className={"modal"}>
                 {modalHeader}
                 {modalBody}

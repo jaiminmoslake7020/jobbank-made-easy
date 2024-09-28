@@ -1,5 +1,5 @@
 .modal-wrapper{
-  @apply fixed top-0 left-0 w-screen bottom-0 max-h-screen;
+  @apply fixed top-0 left-0 bottom-0 w-screen max-h-screen;
   @apply bg-content/80 ;
   @apply flex justify-center items-center;
 
