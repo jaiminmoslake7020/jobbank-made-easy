@@ -18,6 +18,7 @@ export default function Document() {
                 })(window, document, 'script', 'dataLayer', '${process.env.NEXT_PUBLIC_GTM_ID}');`
                     }}></script>
                 }
+                <title>Jaimin Pandya</title>
             </Head>
             <body>
             <Main />

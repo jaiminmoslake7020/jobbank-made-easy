@@ -8,14 +8,17 @@ import {getRandomInt2, getRandomViewport} from '../../../utils/number';
 export type FireworksPropTypes = {
     numberOfExplosions?: number,
     zIndex?: number,
-    onClick?: Function
+    onClick?: Function,
+    animationIterationCount?: number | 'infinite'
 };
 
 const cList = getTailwindColorsFullArray();
 export const Fireworks = (props: FireworksPropTypes) => {
     const {
-        numberOfExplosions, zIndex, onClick
+        numberOfExplosions, zIndex, onClick,
+        animationIterationCount
     } = props;
+    const animationIterationCountInner = animationIterationCount || 1;
     const numberOfExplosionsInner = numberOfExplosions || 20;
     const zIndexInner = zIndex || 20;
     const { width, height } = useWindowSize();
@@ -23,30 +26,39 @@ export const Fireworks = (props: FireworksPropTypes) => {
     const [fireworks, setFireworks] = useState<FireworkPropTypes[]>([]);
 
     useEffect(() => {
-        if (width && height) {
-            const array = new Array(numberOfExplosionsInner).fill(null);
-            // Create a new <style> element
-            const style = document.createElement('style');
-            let styleTextContent = '';
-            setFireworks(
-            array.map((x, i) =>  {
-                const s = Math.random();
-                const scale = getRandomInt2(70, 250);
-                const colorId = getRandomInt2(0, cList.length - 1);
-                // Add CSS content to target the ::before pseudo-element
-                styleTextContent += `
+        const mount = () => {
+            if (width && height) {
+                const array = new Array(numberOfExplosionsInner).fill(null);
+                document.querySelectorAll('style.fireworks-style').forEach((item) => item.remove());
+                // Create a new <style> element
+                const style = document.createElement('style');
+                style.className = 'fireworks-style';
+                let styleTextContent = '';
+                setFireworks(
+                    array.map((x, i) =>  {
+                        const s = Math.random();
+                        const scale = getRandomInt2(70, 250);
+                        const colorId = getRandomInt2(0, cList.length - 1);
+                        // Add CSS content to target the ::before pseudo-element
+                        styleTextContent += `
                         .firework.firework-style-${i} .explosion:before{
                              background-color: ${cList[colorId].hexColor};
                              animation-delay: ${s}s;
+                             animation-iteration-count: ${animationIterationCountInner};
                         }
                 `;
-                return ({...getRandomViewport(width, height), scale: scale/100, i});
-            }));
-            style.textContent = styleTextContent;
-            // Append the <style> element to the <head> of the document
-            document.head.appendChild(style);
+                        return ({...getRandomViewport(width, height), scale: scale/100, i});
+                    }));
+                style.textContent = styleTextContent;
+                // Append the <style> element to the <head> of the document
+                document.head.appendChild(style);
+            }
         }
-    }, [width, height, numberOfExplosionsInner])
+        mount();
+        return () => {
+           document.querySelectorAll('style.fireworks-style').forEach((item) => item.remove());
+        }
+    }, [width, height, numberOfExplosionsInner, animationIterationCountInner])
 
     return (
         fireworks.length > 0 ?
