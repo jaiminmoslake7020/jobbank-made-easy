@@ -13,7 +13,8 @@ export type HeaderPropTypes = {
     nav: React.JSX.Element,
     themes: ThemeType[],
     userComponent?: UserComponentPropTypes,
-    logoObject: LogoObjectType
+    logoObject: LogoObjectType,
+    logoUrl: string
 };
 
 export const Header = (props: HeaderPropTypes) => {
@@ -23,7 +24,8 @@ export const Header = (props: HeaderPropTypes) => {
         nav,
         themes,
         userComponent,
-        logoObject
+        logoObject,
+        logoUrl
     } = props;
 
     const [sidebar, showSidebar] = useState<boolean>(false);
@@ -32,7 +34,7 @@ export const Header = (props: HeaderPropTypes) => {
         <>
             <header className={"main-header"} >
                 <div className={"logo-wrapper"}>
-                    <Logo logoObject={logoObject} />
+                    <Logo logoObject={logoObject} logoUrl={logoUrl} />
                 </div>
                 <div className={"nav-wrapper"}>
                     {nav}
