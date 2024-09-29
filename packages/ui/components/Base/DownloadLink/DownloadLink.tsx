@@ -20,12 +20,12 @@ const DownloadLink = (props: DownloadLinkPropTypes) => {
     return (
         <a target="_blank" onClick={async (e) => {
             e.preventDefault();
-            const response = await fetch(link);
-            const blob = await response.blob();
-            const linkTag = document.createElement("a");
-            linkTag.href = window.URL.createObjectURL(blob);
-            linkTag.download = fileName; // Name for the downloaded file
-            linkTag.click();
+            // const response = await fetch(link);
+            // const blob = await response.blob();
+            // const linkTag = document.createElement("a");
+            // linkTag.href = window.URL.createObjectURL(blob);
+            // linkTag.download = fileName; // Name for the downloaded file
+            // linkTag.click();
             if (onDownloadComplete) {
                 onDownloadComplete();
             }

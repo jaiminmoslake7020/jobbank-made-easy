@@ -305,6 +305,5 @@ export const getTailwindColorsFullArray = () => {
             });
         });
     });
-    console.log("c", colors);
     return colors;
 };
