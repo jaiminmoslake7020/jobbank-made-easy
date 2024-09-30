@@ -42,6 +42,15 @@
           @apply lg:hover:rotate-0;
         }
 
+        $columns: 6;
+        @for $i from 1 through $columns {
+          &:nth-of-type(#{$i}){
+            .experience-box{
+              transition-delay: 0.2s * $i;
+            }
+          }
+        }
+
       }
 
       .experience-box{
@@ -49,7 +58,8 @@
         @apply flex flex-col gap-4 w-full;
         @apply lg:before:-skew-x-12 lg:before:absolute lg:before:inset-0 lg:before:-translate-x-full lg:before:bg-gradient-to-r lg:before:from-transparent lg:before:via-bkg/10 lg:before:to-transparent;
 
-        @apply translate-x-32 translate-y-32 opacity-0 transition-all duration-1000 ease-in-out;
+        @apply translate-x-0 translate-y-32 opacity-0 transition-all duration-1000 ease-in-out;
+
 
         &.empty-box{
           @apply h-48 flex justify-center items-center p-0;
@@ -68,7 +78,7 @@
           @apply flex w-full justify-center -ml-2 -mb-2 ;
           width: calc(100% + 16px);
 
-          a{
+          .divA{
             @apply w-full flex justify-center py-4;
           }
 

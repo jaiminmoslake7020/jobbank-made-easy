@@ -39,6 +39,20 @@ export const Button = (props: ButtonHTMLAttributes<HTMLButtonElement> & CustomAt
   return <button type={"button"} role={"button"} className={classNameFinal} {...props} >{children}</button>;
 };
 
+export type CustomAttributesIconButton = CustomAttributes & {
+  icon: any,
+  label?: string
+};
+
+export const IconButton = (props: ButtonHTMLAttributes<HTMLButtonElement> & CustomAttributesIconButton) => {
+  const { label, icon } = props;
+  return label ? <Button {...props} >
+    <div className={"icon-and-text-wrapper"}>
+      <FaIcon icon={icon} />
+      <span>{label}</span>
+    </div>
+  </Button> : <Button {...props} ><FaIcon icon={icon} /></Button>;
+};
 
 export type CustomAttributesCloseButton = CustomAttributes & {
   label?: string
@@ -46,5 +60,5 @@ export type CustomAttributesCloseButton = CustomAttributes & {
 
 export const CloseButton = (props: ButtonHTMLAttributes<HTMLButtonElement> & CustomAttributesCloseButton) => {
   const { label } = props;
-  return label ? <Button {...props} ><FaIcon icon={"times"} />&nbsp;{label}</Button> : <Button {...props} ><FaIcon icon={"times"} /></Button>;
+  return <IconButton label={label} icon={"times"} {...props} />
 };

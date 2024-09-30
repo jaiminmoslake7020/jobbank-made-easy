@@ -1,0 +1,15 @@
+.modal-id-thanks-modal{
+  .resume-modal-body{
+    @apply flex flex-col items-center justify-center gap-8 text-content p-8 min-w-[100dvw] md:min-w-[640px] lg:min-w-[768px];
+
+    .icon-wrapper{
+      @apply text-green-500 text-8xl;
+    }
+
+    .text-wrapper{
+      @apply text-lg;
+    }
+
+  }
+}
+

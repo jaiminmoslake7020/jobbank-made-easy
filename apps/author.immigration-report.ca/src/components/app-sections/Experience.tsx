@@ -29,15 +29,17 @@ const ExperienceList = memo(() => {
                   {
                       !showMore && experiences.filter((v, i) => i < gridSizeObject[type || "xl"]).map((experience) => <ExperienceBox key={experience.duration} {...experience} />)
                   }
-                  <ExperienceBoxEmpty key={"empty"} showMore={showMore} setShowMore={(v:boolean) => {
-                      setShowMore(v);
-                      if (!v) {
-                          const item = document.querySelector('.section.section-experience');
-                          if (item) {
-                              item.scrollIntoView({behavior: 'smooth'})
+                  {
+                      experiences.length > gridSizeObject[type || "xl"] && <ExperienceBoxEmpty key={"empty"} showMore={showMore} setShowMore={(v:boolean) => {
+                          setShowMore(v);
+                          if (!v) {
+                              const item = document.querySelector('.section.section-experience');
+                              if (item) {
+                                  item.scrollIntoView({behavior: 'smooth'})
+                              }
                           }
-                      }
-                  }} />
+                      }} />
+                  }
               </div>
           </div>
       </>

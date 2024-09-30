@@ -1,6 +1,6 @@
-import React, {useContext } from 'react';
+import React, {useCallback, useContext} from 'react';
 import Image from 'next/image';
-import {Button, ModalsContext} from 'ui';
+import {Button, FaIcon, ModalsContext} from 'ui';
 import {ModalFooterWrapper, ModalHeader} from 'ui/components/Base/Modal';
 import {ExperienceBoxPropTypes} from '../../types';
 
@@ -32,69 +32,99 @@ const ExperienceBox = (props: ExperienceBoxPropTypes) => {
         jobTitle,
         companyLogo,
         companyLink,
-        companyLogoAppearance
+        companyLogoAppearance,
+        experiencePoints,
+        companyInfo
     } = props;
 
     const {
         addModal, removeModal
     } = useContext(ModalsContext);
 
-    return (
-        <div className={"experience-box-wrapper group  "}>
-                <div role={"button"} className={"experience-box lg:group-hover:before:animate-[shimmer_1s_forwards] "}
-                     onClick={() => {
-                         console.log("setShowModal");
-                         const modalKey = 'experience-box-'+jobTitle.replaceAll(" ","-");
-                         addModal({
-                             isOpen: true,
-                             modalKey: modalKey,
-                             modalZIndex: 0,
-                             removeModal: removeModal,
-                             modalHeader: <ModalHeader onCloseClick={() => {
-                                 removeModal(modalKey);
-                             }} title={jobTitle} />,
-                             modalFooter: <ModalFooterWrapper>
-                                 <Button size={"md"} onClick={() => {
-                                     removeModal(modalKey);
-                                 }} >Close</Button>
-                                 <Button colorType={"type-2"} size={"md"} onClick={() => {
-                                     window.open(companyLink, '_blank');
-                                 }} >
-                                     Visit
-                                 </Button>
-                             </ModalFooterWrapper>,
-                             modalBody: <div className={"flex flex-col gap-4 text-content p-4 min-w-[100dvw] md:min-w-[640px] lg:min-w-[768px] "}>
-                                 <div className={"job-title text-content "}>
-                                     <h4>{companyName}</h4>
-                                 </div>
-                                 <div className={"duration text-content "}>
-                                     <p>{duration}</p>
-                                 </div>
-                                 <div className={"companyName text-content "}>
-                                     <p>{location}</p>
-                                 </div>
-                                 <div className={`company-logo max-w-[200px] ${companyLogoAppearance} `}>
-                                     <Image src={companyLogo}  alt={companyName} />
-                                 </div>
-                             </div>
-                         });
-                     }}
-                >
-                    <div className={"job-title"}>
-                        <h4>{jobTitle}</h4>
+    const showExperienceModal = useCallback(() => {
+        console.log("setShowModal");
+        const modalKey = 'experience-box-' + jobTitle.replaceAll(" ", "-");
+        addModal({
+            isOpen: true,
+            modalKey: modalKey,
+            modalStyleClass: 'experience-modal',
+            modalZIndex: 0,
+            removeModal: removeModal,
+            modalHeader: <ModalHeader onCloseClick={() => {
+                removeModal(modalKey);
+            }} title={jobTitle}/>,
+            modalFooter: <ModalFooterWrapper>
+                <Button size={"md"} onClick={() => {
+                    removeModal(modalKey);
+                }}>Close</Button>
+                <Button colorType={"type-2"} size={"md"} onClick={() => {
+                    window.open(companyLink, '_blank');
+                }}>
+                    Visit
+                </Button>
+            </ModalFooterWrapper>,
+            modalBody: <div className={" experience-modal-body "}>
+                <div className={" experience-modal-body-child "}>
+                    <div className={"info-wrapper"}>
+                        <div className={"info-item"}>
+                            <h4>
+                                <FaIcon icon={"building"}/>
+                                <span>{companyName}</span>
+                            </h4>
+                        </div>
+                        <div className={"info-item"}>
+                            <p>
+                                <FaIcon icon={"calendar-days"}/>
+                                <span>{duration}</span>
+                            </p>
+                        </div>
+                        <div className={"info-item"}>
+                            <p>
+                                <FaIcon icon={"location-dot"}/>
+                                <span>{location}</span>
+                            </p>
+                        </div>
                     </div>
-                    <div className={"duration"}>
-                        <p>{duration}</p>
-                    </div>
-                    <div className={"companyName"}>
-                        <p>{companyName} - {location}</p>
-                    </div>
-                    <div className={`company-logo ${companyLogoAppearance} `}>
-                        <a rel="noreferrer" href={companyLink} target={"_blank"} >
-                            <Image src={companyLogo}  alt={companyName} />
-                        </a>
+                    <div className={"logo-wrapper"}>
+                        <div className={`company-logo ${companyLogoAppearance} `}>
+                            <Image src={companyLogo} alt={companyName}/>
+                        </div>
                     </div>
                 </div>
+                <div className={"details-wrapper"}>
+                    <p>
+                        {companyInfo}
+                    </p>
+                    <ul>
+                        {experiencePoints.map((str, i) => <li key={"experiencePoints-" + i}>
+                            <span>{str}</span>
+                        </li>)}
+                    </ul>
+                </div>
+            </div>
+        });
+    }, [addModal, companyLink, companyLogo, companyLogoAppearance, companyName, duration, experiencePoints, jobTitle, location, removeModal, companyInfo]);
+
+    return (
+        <div className={"experience-box-wrapper group  "}>
+            <div role={"button"} className={"experience-box lg:group-hover:before:animate-[shimmer_1s_forwards] "}
+                 onClick={showExperienceModal}
+            >
+                <div className={"job-title"}>
+                    <h4>{jobTitle}</h4>
+                </div>
+                <div className={"duration"}>
+                    <p>{duration}</p>
+                </div>
+                <div className={"companyName"}>
+                    <p>{companyName} - {location}</p>
+                </div>
+                <div className={`company-logo ${companyLogoAppearance} `}>
+                    <div className={"divA"}>
+                        <Image src={companyLogo} alt={companyName}/>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

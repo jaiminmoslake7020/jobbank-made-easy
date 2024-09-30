@@ -4,6 +4,7 @@ import {Fireworks} from '../../Animations';
 
 export type ModalPropTypes = {
     modalKey: string,
+    modalStyleClass?: string,
     modalZIndex: number,
     isOpen: boolean,
     modalHeader?: React.ReactNode,
@@ -23,7 +24,7 @@ export const ModalBodyWrapper = ({children}: ModalBodyWrapperPropTypes) => {
 
 export const Modal = (props: ModalPropTypes) => {
     const {
-        isOpen, modalKey, modalHeader, modalBody, modalFooter, modalZIndex, removeModal, hasFireworksBg
+        isOpen, modalKey, modalHeader, modalBody, modalFooter, modalZIndex, removeModal, hasFireworksBg, modalStyleClass
     } = props;
 
     const modalRef = useRef<HTMLDivElement>(null);
@@ -47,7 +48,7 @@ export const Modal = (props: ModalPropTypes) => {
     }, [])
 
     return (
-        isOpen ? <div ref={modalRef} className={`modal-wrapper modal-id-${modalKey} `} style={{
+        isOpen ? <div ref={modalRef} className={`modal-wrapper modal-id-${modalKey} ${modalStyleClass || ''} `} style={{
             zIndex: modalZIndex
         }} onClick={(e) => {
             const t = e.target;

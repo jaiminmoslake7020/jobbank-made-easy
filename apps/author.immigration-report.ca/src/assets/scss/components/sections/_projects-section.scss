@@ -74,12 +74,12 @@
           width: calc(100% + 32px);
 
           &.is-array{
-            a{
+            .divA{
               @apply text-6xl py-2;
             }
           }
 
-          a{
+          .divA{
             @apply w-full flex justify-center py-4;
           }
 

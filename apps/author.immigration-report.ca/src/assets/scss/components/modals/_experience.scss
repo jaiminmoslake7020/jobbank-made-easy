@@ -1,0 +1,44 @@
+.experience-modal{
+  .experience-modal-body{
+    @apply flex flex-col gap-8 text-content p-6 w-[100dvw] md:w-[640px] lg:w-[768px];
+
+    .experience-modal-body-child{
+      @apply flex flex-col md:flex-row gap-6;
+    }
+
+    .info-wrapper{
+      @apply text-content flex flex-col gap-2 w-full md:w-2/3 justify-center;
+
+      .info-item{
+        h4, p{
+          @apply flex gap-2 items-center;
+        }
+        h4{
+          @apply font-semibold;
+        }
+      }
+
+    }
+
+    .details-wrapper{
+      @apply flex flex-col gap-4;
+
+      ul{
+        @apply flex flex-col gap-3 pl-8 pr-4  max-h-[40dvh] overflow-y-auto;
+        li {
+          list-style-type: circle; /* Circular bullet points */
+        }
+      }
+
+    }
+
+   .logo-wrapper{
+     @apply flex justify-center w-full md:w-1/3;
+     .company-logo{
+       @apply max-w-[100px] md:max-w-[200px] flex items-center;
+     }
+   }
+
+  }
+}
+

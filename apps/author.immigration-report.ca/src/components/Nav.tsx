@@ -46,6 +46,47 @@ const Nav = ({showSidebar, menuLinks}: NavPropTypes) => {
         };
     }, [moveContent]);
 
+    const sendGTMEvent = useCallback(() => {
+        if (window && !inDevEnvironment) {
+            // @ts-ignore
+            window.dataLayer = window.dataLayer || [];
+            // @ts-ignore
+            window.dataLayer.push({
+                event: 'download_resume',
+                buttonId: ResumeObject.link, // Custom data, can be anything you want to track
+                buttonText: ResumeObject.name
+            });
+            console.log('GTM event pushed');
+        }
+    }, []);
+
+    const addFeedbackModal = useCallback(() => {
+        const modalKey = 'thanks-modal';
+        addModal({
+            removeModal: removeModal,
+            isOpen: true, modalKey: modalKey, modalZIndex: 100,
+            modalFooter: <ModalFooterWrapper>
+                <Button size={"md"} onClick={() => {
+                    removeModal(modalKey);
+                }} >Close</Button>
+            </ModalFooterWrapper>,
+            modalBody: <div className={"resume-modal-body"}>
+                <div className={" icon-wrapper "}>
+                    <FaIcon icon={"check"} />
+                </div>
+                <div className={` text-wrapper `}>
+                    <p>Thank you for downloading my resume.</p>
+                </div>
+            </div>,
+            hasFireworksBg: true
+        });
+    }, [addModal, removeModal]);
+
+    const onDownloadComplete = useCallback(() => {
+        sendGTMEvent();
+        addFeedbackModal();
+    },[sendGTMEvent, addFeedbackModal])
+
     return (
         <nav className={"nav nav-main"}>
             {
@@ -58,39 +99,7 @@ const Nav = ({showSidebar, menuLinks}: NavPropTypes) => {
             }
             <DownloadLink
                 className={"nav-link"}
-                onDownloadComplete={() => {
-                    if (window && !inDevEnvironment) {
-                        // @ts-ignore
-                        window.dataLayer = window.dataLayer || [];
-                        // @ts-ignore
-                        window.dataLayer.push({
-                            event: 'download_resume',
-                            buttonId: ResumeObject.link, // Custom data, can be anything you want to track
-                            buttonText: ResumeObject.name
-                        });
-                        console.log('GTM event pushed');
-                    }
-
-                const modalKey = 'thanksModal';
-                addModal({
-                    removeModal: removeModal,
-                    isOpen: true, modalKey: modalKey, modalZIndex: 100,
-                    modalFooter: <ModalFooterWrapper>
-                        <Button size={"md"} onClick={() => {
-                            removeModal(modalKey);
-                        }} >Close</Button>
-                    </ModalFooterWrapper>,
-                    modalBody: <div className={"flex flex-col items-center justify-center gap-8 text-content p-8 min-w-[100dvw] md:min-w-[640px] lg:min-w-[768px] "}>
-                        <div className={"job-title text-green-500 text-8xl "}>
-                            <FaIcon icon={"check"} />
-                        </div>
-                        <div className={` text-lg `}>
-                            <p>Thank you for downloading my resume.</p>
-                        </div>
-                    </div>,
-                    hasFireworksBg: true
-                });
-            }}
+                onDownloadComplete={onDownloadComplete}
                 fileName={ResumeObject.name}
                 link={ResumeObject.link}
             />

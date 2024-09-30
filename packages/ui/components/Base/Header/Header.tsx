@@ -5,6 +5,7 @@ import { Sidebar } from '../Sidebar/Sidebar';
 import './header.scss'
 import UserComponent, {UserComponentPropTypes} from '../UserComponent/UserComponent';
 import {Logo, LogoObjectType} from '../Logo/Logo';
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 
 
 export type HeaderPropTypes = {
@@ -39,7 +40,9 @@ export const Header = (props: HeaderPropTypes) => {
                 <div className={"nav-wrapper"}>
                     {nav}
                 </div>
-                <ColorThemeSelector themes={themes} theme={theme} setTheme={setTheme} />
+                <div className={"theme-switcher-wrapper"}>
+                    <ThemeSwitcher theme={theme} setTheme={setTheme} />
+                </div>
                 { userComponent && <UserComponent {...userComponent} /> }
                 <button type={"button"} className={"btn sidebar-opener"}
                     onClick={() => {

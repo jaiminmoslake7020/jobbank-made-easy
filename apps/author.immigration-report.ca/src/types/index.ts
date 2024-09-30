@@ -1,4 +1,5 @@
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
+import React from 'react';
 
 export type MenuLinkType = {
     label: string,
@@ -14,7 +15,9 @@ export type ProjectBoxPropTypes = {
     }[] | string,
     projectTech: string,
     projectLogo: string,
-    logoAppearance: string
+    logoAppearance: string,
+    projectPoints: string[],
+    techStack: string,
 };
 
 export type ThemeType = {
@@ -30,5 +33,7 @@ export type ExperienceBoxPropTypes = {
     jobTitle: string,
     companyLogo: string,
     companyLink: string,
-    companyLogoAppearance: string
+    companyLogoAppearance: string,
+    experiencePoints: string[],
+    companyInfo: string,
 };
