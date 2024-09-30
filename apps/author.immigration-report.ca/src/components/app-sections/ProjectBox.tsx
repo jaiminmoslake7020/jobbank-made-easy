@@ -103,7 +103,7 @@ const ProjectBox = (props: ProjectBoxPropTypes) => {
                 </div>
             </div>
         });
-    }, [projectName, addModal, removeModal, projectUrl, companyName, logoAppearance, techStack, projectPoints]);
+    }, [projectName, addModal, removeModal, projectUrl, companyName, logoAppearance, projectLogo, techStack, projectPoints]);
 
     return (
         <div className={"project-box-wrapper group  "}>
