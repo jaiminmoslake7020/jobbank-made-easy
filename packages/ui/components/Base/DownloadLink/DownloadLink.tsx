@@ -29,7 +29,7 @@ const DownloadLink = (props: DownloadLinkPropTypes) => {
             if (onDownloadComplete) {
                 onDownloadComplete();
             }
-        }} rel={"noreferrer"} className={className} href={"/Resume_Jaimin_Pandya_September_2024.pdf"}>Resume</a>
+        }} rel={"noreferrer"} className={className} href={"/"+fileName}>Resume</a>
     );
 }
 

@@ -98,7 +98,7 @@ export const projects = [
             'This is a software platform built for the Emplace Screen Owners to control their screen content, what content (their own) can play on their screens, and what advertisements can play on their screen.',
             'Screen owners can manage their organization screens and enable other users in organization to have permissions through RBAC to give control to different actions on screen.'
         ],
-        techStack: 'React, TypeScript, Canvas, Redux, Tailwind, SCSS,  MUI, Storybook, Jest, Cypress, NestJs, PostgreSql, OpenApiV3, AWS'
+        techStack: 'React, TypeScript, Canvas, Redux, Tailwind, SCSS,  MUI, Storybook, Jest, Cypress, NestJs, PostgreSql, OpenApiV3, AWS',
     },
     {
         projectName: "Buyer Platform ",

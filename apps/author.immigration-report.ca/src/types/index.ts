@@ -18,6 +18,7 @@ export type ProjectBoxPropTypes = {
     logoAppearance: string,
     projectPoints: string[],
     techStack: string,
+    images?: string[],
 };
 
 export type ThemeType = {

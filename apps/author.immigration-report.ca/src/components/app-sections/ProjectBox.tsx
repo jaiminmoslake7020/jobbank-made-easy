@@ -62,7 +62,7 @@ const ProjectBox = (props: ProjectBoxPropTypes) => {
                     Array.isArray(projectUrl) ?
                         <>
                             {projectUrl.map(({icon, url}: {icon:IconProp, url:string}) => {
-                                return <IconButton icon={["fab",icon]} label={icon as string} colorType={"type-2"} size={"md"} onClick={() => {
+                                return <IconButton key={icon as string} icon={["fab",icon]} label={icon as string} colorType={"type-2"} size={"md"} onClick={() => {
                                     window.open(url, '_blank');
                                 }} />
                             })}
@@ -113,7 +113,7 @@ const ProjectBox = (props: ProjectBoxPropTypes) => {
                         Array.isArray(projectUrl) ?
                             <>
                                 {projectUrl.map(({icon, url}: {icon:IconProp, url:string}) => {
-                                    return <div className={"divA"} >
+                                    return <div key={icon as string} className={"divA"} >
                                         <FaIcon icon={["fab",icon] as IconProp} />
                                     </div>
                                 })}
