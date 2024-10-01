@@ -11,8 +11,8 @@ export type NavPropTypes = {
 };
 
 const ResumeObject = {
-  link: "https://s3.us-west-2.amazonaws.com/media-author.immigration-report.ca/Resume_Jaimin_Pandya_September_2024.pdf",
-  name: "Resume_Jaimin_Pandya_September_2024.pdf"
+  link: "https://s3.us-west-2.amazonaws.com/media-author.immigration-report.ca/Jaimin_Pandya_Resume_October_2024.pdf",
+  name: "Jaimin_Pandya_Resume_October_2024.pdf"
 };
 
 const Nav = ({showSidebar, menuLinks}: NavPropTypes) => {
