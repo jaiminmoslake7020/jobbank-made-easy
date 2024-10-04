@@ -11,7 +11,7 @@ export type ModalPropTypes = {
     modalBody?: React.ReactNode,
     modalFooter?: React.ReactNode,
     removeModal: Function,
-    hasFireworksBg?: boolean
+    hasFireworksBg?: boolean,
 };
 
 export type ModalBodyWrapperPropTypes = {
@@ -28,24 +28,6 @@ export const Modal = (props: ModalPropTypes) => {
     } = props;
 
     const modalRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleEsc = (event: any) => {
-            if (event.key === "Escape") {
-                console.log("Escape key pressed!");
-                removeModal(modalKey);
-                // Perform the desired action, like closing a modal
-            }
-        };
-
-        // Attach the event listener when the component mounts
-        window.addEventListener("keydown", handleEsc);
-
-        // Cleanup the event listener when the component unmounts
-        return () => {
-            window.removeEventListener("keydown", handleEsc);
-        };
-    }, [])
 
     return (
         isOpen ? <div ref={modalRef} className={`modal-wrapper modal-id-${modalKey} ${modalStyleClass || ''} `} style={{

@@ -10,7 +10,7 @@ const Profile = () => {
         <section className={"section section-profile"} >
             <article className={"section-content section-profile-content"}>
                 <div className={"part"}>
-                    <h2><TypingText text={profileText} duration={50} /></h2>
+                    <h2><TypingText text={profileText} duration={40} /></h2>
                 </div>
                 <div className={"part"} >
                     <div className={"image-wrapper goup-start "}>

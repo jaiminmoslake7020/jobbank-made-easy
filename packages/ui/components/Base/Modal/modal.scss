@@ -20,7 +20,7 @@
     }
 
     .modal-footer{
-      @apply flex justify-end p-4 gap-8;
+      @apply flex justify-end p-4 gap-4;
     }
 
   }
@@ -28,5 +28,10 @@
 
 
 .body-modal-open{
+  @apply overflow-hidden;
+}
+
+
+body.modal-open{
   @apply overflow-hidden;
 }

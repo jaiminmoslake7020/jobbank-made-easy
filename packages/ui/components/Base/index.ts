@@ -11,9 +11,10 @@ export * from './Sidebar/Sidebar';
 export * from  './SocialiLinks/SocialLinks';
 export * from  './Tooltip/Tooltip';
 export * from  './Pagination';
-export * from  './Modal/Modal';
+export * from  './Modal';
 export * from  './DownloadLink/DownloadLink';
 export * from  './ScrollElement/ScrollElement';
+export * from  './ImageGalleryViewer/ImageGalleryViewer';
 
 
 

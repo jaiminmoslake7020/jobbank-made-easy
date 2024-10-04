@@ -1,5 +1,5 @@
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
-import React from 'react';
+import {StaticImageData} from 'next/image';
 
 export type MenuLinkType = {
     label: string,
@@ -18,7 +18,7 @@ export type ProjectBoxPropTypes = {
     logoAppearance: string,
     projectPoints: string[],
     techStack: string,
-    images?: string[],
+    images?: StaticImageData[],
 };
 
 export type ThemeType = {

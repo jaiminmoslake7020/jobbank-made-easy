@@ -1,9 +1,8 @@
 import React, {useCallback, useContext} from 'react';
-import {Badge, Button, FaIcon, IconButton, ModalsContext} from 'ui';
+import {Badge, Button, FaIcon, IconButton, ModalsContext, ModalFooterWrapper, ModalHeader, ImageGalleryViewer} from 'ui';
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import Image from 'next/image';
 import {ProjectBoxPropTypes} from '../../types';
-import {ModalFooterWrapper, ModalHeader} from 'ui/components/Base/Modal';
 
 
 export type ProjectBoxEmptyPropTypes = {
@@ -36,15 +35,33 @@ const ProjectBox = (props: ProjectBoxPropTypes) => {
         logoAppearance,
         projectPoints,
         techStack,
+        images
     } = props;
 
     const {
         addModal, removeModal
     } = useContext(ModalsContext);
 
+    const showImagesModal = useCallback(() => {
+        const modalKey = 'project-box-images-' + projectName.replaceAll(" ", "-");
+        addModal({
+            isOpen: true,
+            modalKey: modalKey,
+            modalStyleClass: 'project-images-modal',
+            modalZIndex: 10,
+            removeModal: removeModal,
+            modalHeader: <ModalHeader onCloseClick={() => {
+                removeModal(modalKey);
+            }} />,
+            modalBody: <div className={" project-images-modal-body "}>
+                <ImageGalleryViewer images={images} />
+            </div>
+        });
+    },[addModal, images, projectName, removeModal]);
+
     const showExperienceModal = useCallback(() => {
-        console.log("setShowModal");
         const modalKey = 'project-box-' + projectName.replaceAll(" ", "-");
+        const hasImages = images && Array.isArray(images) && images.length > 0;
         addModal({
             isOpen: true,
             modalKey: modalKey,
@@ -55,24 +72,31 @@ const ProjectBox = (props: ProjectBoxPropTypes) => {
                 removeModal(modalKey);
             }} title={projectName}/>,
             modalFooter: <ModalFooterWrapper>
-                <Button size={"md"} onClick={() => {
-                    removeModal(modalKey);
-                }}>Close</Button>
-                {
-                    Array.isArray(projectUrl) ?
-                        <>
-                            {projectUrl.map(({icon, url}: {icon:IconProp, url:string}) => {
-                                return <IconButton key={icon as string} icon={["fab",icon]} label={icon as string} colorType={"type-2"} size={"md"} onClick={() => {
-                                    window.open(url, '_blank');
-                                }} />
-                            })}
-                        </>
-                        : <Button colorType={"type-2"} size={"md"} onClick={() => {
-                            window.open(projectUrl, '_blank');
-                        }}>
-                            Visit
-                        </Button>
-                }
+                <div className={"flex flex-row flex-wrap gap-4 w-full justify-end "}>
+                    <Button size={"md"} onClick={() => {
+                        removeModal(modalKey);
+                    }}>Close</Button>
+                    {
+                        hasImages && <Button colorType={"type-2"} size={"md"} onClick={showImagesModal}>
+                        See Images
+                      </Button>
+                    }
+                    {
+                        Array.isArray(projectUrl) ?
+                            <>
+                                {projectUrl.map(({icon, url}: {icon:IconProp, url:string}) => {
+                                    return <IconButton key={icon as string} icon={["fab",icon]} label={icon as string} colorType={"type-2"} size={"md"} onClick={() => {
+                                        window.open(url, '_blank');
+                                    }} />
+                                })}
+                            </>
+                            : <Button colorType={"type-2"} size={"md"} onClick={() => {
+                                window.open(projectUrl, '_blank');
+                            }}>
+                                Visit
+                            </Button>
+                    }
+                </div>
             </ModalFooterWrapper>,
             modalBody: <div className={" project-modal-body "}>
                 <div className={" project-modal-body-child "}>
@@ -103,7 +127,7 @@ const ProjectBox = (props: ProjectBoxPropTypes) => {
                 </div>
             </div>
         });
-    }, [projectName, addModal, removeModal, projectUrl, companyName, logoAppearance, projectLogo, techStack, projectPoints]);
+    }, [projectName, images, addModal, removeModal, showImagesModal, projectUrl, companyName, logoAppearance, projectLogo, techStack, projectPoints]);
 
     return (
         <div className={"project-box-wrapper group  "}>
