@@ -15,9 +15,13 @@
 .project-images-modal{
   @apply full-screen-style !important;
 
+  &.modal-wrapper{
+    @apply bg-black/50 lg:bg-content/90 !important;
+  }
+
   .modal {
     @apply full-screen-style !important;
-    @apply bg-content/10 !important;
+    @apply bg-black/50 lg:bg-content/90 !important;
 
     .modal-header{
       @apply justify-end absolute top-0 left-0  !important;
