@@ -33,7 +33,7 @@
       }
 
       .education-box{
-        @apply bg-content text-bkg p-4 rounded-lg shadow-lg cursor-pointer;
+        @apply bg-content text-bkg p-4 rounded-lg shadow-lg;
         @apply flex flex-col md:flex-row gap-4 w-full;
 
         @apply translate-x-32 opacity-0 transition-all duration-1000 ease-in-out;
