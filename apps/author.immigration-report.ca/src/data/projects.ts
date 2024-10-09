@@ -1,6 +1,6 @@
 import emplaceLogo from '../assets/images/companies/emplace.svg';
 import umbracityLogo from '../assets/images/companies/umbracity.png';
-import opsinsightsLogo from '../assets/images/companies/opsinsights.png';
+import processFastLogo from '../assets/images/companies/processFast.png';
 import {ProjectBoxPropTypes} from '../types';
 
 import buyer1 from '../assets/images/projects/buyer/1.png';
@@ -80,7 +80,7 @@ export const projects = [
     },
     {
         projectName: "UmbraCity Mobile User App",
-        companyName: "Emplace Technology Inc",
+        companyName: "UmbraCity Innovations Inc",
         projectUrl: [{
             icon: "apple",
             url: "https://apps.apple.com/us/app/umbracity/id1540808911"
@@ -105,8 +105,8 @@ export const projects = [
     },
     {
         projectName: "UmbraCity Maps",
-        companyName: "Emplace Technology Inc",
-        projectUrl: "https://owner.emplace.com/",
+        companyName: "UmbraCity Innovations Inc",
+        projectUrl: "https://map.umbracity.com/",
         projectTech: "React, TypeScript, Rest API, Redux",
         projectLogo: umbracityLogo,
         logoAppearance: "white-text",
@@ -144,8 +144,8 @@ export const projects = [
     },
     {
         projectName: "UmbraCity Website",
-        companyName: "Emplace Technology Inc",
-        projectUrl: "https://map.umbracity.com/",
+        companyName: "UmbraCity Innovations Inc",
+        projectUrl: "http://umbracity.com/",
         projectTech: "NextJs, TypeScript, Tailwind",
         projectLogo: umbracityLogo,
         logoAppearance: "white-text",
@@ -166,7 +166,7 @@ export const projects = [
     {
         projectName: "Emplace Website",
         companyName: "Emplace Technology Inc",
-        projectUrl: "https://owner.emplace.com/",
+        projectUrl: "https://emplace.com/",
         projectTech: "NextJs, TypeScript, Tailwind",
         projectLogo: emplaceLogo,
         logoAppearance: "white-text",
@@ -205,8 +205,8 @@ export const projects = [
     },
     {
         projectName: "Weather Kiosk App",
-        companyName: "Emplace Technology Inc",
-        projectUrl: "https://umbracity.com/",
+        companyName: "UmbraCity Innovations Inc",
+        projectUrl: "https://amazing-carson-dc0b4c.netlify.app",
         projectTech: "React",
         projectLogo: umbracityLogo,
         logoAppearance: "white-text",
@@ -250,9 +250,9 @@ export const projects = [
     {
         projectName: "OpsInsights",
         companyName: "ProcessFast LLC",
-        projectUrl: "https://owner.emplace.com/",
+        projectUrl: "https://opsinsights.com/",
         projectTech: "PHP, Yii 2.0, MySql",
-        projectLogo: opsinsightsLogo,
+        projectLogo: processFastLogo,
         logoAppearance: "",
         projectPoints: [
             'I have built the MVP and real product from scratch.',
