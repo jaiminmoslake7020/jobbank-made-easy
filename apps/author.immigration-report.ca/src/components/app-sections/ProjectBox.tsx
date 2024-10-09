@@ -3,6 +3,7 @@ import {Badge, Button, FaIcon, IconButton, ModalsContext, ModalFooterWrapper, Mo
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import Image from 'next/image';
 import {ProjectBoxPropTypes} from '../../types';
+import {inDevEnvironment} from '../../utils/utils';
 
 
 export type ProjectBoxEmptyPropTypes = {
@@ -42,8 +43,22 @@ const ProjectBox = (props: ProjectBoxPropTypes) => {
         addModal, removeModal
     } = useContext(ModalsContext);
 
+    const sendGTMEvent = useCallback((projectName, eventName: 'view_project' | 'view_project_images') => {
+        if (window && !inDevEnvironment) {
+            // @ts-ignore
+            window.dataLayer = window.dataLayer || [];
+            // @ts-ignore
+            window.dataLayer.push({
+                event: eventName,
+                projectName: projectName, // Custom data, can be anything you want to track
+            });
+            console.log('GTM event pushed');
+        }
+    }, []);
+
     const showImagesModal = useCallback(() => {
         const modalKey = 'project-box-images-' + projectName.replaceAll(" ", "-");
+        sendGTMEvent(projectName, 'view_project_images');
         addModal({
             isOpen: true,
             modalKey: modalKey,
@@ -57,11 +72,12 @@ const ProjectBox = (props: ProjectBoxPropTypes) => {
                 <ImageGalleryViewer images={images} />
             </div>
         });
-    },[addModal, images, projectName, removeModal]);
+    },[addModal, images, projectName, removeModal, sendGTMEvent]);
 
     const showExperienceModal = useCallback(() => {
         const modalKey = 'project-box-' + projectName.replaceAll(" ", "-");
         const hasImages = images && Array.isArray(images) && images.length > 0;
+        sendGTMEvent(projectName, 'view_project');
         addModal({
             isOpen: true,
             modalKey: modalKey,

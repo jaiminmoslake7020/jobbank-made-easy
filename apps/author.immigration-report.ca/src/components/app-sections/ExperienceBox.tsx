@@ -3,6 +3,7 @@ import Image from 'next/image';
 import {Button, FaIcon, ModalsContext} from 'ui';
 import {ModalFooterWrapper, ModalHeader} from 'ui/components/Base/Modal';
 import {ExperienceBoxPropTypes} from '../../types';
+import {inDevEnvironment} from '../../utils/utils';
 
 export type ExperienceBoxEmptyPropTypes = {
     setShowMore: Function,
@@ -41,9 +42,24 @@ const ExperienceBox = (props: ExperienceBoxPropTypes) => {
         addModal, removeModal
     } = useContext(ModalsContext);
 
+    const sendGTMEvent = useCallback((jobTitle, companyName ) => {
+        if (window && !inDevEnvironment) {
+            // @ts-ignore
+            window.dataLayer = window.dataLayer || [];
+            // @ts-ignore
+            window.dataLayer.push({
+                event: 'view_experience',
+                jobTitle: jobTitle, // Custom data, can be anything you want to track
+                companyName: companyName, // Custom data, can be anything you want to track
+            });
+            console.log('GTM event pushed');
+        }
+    }, []);
+
     const showExperienceModal = useCallback(() => {
         console.log("setShowModal");
         const modalKey = 'experience-box-' + jobTitle.replaceAll(" ", "-");
+        sendGTMEvent(jobTitle, companyName);
         addModal({
             isOpen: true,
             modalKey: modalKey,
@@ -103,7 +119,7 @@ const ExperienceBox = (props: ExperienceBoxPropTypes) => {
                 </div>
             </div>
         });
-    }, [addModal, companyLink, companyLogo, companyLogoAppearance, companyName, duration, experiencePoints, jobTitle, location, removeModal, companyInfo]);
+    }, [jobTitle, sendGTMEvent, companyName, addModal, removeModal, duration, location, companyLogoAppearance, companyLogo, companyInfo, experiencePoints, companyLink]);
 
     return (
         <div className={"experience-box-wrapper group  "}>
