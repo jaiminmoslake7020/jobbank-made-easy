@@ -145,7 +145,7 @@ export const projects = [
     {
         projectName: "UmbraCity Website",
         companyName: "Emplace Technology Inc",
-        projectUrl: "https://owner.emplace.com/",
+        projectUrl: "https://map.umbracity.com/",
         projectTech: "NextJs, TypeScript, Tailwind",
         projectLogo: umbracityLogo,
         logoAppearance: "white-text",
