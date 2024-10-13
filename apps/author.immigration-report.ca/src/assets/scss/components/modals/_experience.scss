@@ -24,7 +24,7 @@
       @apply flex flex-col gap-4;
 
       ul{
-        @apply flex flex-col gap-3 pl-8 pr-4  max-h-[40dvh] overflow-y-auto;
+        @apply flex flex-col gap-3 pl-8 pr-4  max-h-[30dvh] overflow-y-auto;
         li {
           list-style-type: circle; /* Circular bullet points */
         }
