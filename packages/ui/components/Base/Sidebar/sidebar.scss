@@ -51,3 +51,8 @@
 
 
 }
+
+
+body.sidebar-open{
+  @apply overflow-hidden;
+}

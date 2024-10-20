@@ -1,12 +1,11 @@
 import React, {useCallback, useContext, useEffect} from 'react';
 import {MenuLinkType} from '../types';
-import {Button, FaIcon, ModalsContext} from 'ui';
+import {Button, FaIcon, ModalsContext, SidebarContext} from 'ui';
 import {ModalFooterWrapper} from 'ui/components/Base/Modal';
 import DownloadLink from 'ui/components/Base/DownloadLink/DownloadLink';
 import {inDevEnvironment} from '../utils/utils';
 
 export type NavPropTypes = {
-    showSidebar?: Function,
     menuLinks: MenuLinkType[]
 };
 
@@ -15,7 +14,9 @@ const ResumeObject = {
   name: "Jaimin_Pandya_Resume_October_2024.pdf"
 };
 
-const Nav = ({showSidebar, menuLinks}: NavPropTypes) => {
+const Nav = ({menuLinks}: NavPropTypes) => {
+
+    const { showSidebar } = useContext(SidebarContext);
 
     const {
         addModal, removeModal

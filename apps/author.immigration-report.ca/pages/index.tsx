@@ -5,9 +5,9 @@ import Projects from '../src/components/app-sections/Projects';
 import Skills from '../src/components/app-sections/Skills';
 import Education from '../src/components/app-sections/Education';
 import MainContent from '../src/components/MainContent';
+import OpenSource from '../src/components/app-sections/OpenSource';
 
 export default function Web() {
-
   return (
       <>
           <Head>
@@ -20,6 +20,7 @@ export default function Web() {
                   <Projects />
                   <Skills />
                   <Education />
+                  <OpenSource />
               </main>
           </MainContent>
       </>

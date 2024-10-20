@@ -1,0 +1,102 @@
+.section.section-open-source {
+  @apply flex flex-col items-start justify-start gap-8;
+
+  h1{
+    @apply translate-y-32 opacity-0 transition-all duration-500 ease-in;
+  }
+
+  &.scroll-active{
+    h1{
+      @apply translate-y-0 opacity-100;
+    }
+
+    .section-open-source-content{
+      .open-source-wrapper{
+        .open-source-box{
+          @apply translate-x-0 translate-y-0 opacity-100;
+        }
+      }
+    }
+  }
+
+
+  .section-open-source-content{
+    @apply flex py-8 w-full ;
+
+    .open-source-wrapper{
+      @apply flex flex-row flex-wrap gap-16 md:gap-8 2xl:gap-16;
+      @apply w-full;
+
+      .open-source-box-wrapper{
+        @apply w-full md:w-[calc(50%_-_16px)] xl:w-[calc(33.33%_-_24px)] 2xl:w-[calc(33.33%_-_48px)];
+        @apply transition-transform overflow-hidden;
+        @apply lg:scale-90 lg:hover:scale-100 rotate-0;
+
+        &:nth-of-type(2n+1){
+          @apply lg:-rotate-2;
+          @apply lg:hover:rotate-0;
+        }
+
+        &:nth-of-type(2n){
+          @apply lg:rotate-2;
+          @apply lg:hover:rotate-0;
+        }
+
+        $columns: 6;
+        @for $i from 1 through $columns {
+          &:nth-of-type(#{$i}){
+            .open-source-box{
+              transition-delay: 0.2s * $i;
+            }
+          }
+        }
+
+      }
+
+      .open-source-box{
+        @apply bg-content text-bkg p-6 rounded-lg shadow-lg cursor-pointer;
+        @apply flex flex-col gap-8 w-full;
+        @apply lg:before:-skew-x-12 lg:before:absolute lg:before:inset-0 lg:before:-translate-x-full lg:before:bg-gradient-to-r lg:before:from-transparent lg:before:via-bkg/10 lg:before:to-transparent;
+
+        @apply translate-x-0 translate-y-32 opacity-0 transition-all duration-1000 ease-in-out;
+
+
+        &.empty-box{
+          @apply h-48 flex justify-center items-center p-0;
+          min-height: 100%;
+
+          button {
+            @apply text-2xl font-bold w-full h-full;
+          }
+        }
+
+        .job-title{
+          @apply font-semibold;
+        }
+
+        .company-logo{
+          @apply flex w-full justify-center -ml-2 -mb-2 ;
+          width: calc(100% + 16px);
+
+          .divA{
+            @apply w-full flex justify-center py-4;
+          }
+
+          img{
+            max-width: 180px;
+          }
+
+        }
+
+
+
+      }
+
+
+
+    }
+
+
+  }
+}
+

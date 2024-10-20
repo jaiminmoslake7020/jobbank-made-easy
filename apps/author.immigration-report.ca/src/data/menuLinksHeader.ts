@@ -21,4 +21,8 @@ export const menuLinksHeader = [
         label: "Education",
         content: "education"
     },
+    {
+        label: "Open Source",
+        content: "open-source"
+    },
 ] as MenuLinkType[];

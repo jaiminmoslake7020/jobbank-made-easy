@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
-import {ColorThemeSelector, ThemeType} from '../';
+import React, {useContext} from 'react';
+import {ThemeType} from '../';
 import { FaIcon } from '../FaIcon/FaIcon';
 import { Sidebar } from '../Sidebar/Sidebar';
 import './header.scss'
 import UserComponent, {UserComponentPropTypes} from '../UserComponent/UserComponent';
 import {Logo, LogoObjectType} from '../Logo/Logo';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
+import {SidebarContext} from '../../../contexts';
 
 
 export type HeaderPropTypes = {
@@ -29,7 +30,7 @@ export const Header = (props: HeaderPropTypes) => {
         logoUrl
     } = props;
 
-    const [sidebar, showSidebar] = useState<boolean>(false);
+    const { showSidebar } = useContext(SidebarContext);
 
     return (
         <>
@@ -52,7 +53,7 @@ export const Header = (props: HeaderPropTypes) => {
                     <FaIcon icon={"bars"} />
                 </button>
             </header>
-            <Sidebar themes={themes} sidebar={sidebar} showSidebar={showSidebar} theme={theme} setTheme={setTheme} nav={nav} />
+            <Sidebar themes={themes} theme={theme} setTheme={setTheme} nav={nav} />
         </>
     );
 }

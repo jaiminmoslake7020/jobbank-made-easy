@@ -1,12 +1,14 @@
 import type { AppProps } from "next/app";
 import "../src/assets/scss/index.scss";
-import {ModalsProvider, ThemeProvider} from 'ui';
+import {ModalsProvider, ThemeProvider, SidebarProvider} from 'ui';
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppProps) {
   return (
       <ThemeProvider>
           <ModalsProvider>
-              <Component {...pageProps} />
+              <SidebarProvider>
+                  <Component {...pageProps} />
+              </SidebarProvider>
           </ModalsProvider>
       </ThemeProvider>
   );
