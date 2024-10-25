@@ -1,0 +1,38 @@
+@use "sections/index";
+@use "test";
+@use "../../components/app/JobApplication/List/job-application-list";
+
+
+.nav .nav-link{
+  @apply px-8 py-3 text-content;
+}
+
+.main-header{
+  .logo{
+    .logo-box{
+      img.logo-img {
+        @apply max-w-24 md:max-w-44;
+      }
+    }
+  }
+  .user-component{
+    @apply hidden md:flex;
+  }
+}
+
+.sidebar{
+  @apply justify-start gap-12 !important;
+  .user-component {
+    @apply flex justify-center;
+  }
+  .website-info{
+    @apply absolute bottom-8 left-16;
+    i.fas {
+      @apply text-red-500;
+    }
+  }
+}
+
+
+
+

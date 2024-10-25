@@ -1,13 +1,12 @@
 import React, {SetStateAction, useCallback, useEffect, useState} from 'react';
 import './image-gallery-viewer-wrapper.scss';
-import Image, {StaticImageData} from 'next/image';
 
 export type ImageGalleryViewerPropTypes = {
-    images: StaticImageData[]
+    images: any[]
 };
 
 export type ImageSelectBoxPropTypes = {
-    image: StaticImageData,
+    image: any,
     currentItem: number,
     setItem: React.Dispatch<SetStateAction<number>>,
     activeItem: boolean
@@ -24,7 +23,7 @@ export const ImageSelectBox = (props: ImageSelectBoxPropTypes) => {
     return <div className={`image-select-box-wrapper ${activeItem ? 'active-item' : ''} `} role={"button"} onClick={() => {
         setItem(currentItem);
     }}>
-        <Image className={"select-box-image"} alt={"image-item"} src={image} />
+        <img className={"select-box-image"} alt={"image-item"} src={image.src} />
     </div>
 }
 
@@ -36,7 +35,7 @@ export const ImageGalleryViewer = (props: ImageGalleryViewerPropTypes) => {
     const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
     const currentImage = images[activeImageIndex];
 
-    const { width, height } = currentImage;
+    const { width, height, src } = currentImage;
 
     const p = Number(width) / Number(height);
 
@@ -104,7 +103,7 @@ export const ImageGalleryViewer = (props: ImageGalleryViewerPropTypes) => {
     return (
         <div className={"image-gallery-viewer-wrapper"}>
             <div className={`image-wrapper ${classList.join(" ")} `}>
-                <Image className={"gallery-image-item"} alt={"Gallery Item"} src={currentImage} />
+                <img className={"gallery-image-item"} alt={"Gallery Item"} src={src} />
             </div>
             <div className={"image-list-wrapper"}>
                 <div className={"image-list-container"}>

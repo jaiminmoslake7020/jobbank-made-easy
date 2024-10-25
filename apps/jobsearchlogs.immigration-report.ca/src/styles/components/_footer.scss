@@ -1,0 +1,29 @@
+.main-footer{
+  @apply flex gap-6 lg:gap-4 px-6 lg:px-24 py-8 lg:py-4 justify-between items-center w-full ;
+  @apply static lg:absolute lg:bottom-0;
+
+  @apply flex-col lg:flex-row;
+
+  .website-info{
+    @apply w-full lg:w-fit flex justify-center lg:justify-start;
+
+    p{
+      @apply text-center;
+    }
+  }
+
+  .social-media-links-wrapper{
+    @apply flex gap-8 lg:gap-4;
+    a{
+      @apply text-2xl lg:text-lg;
+    }
+  }
+
+}
+
+.social-media-links-wrapper{
+  @apply flex gap-4;
+  a{
+    @apply text-lg;
+  }
+}

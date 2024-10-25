@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["typedSql"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                         Int              @id @default(autoincrement())
+  email                      String           @unique @db.VarChar(255)
+  google_login_token         String?          @db.VarChar(1024)
+  auth_token                 String?          @db.VarChar(1024)
+  refresh_google_login_token String?          @db.VarChar(1024)
+  google_login_token_expiry  BigInt?
+  auth_token_expiry          BigInt?
+  name                       String           @db.VarChar(255)
+  JobApplication             JobApplication[]
+}
+
+model JobApplication {
+  id                      Int                       @id @default(autoincrement())
+  User                    User                      @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  userId                  Int
+  job_link_id             String                    @db.VarChar(1024)
+  jobTitle                String                    @db.VarChar(255)
+  salary                  String                    @db.VarChar(255)
+  date                    DateTime
+  JobSource               JobSource                 @relation(fields: [jobSourceId], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  jobSourceId             Int
+  JobApplicationMedium    JobApplicationMedium      @relation(fields: [jobApplicationMediumId], references: [id])
+  jobApplicationMediumId  Int
+  JobType                 JobType                   @relation(fields: [jobTypeId], references: [id])
+  jobTypeId               Int
+  Address                 Address                   @relation(fields: [addressId], references: [id])
+  addressId               Int
+  JobPresenceType         JobPresenceType?          @relation(fields: [jobPresenceTypeId], references: [id])
+  jobPresenceTypeId       Int?
+  companyJobCode          String?
+  JobApplicationResponses JobApplicationResponses[]
+}
+
+model Company {
+  id        Int     @id @default(autoincrement())
+  name      String  @db.VarChar(255)
+  email     String? @db.VarChar(255)
+  phone     String? @db.VarChar(255)
+  Address   Address @relation(fields: [addressId], references: [id])
+  addressId Int
+}
+
+model Address {
+  id              Int              @id @default(autoincrement())
+  streetAddress   String           @db.VarChar(255)
+  apartmentNumber String?          @db.VarChar(20)
+  city            String           @db.VarChar(30)
+  zipcode         String           @db.VarChar(10)
+  province        String           @db.VarChar(2)
+  country         String           @db.VarChar(30)
+  Company         Company[]
+  JobApplication  JobApplication[]
+}
+
+model JobType {
+  id             Int              @id @default(autoincrement())
+  name           String           @db.VarChar(20)
+  JobApplication JobApplication[]
+}
+
+model JobResponseType {
+  id                      Int                       @id @default(autoincrement())
+  name                    String                    @db.VarChar(20)
+  date                    DateTime
+  InterviewType           InterviewType?            @relation(fields: [interviewTypeId], references: [id])
+  interviewTypeId         Int?
+  JobApplicationResponses JobApplicationResponses[]
+}
+
+model JobApplicationResponses {
+  id                Int             @id @default(autoincrement())
+  JobApplication    JobApplication  @relation(fields: [jobApplicationId], references: [id])
+  jobApplicationId  Int
+  JobResponseType   JobResponseType @relation(fields: [jobResponseTypeId], references: [id])
+  jobResponseTypeId Int
+}
+
+model InterviewType {
+  id              Int               @id @default(autoincrement())
+  name            String            @db.VarChar(10)
+  JobResponseType JobResponseType[]
+}
+
+model JobPresenceType {
+  id             Int              @id @default(autoincrement())
+  name           String           @db.VarChar(20)
+  JobApplication JobApplication[]
+}
+
+model JobSource {
+  id                 Int              @id @default(autoincrement())
+  name               String           @db.VarChar(20)
+  JobApplication     JobApplication[]
+  seenViaJobSourceId Int?
+}
+
+model JobApplicationMedium {
+  id             Int              @id @default(autoincrement())
+  name           String           @db.VarChar(20)
+  additionalInfo String?          @db.VarChar(1024)
+  JobApplication JobApplication[]
+}

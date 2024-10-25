@@ -1,0 +1,28 @@
+@use "components/index";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .max-w-container{
+    @apply 2xl:max-w-screen-xl xl:max-w-screen-lg lg:max-w-screen-md md:max-w-screen-sm max-w-[90vw];
+  }
+  .w-container{
+    @apply 2xl:w-[1281px] xl:w-[1024px] lg:w-[768px] md:w-[641px] w-[90vw];
+  }
+}
+
+@layer components {
+  .App{
+    transition: background-color .5s linear, color .5s linear;
+    @apply bg-bkg w-screen flex flex-col relative font-mono text-content;
+  }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+@layer  base {
+
+  :root {
+    --color-bkg: 226 232 240;
+    --color-content: 39 39 42;
+
+    --color-theme-btn-bg: 229 231 235;
+    --color-theme-btn-text: 30 41 59;
+    --color-theme-btn-border: 156 163 175;
+
+    --color-theme-btn-active-bg: 87 83 78;
+    --color-theme-btn-active-text: 244 244 245;
+    --color-theme-btn-active-border: 214 211 209;
+
+  }
+
+  .App[data-theme="light"] {
+    --color-bkg: 226 232 240;
+    --color-content: 39 39 42;
+
+    --color-theme-btn-bg: 229 231 235;
+    --color-theme-btn-text: 30 41 59;
+    --color-theme-btn-border: 156 163 175;
+
+    --color-theme-btn-active-bg: 87 83 78;
+    --color-theme-btn-active-text: 244 244 245;
+    --color-theme-btn-active-border: 214 211 209;
+  }
+
+}
