@@ -18,6 +18,10 @@
         @apply text-theme-btn-bg bg-theme-btn-text;
     }
 
+    .icon-and-text-wrapper{
+        @apply flex flex-row gap-3 items-center;
+    }
+
 }
 
 .btn.active{

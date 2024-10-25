@@ -36,9 +36,33 @@ export const Button = (props: ButtonHTMLAttributes<HTMLButtonElement> & CustomAt
   const rClass = getRoundClass(round);
   const btnColorType = colorType ? `btn-color-${colorType}` : '';
   const classNameFinal = ` btn ${sClass} ${rClass} ${className || ''} ${btnColorType} `;
-  return <button type={"button"} role={"button"} className={classNameFinal} {...props} >{children}</button>;
+  let newProps = {...props, round: undefined, colorType: undefined, size: undefined};
+  let newPropsNew = {};
+  Object.keys(newProps).map((propItem) => {
+    // @ts-ignore
+    if (newProps[propItem]) {
+      // @ts-ignore
+      newPropsNew[propItem] = newProps[propItem];
+    }
+  });
+  return <button type={"button"} role={"button"} className={classNameFinal} {...newPropsNew} >{children}</button>;
 };
 
+export type CustomAttributesIconButton = CustomAttributes & {
+  icon: any,
+  label?: string
+};
+
+export const IconButton = (props: ButtonHTMLAttributes<HTMLButtonElement> & CustomAttributesIconButton) => {
+  const { label, icon } = props;
+  let newProps = {...props, label: undefined, icon: undefined};
+  return label ? <Button {...newProps} >
+    <div className={"icon-and-text-wrapper"}>
+      <FaIcon icon={icon} />
+      <span>{label}</span>
+    </div>
+  </Button> : <Button {...newProps} ><FaIcon icon={icon} /></Button>;
+};
 
 export type CustomAttributesCloseButton = CustomAttributes & {
   label?: string
@@ -46,5 +70,5 @@ export type CustomAttributesCloseButton = CustomAttributes & {
 
 export const CloseButton = (props: ButtonHTMLAttributes<HTMLButtonElement> & CustomAttributesCloseButton) => {
   const { label } = props;
-  return label ? <Button {...props} ><FaIcon icon={"times"} />&nbsp;{label}</Button> : <Button {...props} ><FaIcon icon={"times"} /></Button>;
+  return <IconButton label={label} icon={"times"} {...props} />
 };

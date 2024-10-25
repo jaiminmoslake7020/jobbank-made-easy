@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from '../Button/Button';
+import {Button, CloseButton} from '../Button/Button';
 import {FaIcon} from '../FaIcon/FaIcon';
 
 export type ModalFooterPropTypes = {
@@ -41,17 +41,7 @@ export const ModalFooter = (props: ModalFooterPropTypes) => {
     } = props;
     return (
         <ModalFooterWrapper>
-            <div className={"modal-title"}>
-                <h4>{title}</h4>
-            </div>
-            <div className={"modal-close-wrapper"}>
-                <Button type={"button"} onClick={onCloseClick}>
-                    <FaIcon icon={"times"} />
-                </Button>
-                <Button type={"button"} onClick={onCloseClick}>
-                    <FaIcon icon={"times"} />
-                </Button>
-            </div>
+            <CloseButton label={"Close"} type={"button"} onClick={onCloseClick} />
         </ModalFooterWrapper>
     );
 }

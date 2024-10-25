@@ -16,14 +16,11 @@ jobs:
       - name: Install dependencies
         run: yarn install  # or your package manager (yarn, pnpm, etc.)
 
-      - name: Go to Author folder
-        run: cd apps/author.immigration-report.ca  # or your package manager (yarn, pnpm, etc.)
-
       - name: Build the project
-        run: yarn build  # or the command you use to build your project
-
-      - name: Deploy to Netlify
-        run: npx netlify deploy --prod --dir=./out  # or your output directory
+        run: cd apps/author.immigration-report.ca && ./scripts/prod-new.sh "${{ github.ref_name }}-${{ github.sha }}"  # or the command you use to build your project
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID__AUTHOR_SITE }}  # Add this if you want to specify the site
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}  # Add this if you want to specify the site
+
+

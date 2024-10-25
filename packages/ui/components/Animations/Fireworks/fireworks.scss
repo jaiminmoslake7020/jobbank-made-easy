@@ -1,0 +1,37 @@
+@keyframes explode {
+  0%{
+    top: 100%;
+  }
+  33%, 100%{
+    top: -50%;
+  }
+}
+
+.fireworks-wrapper{
+  @apply fixed top-0 left-0 bottom-0 w-screen max-h-screen overflow-hidden;
+  @apply bg-content/80;
+
+  .firework{
+    @apply relative;
+
+    .explosion{
+      transform-origin: 50% 100%;
+      @apply absolute bottom-0 left-[0.25rem] w-1 h-20 bg-transparent overflow-hidden;
+      @apply before:absolute before:left-0 before:right-0 before:-top-[100%] before:h-[50%] before:w-full before:-translate-y-[1rem];
+
+      &:before{
+        animation: explode 3s ease-in-out;
+      }
+
+      $columns: 18;
+      @for $i from 1 through $columns {
+        &:nth-of-type(#{$i}){
+          transform: rotate(20deg * $i);
+        }
+      }
+
+    }
+
+  }
+
+}

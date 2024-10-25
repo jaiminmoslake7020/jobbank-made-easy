@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
-import {ColorThemeSelector, ThemeType} from '../';
+import React, {useContext} from 'react';
+import {ThemeType} from '../';
 import { FaIcon } from '../FaIcon/FaIcon';
 import { Sidebar } from '../Sidebar/Sidebar';
 import './header.scss'
 import UserComponent, {UserComponentPropTypes} from '../UserComponent/UserComponent';
 import {Logo, LogoObjectType} from '../Logo/Logo';
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
+import {SidebarContext} from '../../../contexts';
 
 
 export type HeaderPropTypes = {
@@ -13,7 +15,8 @@ export type HeaderPropTypes = {
     nav: React.JSX.Element,
     themes: ThemeType[],
     userComponent?: UserComponentPropTypes,
-    logoObject: LogoObjectType
+    logoObject: LogoObjectType,
+    logoUrl: string
 };
 
 export const Header = (props: HeaderPropTypes) => {
@@ -23,21 +26,24 @@ export const Header = (props: HeaderPropTypes) => {
         nav,
         themes,
         userComponent,
-        logoObject
+        logoObject,
+        logoUrl
     } = props;
 
-    const [sidebar, showSidebar] = useState<boolean>(false);
+    const { showSidebar } = useContext(SidebarContext);
 
     return (
         <>
             <header className={"main-header"} >
                 <div className={"logo-wrapper"}>
-                    <Logo logoObject={logoObject} />
+                    <Logo logoObject={logoObject} logoUrl={logoUrl} />
                 </div>
                 <div className={"nav-wrapper"}>
                     {nav}
                 </div>
-                <ColorThemeSelector themes={themes} theme={theme} setTheme={setTheme} />
+                <div className={"theme-switcher-wrapper"}>
+                    <ThemeSwitcher theme={theme} setTheme={setTheme} />
+                </div>
                 { userComponent && <UserComponent {...userComponent} /> }
                 <button type={"button"} className={"btn sidebar-opener"}
                     onClick={() => {
@@ -47,7 +53,7 @@ export const Header = (props: HeaderPropTypes) => {
                     <FaIcon icon={"bars"} />
                 </button>
             </header>
-            <Sidebar themes={themes} sidebar={sidebar} showSidebar={showSidebar} theme={theme} setTheme={setTheme} nav={nav} />
+            <Sidebar themes={themes} theme={theme} setTheme={setTheme} nav={nav} />
         </>
     );
 }

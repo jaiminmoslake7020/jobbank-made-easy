@@ -4,7 +4,7 @@ import {FaIcon} from '../FaIcon/FaIcon';
 
 export type ModalHeaderPropTypes = {
     onCloseClick: () =>  void,
-    title: string
+    title?: string
 };
 
 export type ModalHeaderWrapperPropTypes = {
@@ -28,12 +28,15 @@ export const ModalHeader = (props: ModalHeaderPropTypes) => {
     } = props;
     return (
         <ModalHeaderWrapper>
-            <div className={"modal-title"}>
-                <h4>{title}</h4>
-            </div>
+            {
+                title ? <div className={"modal-title"}>
+                    <h4>{title}</h4>
+                </div> : null
+            }
             <div className={"modal-close-wrapper"}>
                 <CloseButton size={"sm"} round onClick={onCloseClick} />
             </div>
         </ModalHeaderWrapper>
     );
 }
+

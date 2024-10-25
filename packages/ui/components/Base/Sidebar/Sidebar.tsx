@@ -1,13 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {ColorThemeSelector, SocialLinkType, ThemeType} from '../';
 import { FaIcon } from '../FaIcon/FaIcon';
 import {WebsiteInfo} from '../Footer/Footer';
 import './sidebar.scss'
 import { SocialLinks } from '../SocialiLinks/SocialLinks';
+import {SidebarContext} from '../../../contexts';
 
 export type SidebarPropTypes = {
-    sidebar: boolean,
-    showSidebar: Function,
     theme: string,
     setTheme: Function,
     nav: React.JSX.Element,
@@ -17,14 +16,15 @@ export type SidebarPropTypes = {
 
 export const Sidebar = (props: SidebarPropTypes) => {
     const {
-        sidebar,
-        showSidebar,
         theme,
         setTheme,
         nav,
         themes,
         socialLinks
     } = props;
+
+    const { sidebar, showSidebar } = useContext(SidebarContext);
+
     return (
         <aside className={`sidebar ${sidebar ? 'open' : ''} `}>
             <div className={"sidebar-control-wrapper"}>

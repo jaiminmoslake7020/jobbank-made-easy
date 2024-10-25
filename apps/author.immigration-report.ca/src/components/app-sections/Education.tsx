@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {memo} from 'react';
 import gecDahodLogo from '../../assets/images/education/gec-dahod.png';
 import langaraLogo from '../../assets/images/education/langara.png';
 import EducationBox, {EducationBoxPropTypes} from './EducationBox';
+import {ScrollElement, useScrollY} from 'ui';
 
 const education = [
     {
@@ -24,18 +25,29 @@ const education = [
     },
 ] as unknown as EducationBoxPropTypes[];
 
-const Education = () => {
+
+// eslint-disable-next-line react/display-name
+const EducationList = memo(() => {
     return (
-        <section className={"section section-education"} >
+        <>
             <h1>Education</h1>
             <div className={"section-content section-education-content"}>
                 <div className={"education-wrapper"}>
                     {
                         education.map((eduInfo) => <EducationBox key={eduInfo.duration} {...eduInfo} />)
                     }
-               </div>
+                </div>
             </div>
-        </section>
+        </>
+    );
+})
+
+
+const Education = () => {
+    return (
+        <ScrollElement className={"section section-education"} >
+            <EducationList />
+        </ScrollElement>
     );
 }
 

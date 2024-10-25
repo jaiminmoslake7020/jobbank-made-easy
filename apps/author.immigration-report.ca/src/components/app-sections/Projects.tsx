@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import ProjectBox, {ProjectBoxEmpty} from './ProjectBox';
-import {useWindowSize} from 'ui';
+import {ScrollElement, useWindowSize} from 'ui';
 import {useScreenType} from '../../utils/utils';
 import { projects } from '../../data';
 
-const Projects = () => {
-
+// eslint-disable-next-line react/display-name
+const ProjectsList = memo(() => {
     const { width } = useWindowSize();
     const type = useScreenType( width || 0 );
     const gridSizeObject = {
@@ -17,9 +17,8 @@ const Projects = () => {
         "2xl": 5,
     };
     const [showMore, setShowMore] = useState<boolean>(false);
-
     return (
-        <section className={"section section-projects"} >
+        <>
             <h1>Projects</h1>
             <div className={"section-content section-projects-content"}>
                 <div className={"projects-wrapper"}>
@@ -40,7 +39,15 @@ const Projects = () => {
                     }} />
                 </div>
             </div>
-        </section>
+        </>
+    );
+});
+
+const Projects = () => {
+    return (
+        <ScrollElement className={"section section-projects"} >
+            <ProjectsList />
+        </ScrollElement>
     );
 }
 

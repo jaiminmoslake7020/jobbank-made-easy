@@ -38,3 +38,17 @@
   }
 }
 
+
+.main-header{
+  @apply gap-4 sm:gap-12 !important;
+}
+
+.main-header .logo{
+  @apply max-w-96;
+  .logo-box {
+    @apply w-24 !important;
+  }
+  .logo-box img{
+    @apply w-32 !important;
+  }
+}

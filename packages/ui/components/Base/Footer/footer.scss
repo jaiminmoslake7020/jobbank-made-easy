@@ -5,7 +5,7 @@
   @apply flex-col lg:flex-row;
 
   .website-info{
-    @apply w-full lg:w-fit flex justify-center lg:justify-start ;
+    @apply w-full lg:w-fit flex flex-col md:flex-row justify-center items-center lg:justify-start gap-4 md:gap-8;
 
     i{
       @apply text-red-400;

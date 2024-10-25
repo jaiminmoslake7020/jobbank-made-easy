@@ -1,0 +1,41 @@
+.theme-switcher-container{
+  @apply flex gap-0 text-lg p-1 rounded-full;
+  @apply bg-content text-bkg relative;
+
+  [role="button"] {
+    @apply cursor-pointer;
+  }
+
+  &:before{
+    content: "";
+    @apply absolute h-[2.25rem] w-12 rounded-full z-0 transition-all;
+    @apply duration-1000;
+  }
+
+  &.light-active{
+    &:before{
+      @apply top-1 left-0 bg-blue-400;
+      @apply translate-x-1;
+    }
+  }
+
+  &.dark-active{
+    &:before{
+      @apply top-1 left-0 bg-blue-900;
+      @apply translate-x-[3.25rem];
+    }
+  }
+
+  .icon-wrapper{
+    @apply px-4 py-1 rounded-full z-10 ;
+
+    &.active.sun-wrapper{
+      @apply text-yellow-400;
+    }
+
+    &.active.moon-wrapper{
+      @apply text-white ;
+    }
+
+  }
+}

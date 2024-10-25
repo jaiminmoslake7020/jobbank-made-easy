@@ -1,21 +1,28 @@
+import Head from 'next/head'
 import Profile from '../src/components/app-sections/Profile';
 import Experience from '../src/components/app-sections/Experience';
 import Projects from '../src/components/app-sections/Projects';
 import Skills from '../src/components/app-sections/Skills';
 import Education from '../src/components/app-sections/Education';
 import MainContent from '../src/components/MainContent';
+import OpenSource from '../src/components/app-sections/OpenSource';
 
 export default function Web() {
-
   return (
-      <MainContent pageNameClass={"index"} >
-          <main className={"main-content"}>
-              <Profile />
-              <Experience />
-              <Projects />
-              <Skills />
-              <Education />
-          </main>
-      </MainContent>
+      <>
+          <Head>
+              <title>Jaimin Pandya</title>
+          </Head>
+          <MainContent pageNameClass={"index"} >
+              <main className={"main-content"}>
+                  <Profile />
+                  <Experience />
+                  <Projects />
+                  <Skills />
+                  <Education />
+                  <OpenSource />
+              </main>
+          </MainContent>
+      </>
   );
 }

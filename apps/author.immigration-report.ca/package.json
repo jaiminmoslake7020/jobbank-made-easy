@@ -19,7 +19,8 @@
     "ui": "*",
     "sass": "1.79.3",
     "typescript": "^5.6.2",
-    "@next/third-parties": "14.2.13"
+    "@next/third-parties": "14.2.13",
+    "@jaiminmoslake7020/react-typing-text": "^0.0.4"
   },
   "scripts": {
     "dev": "next dev -p 3003",
@@ -64,7 +65,7 @@
     "autoprefixer": "^10.4.20",
     "husky": "^9.1.4",
     "postcss": "^8.4.41",
-    "sass": "1.79.1",
+    "sass": "1.79.3",
     "tailwindcss": "^3.4.9"
   }
 }

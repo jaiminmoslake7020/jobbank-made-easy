@@ -1,0 +1,36 @@
+@import "resume";
+@import "experience";
+@import "project";
+
+@layer base{
+  .full-width-screen-style{
+    @apply w-dvw lg:w-screen !important;
+  }
+  .full-screen-style{
+    @apply w-dvw h-dvh lg:w-screen lg:h-screen !important;
+  }
+}
+
+
+.project-images-modal{
+  @apply full-screen-style !important;
+
+  &.modal-wrapper{
+    @apply bg-black/50 lg:bg-content/90 !important;
+  }
+
+  .modal {
+    @apply full-screen-style !important;
+    @apply bg-black/50 lg:bg-content/90 !important;
+
+    .modal-header{
+      @apply justify-end absolute top-0 left-0  !important;
+      @apply w-dvw lg:w-screen;
+    }
+
+    .project-images-modal-body{
+
+    }
+
+  }
+}

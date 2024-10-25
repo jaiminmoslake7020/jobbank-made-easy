@@ -3,6 +3,7 @@
 @import "education-section";
 @import "skills-section";
 @import "projects-section";
+@import "open-source-section";
 
 .section {
 
@@ -22,4 +23,8 @@
   @apply min-w-[100dvw] lg:min-w-[100vw];
   @apply min-h-[100dvh] lg:min-h-[100vh];
   @apply flex flex-col items-center justify-center;
+}
+
+.main-content-wrapper{
+  // @apply pt-16 pb-16;
 }

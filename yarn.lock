@@ -521,6 +521,11 @@
   resolved "https://registry.npmjs.org/@istanbuljs/schema/-/schema-0.1.3.tgz"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
+"@jaiminmoslake7020/react-typing-text@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@jaiminmoslake7020/react-typing-text/-/react-typing-text-0.0.4.tgz#184c11e5d43aa123b01b2bb9c6068c9f41f58dca"
+  integrity sha512-E+T5VppBC/N0cR2FsoPiU7JHrBXeZPhAc53BS0UP1gFRUR8ICWykKzGGqekE+09FrQw5cQ5XtkPO2c5tTK2qqg==
+
 "@jest/console@^29.7.0":
   version "29.7.0"
   resolved "https://registry.npmjs.org/@jest/console/-/console-29.7.0.tgz"

@@ -6,6 +6,10 @@
     @apply flex justify-center items-center;
     @apply p-4;
 
+    &:nth-of-type(1){
+      @apply justify-start;
+    }
+
     @apply min-h-[calc(calc(100dvh_-_96px)_/_2)] lg:min-h-fit;
 
     h2{

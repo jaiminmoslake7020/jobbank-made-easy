@@ -1,21 +1,22 @@
 import React, {useCallback, useContext, useEffect} from 'react';
 import {MenuLinkType} from '../types';
-import {Button, FaIcon, ModalsContext} from 'ui';
+import {Button, FaIcon, ModalsContext, SidebarContext} from 'ui';
 import {ModalFooterWrapper} from 'ui/components/Base/Modal';
 import DownloadLink from 'ui/components/Base/DownloadLink/DownloadLink';
 import {inDevEnvironment} from '../utils/utils';
 
 export type NavPropTypes = {
-    showSidebar?: Function,
     menuLinks: MenuLinkType[]
 };
 
 const ResumeObject = {
-  link: "https://s3.us-west-2.amazonaws.com/media-author.immigration-report.ca/Resume_Jaimin_Pandya_September_2024.pdf",
-  name: "Resume_Jaimin_Pandya_September_2024.pdf"
+  link: "https://s3.us-west-2.amazonaws.com/media-author.immigration-report.ca/Jaimin_Pandya_Resume_October_2024.pdf",
+  name: "Jaimin_Pandya_Resume_October_2024.pdf"
 };
 
-const Nav = ({showSidebar, menuLinks}: NavPropTypes) => {
+const Nav = ({menuLinks}: NavPropTypes) => {
+
+    const { showSidebar } = useContext(SidebarContext);
 
     const {
         addModal, removeModal
@@ -46,6 +47,47 @@ const Nav = ({showSidebar, menuLinks}: NavPropTypes) => {
         };
     }, [moveContent]);
 
+    const sendGTMEvent = useCallback(() => {
+        if (window && !inDevEnvironment) {
+            // @ts-ignore
+            window.dataLayer = window.dataLayer || [];
+            // @ts-ignore
+            window.dataLayer.push({
+                event: 'download_resume',
+                buttonId: ResumeObject.link, // Custom data, can be anything you want to track
+                buttonText: ResumeObject.name
+            });
+            console.log('GTM event pushed');
+        }
+    }, []);
+
+    const addFeedbackModal = useCallback(() => {
+        const modalKey = 'thanks-modal';
+        addModal({
+            removeModal: removeModal,
+            isOpen: true, modalKey: modalKey, modalZIndex: 100,
+            modalFooter: <ModalFooterWrapper>
+                <Button size={"md"} onClick={() => {
+                    removeModal(modalKey);
+                }} >Close</Button>
+            </ModalFooterWrapper>,
+            modalBody: <div className={"resume-modal-body"}>
+                <div className={" icon-wrapper "}>
+                    <FaIcon icon={"check"} />
+                </div>
+                <div className={` text-wrapper `}>
+                    <p>Thank you for downloading my resume.</p>
+                </div>
+            </div>,
+            hasFireworksBg: true
+        });
+    }, [addModal, removeModal]);
+
+    const onDownloadComplete = useCallback(() => {
+        sendGTMEvent();
+        addFeedbackModal();
+    },[sendGTMEvent, addFeedbackModal])
+
     return (
         <nav className={"nav nav-main"}>
             {
@@ -58,38 +100,7 @@ const Nav = ({showSidebar, menuLinks}: NavPropTypes) => {
             }
             <DownloadLink
                 className={"nav-link"}
-                onDownloadComplete={() => {
-                    if (window && !inDevEnvironment) {
-                        // @ts-ignore
-                        window.dataLayer = window.dataLayer || [];
-                        // @ts-ignore
-                        window.dataLayer.push({
-                            event: 'download_resume',
-                            buttonId: ResumeObject.link, // Custom data, can be anything you want to track
-                            buttonText: ResumeObject.name
-                        });
-                        console.log('GTM event pushed');
-                    }
-
-                const modalKey = 'thanksModal';
-                addModal({
-                    removeModal: removeModal,
-                    isOpen: true, modalKey: modalKey, modalZIndex: 100,
-                    modalFooter: <ModalFooterWrapper>
-                        <Button size={"md"} onClick={() => {
-                            removeModal(modalKey);
-                        }} >Close</Button>
-                    </ModalFooterWrapper>,
-                    modalBody: <div className={"flex flex-col items-center justify-center gap-8 text-content p-8 min-w-[100dvw] md:min-w-[640px] lg:min-w-[768px] "}>
-                        <div className={"job-title text-green-500 text-8xl "}>
-                            <FaIcon icon={"check"} />
-                        </div>
-                        <div className={` text-lg `}>
-                            <p>Thank you for downloading my resume.</p>
-                        </div>
-                    </div>
-                });
-            }}
+                onDownloadComplete={onDownloadComplete}
                 fileName={ResumeObject.name}
                 link={ResumeObject.link}
             />
