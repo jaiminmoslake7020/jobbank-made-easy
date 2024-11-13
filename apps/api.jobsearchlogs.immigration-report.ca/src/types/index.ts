@@ -17,3 +17,6 @@ export type SessionBodyDto = {
   token_type: string;
   code: string;
 };
+
+export * from './dto/address.dto';
+export * from './dto/create-company.dto';

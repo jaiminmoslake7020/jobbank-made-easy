@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "InterviewType" ALTER COLUMN "name" SET DATA TYPE VARCHAR(255);
+
+-- AlterTable
+ALTER TABLE "JobResponseType" ALTER COLUMN "name" SET DATA TYPE VARCHAR(255);

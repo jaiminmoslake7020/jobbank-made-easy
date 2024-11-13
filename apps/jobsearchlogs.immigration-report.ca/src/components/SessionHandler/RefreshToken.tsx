@@ -13,8 +13,8 @@ const RefreshToken = (props: RefreshTokenProps) => {
     const {
         makeACall
     } = props;
-    const { appSession, setAppSessionCall  } = useContext(SessionContext);
-    const [trigger, { data, error, isFetching, isLoading }] =
+    const { appSession, setAppSessionCall, removeSessionCall  } = useContext(SessionContext);
+    const [trigger, { data, isError, error, isFetching, isLoading }] =
         useLazyRefreshTokenQuery();
 
     const [madeAcall, setMedACall] = useState<boolean>(false) ;
@@ -30,17 +30,25 @@ const RefreshToken = (props: RefreshTokenProps) => {
         }
     }, [data, isFetching, isLoading, setAppSessionCall]);
 
-    let oneTimeOnly = true;
     useEffect(() => {
         const mount = () => {
-            if (makeACall && !madeAcall && oneTimeOnly) {
-                oneTimeOnly = false;
+            if (makeACall && !madeAcall) {
                 setMedACall(true);
                 trigger(appSession.accessToken);
             }
         }
         return mount();
-    }, [madeAcall, makeACall])
+    }, [appSession.accessToken, madeAcall, makeACall, trigger])
+
+    useEffect(() => {
+        if (isError && error) {
+            console.log("e", error);
+            // @ts-ignore
+            if (error?.status === 403) {
+                removeSessionCall();
+            }
+        }
+    }, [error, isError, removeSessionCall])
 
     return (
         appSession  ?

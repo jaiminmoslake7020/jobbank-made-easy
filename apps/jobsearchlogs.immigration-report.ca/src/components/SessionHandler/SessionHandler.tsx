@@ -14,25 +14,24 @@ const RemainingTime = (props:RemainingTimeProps) => {
     } = props;
 
     const pref = useRef<HTMLParagraphElement>(null);
-    const [time, SetTime] = useState<number>(remainingTime);
+    const [time, setTime] = useState<number>(remainingTime);
 
-    let onlyOnce = true;
     useEffect(() => {
-        const mount = () => {
-            if (onlyOnce) {
-                // eslint-disable-next-line react-hooks/exhaustive-deps
-                onlyOnce = false;
-                setInterval(() => {
-                    SetTime(prev => prev -  1);
-                }, 1000);
+        const timeout = setTimeout(() => {
+            if (time >= 0) {
+                setTime(prev => prev -  1);
             }
-        }
-        return mount();
-    }, []);
+        }, 1000);
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [time]);
 
     return <>
         { time < 200 ? <RefreshToken makeACall={true} /> : null }
-        <p ref={pref} >{time}</p>
+        <div className={"w-container flex justify-end"}>
+            <p ref={pref} className={""} >{time}</p>
+        </div>
     </>
 }
 

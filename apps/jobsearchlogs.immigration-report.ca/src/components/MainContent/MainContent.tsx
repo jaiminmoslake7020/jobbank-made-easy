@@ -10,6 +10,8 @@ import ThemeContext from '../../contexts/ThemeContext';
 import darkColourUrl from '../../assets/logo/job.png';
 import lightColourUrl from '../../assets/logo/job-inverse.png';
 import { menuLinksFooter, menuLinksHeader, themes } from '../../data';
+import { ModalsListWrapper } from './ModalsListWrapper'
+import {LoginRequiredModal} from './LoginRequiredModal';
 
 export type MainContentPropTypes = {
     pageNameClass: string,
@@ -24,6 +26,7 @@ const MainContent = (props: MainContentPropTypes) => {
     const { theme, setTheme } = useContext(ThemeContext);
     const { appSession, removeSessionCall } = useContext(SessionContext);
     const isDev = process.env.NODE_ENV !== 'production';
+    const needsToBeAuthenticated = pageNameClass.includes('authenticated-page');
     return (
         <div data-theme={theme} className="App">
             <Header
@@ -51,9 +54,19 @@ const MainContent = (props: MainContentPropTypes) => {
             />
             <main className={"main-content "+pageNameClass}>
                 <SessionHandler />
-                {children}
+                {
+                    appSession === null && needsToBeAuthenticated ?
+                        <div className={"w-screen min-h-[80vh] flex justify-center items-center"}>
+                            <p>Please Login!</p>
+                        </div>
+                        : <>
+                            {children}
+                        </>
+                }
             </main>
             <Footer nav={<Nav menuLinks={menuLinksFooter} />} />
+            <ModalsListWrapper />
+            <LoginRequiredModal />
         </div>
     );
 }

@@ -15,22 +15,6 @@
 .main-content{
   @apply min-w-[100dvw] lg:min-w-[100vw];
   @apply min-h-[100dvh] lg:min-h-[100vh];
-  @apply flex flex-col items-center justify-center gap-16;
-
-  &.job-application-page{
-    @apply justify-start pt-20 pb-20;
-  }
-
-  &.job-application-create-page{
-    @apply justify-start pt-20 pb-20;
-  }
-
-  &.results-page{
-    @apply justify-start pt-20 pb-20;
-  }
-
-  &.legal-page{
-    @apply justify-start pt-20 pb-20;
-  }
+  @apply flex flex-col items-center justify-start pt-20 pb-20 gap-16;
 
 }

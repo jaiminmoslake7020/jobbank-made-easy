@@ -1,10 +1,125 @@
-.job-application-create{
+.job-application-create {
   @apply flex flex-col gap-4 p-4 w-container items-start justify-start;
 
-  .job-application-create__button-row{
+  .job-application-create__button-row {
     @apply flex justify-end w-full;
   }
 
 
+}
 
+.job-application-list {
+  @apply flex flex-col gap-4 p-4 w-container items-start justify-start;
+
+  .job-application-list__button-row {
+    @apply flex justify-end w-full gap-6;
+  }
+
+}
+
+
+
+.company-create{
+  @apply mt-8 ;
+}
+
+.form {
+  @apply w-full max-w-container p-6 bg-white rounded-lg shadow-md;
+
+  .control-group {
+    @apply mb-4 w-full;
+
+    &.has-error{
+      .control-group__feedback{
+        @apply text-red-600 block;
+      }
+
+      .control-group__input {
+        @apply border-red-300;
+      }
+
+      .control-group__label {
+        @apply text-red-500;
+      }
+    }
+
+    &.has-success{
+      .control-group__hint{
+        @apply text-green-600 block;
+      }
+
+      .control-group__input {
+        @apply border-green-300;
+      }
+
+      .control-group__label {
+        @apply text-green-500;
+      }
+    }
+
+    .control-group__label {
+      @apply block text-gray-700 text-sm font-bold mb-2;
+    }
+
+    .control-group__input {
+      @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 ;
+    }
+
+    .control-group__select {
+      @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 ;
+
+      ::after {
+        content: "▼"; /* Custom caret symbol */
+        position: absolute;
+        top: 50%;
+        right: 10px; /* Adjust as needed */
+        transform: translateY(-50%);
+        pointer-events: none; /* Ignore clicks on the caret */
+        color: #555;
+        font-size: 12px;
+      }
+
+    }
+
+    .control-group__feedback {
+      @apply text-xs hidden mt-2 pl-2;
+    }
+
+    .control-group__hint {
+      @apply text-xs text-slate-200 mt-2 pl-2;
+    }
+  }
+
+  .control-group-btn-row{
+    @apply flex justify-center w-full;
+    .control-group-btn-row__button{
+      @apply w-fit px-4 bg-indigo-600 text-white font-bold py-2 rounded-md hover:bg-indigo-700 focus:outline-none;
+    }
+  }
+
+}
+
+
+.job-application-create__form {
+  .group-holder{
+    @apply flex flex-col lg:flex-row gap-4 lg:gap-6 w-full;
+
+    .control-group {
+      @apply w-full lg:w-1/2;
+    }
+  }
+}
+
+
+
+
+
+.form-inner-box{
+  @apply flex flex-col lg:flex-row gap-6 bg-slate-300 p-4 border border-gray-200 rounded;
+  @apply lg:items-center;
+}
+
+.form-inner-box-v2{
+  @apply flex flex-col lg:flex-row gap-6 bg-slate-300 p-4 border border-gray-200 mb-4 rounded;
+  @apply lg:items-center;
 }

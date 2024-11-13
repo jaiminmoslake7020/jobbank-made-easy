@@ -5,7 +5,7 @@ import JobApplicationList from '../../src/components/app/JobApplication/List/Job
 
 export default function Web() {
   return (
-      <MainContent pageNameClass={"job-application-page"} >
+      <MainContent pageNameClass={"job-application-page authenticated-page"} >
           <JobApplicationList />
       </MainContent>
   );

@@ -1,3 +1,5 @@
+import {FeedbackType, ValueType} from '../components/app/Company/Create/CompanyCreate';
+
 export type ExampleResponseType = {
     message: string;
 };
@@ -99,3 +101,26 @@ export type SessionBodyDto = {
     state: string,
     token_type: string
 };
+
+
+export interface AddressRequestBody {
+    street_number: string;
+    street_name: string;
+    apartment_number?: string; // Mark as optional if it’s not always required
+    city: string;
+    zip_code: string;
+    country: string;
+    province: string;
+}
+
+export type FeedbackType = {
+    type: 'error' | 'success',
+    message: null | string
+} | null;
+
+export type ValueType = {
+    feedback: FeedbackType,
+    value: string | number | any,
+};
+
+export type FormObjectType = Record<string, ValueType>;

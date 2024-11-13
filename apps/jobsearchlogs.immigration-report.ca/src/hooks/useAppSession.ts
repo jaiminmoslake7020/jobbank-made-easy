@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from 'react';
 import {SessionResponseType} from 'types';
 
-const getLocalSession = () : null | SessionResponseType =>{
+export const getLocalSession = () : null | SessionResponseType =>{
     if (typeof window !== 'undefined') {
         const appSession = localStorage.getItem('appSession');
         let appSessionObject = null ;

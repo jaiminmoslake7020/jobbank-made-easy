@@ -11,7 +11,7 @@ async function bootstrap() {
   // Enable CORS
   app.enableCors({
     origin: [
-      'http://localhost:3001',
+      'http://localhost:3005',
       'https://jobbank.netlify.app',
       'https://jobbank.immigration-report.ca',
     ],
@@ -23,12 +23,16 @@ async function bootstrap() {
     .setTitle('Leaves Tracker')
     .setDescription('Api Docs for leaves tracker')
     .setVersion('1.0')
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'Token' },
+      'access-token',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
 
-  const PORT = 5003;
+  const PORT = 5005;
 
   await app.listen(PORT);
 
@@ -37,5 +41,6 @@ async function bootstrap() {
     module.hot.dispose(() => app.close());
   }
   logger.log(`Server running on http://localhost:${PORT}`);
+  logger.log(`Docs running on http://localhost:${PORT}/docs`);
 }
 bootstrap();

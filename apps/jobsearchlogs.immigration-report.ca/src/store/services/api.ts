@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {JobDetailsAllType, SessionBodyDto, SessionResponseType} from 'types';
+import {AddressRequestBody} from '../../types/app';
+import {getLocalSession} from '../../hooks';
 
 
 export const apiFreeze = {
@@ -8,10 +10,12 @@ export const apiFreeze = {
   searchKeys: 5
 };
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+console.log(apiUrl);
 export const api = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:5003/'
+    baseUrl: apiUrl
   }),
   tagTypes: [],
   endpoints: (builder) => ({
@@ -21,11 +25,39 @@ export const api = createApi({
       }),
       keepUnusedDataFor: apiFreeze.searchJobs, // Keep the data fresh for 5 seconds
     }),
-    getSearchKeys: builder.query<string[], string>({
-      query: () => ({
-        url: `/search-keys`,
+    postCompany: builder.query<any, AddressRequestBody>({
+      query: (data) => ({
+        url: `/company`,
+        method: 'POST',
+        body: data,
+        headers: {
+          "Content-Type": 'application/json',
+          "Accept": 'application/json',
+          'Authorization': 'Bearer '+(getLocalSession()?.accessToken)
+        }
       }),
-      keepUnusedDataFor: apiFreeze.searchKeys, // Keep the data fresh for 5 seconds
+    }),
+    listCompany: builder.query({
+      query: () => ({
+        url: `/company`,
+        method: 'GET',
+        headers: {
+          "Content-Type": 'application/json',
+          "Accept": 'application/json',
+          'Authorization': 'Bearer '+(getLocalSession()?.accessToken)
+        }
+      }),
+    }),
+    getFormCreateData: builder.query({
+      query: () => ({
+        url: `/job-application/form-create-data`,
+        method: 'GET',
+        headers: {
+          "Content-Type": 'application/json',
+          "Accept": 'application/json',
+          'Authorization': 'Bearer '+(getLocalSession()?.accessToken)
+        }
+      }),
     }),
     refreshToken: builder.query<SessionResponseType, string>({
       query: (token:string) => ({
@@ -51,4 +83,12 @@ export const api = createApi({
   }),
 });
 
-export const { useSearchJobsQuery, useLazyRefreshTokenQuery, useGetSearchKeysQuery, useLazySessionQuery } = api;
+export const {
+  useListCompanyQuery,
+  useLazyListCompanyQuery,
+  useLazyPostCompanyQuery,
+  useLazyRefreshTokenQuery,
+  useLazySessionQuery,
+    useGetFormCreateDataQuery,
+    useLazyGetFormCreateDataQuery
+} = api;

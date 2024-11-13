@@ -3,7 +3,7 @@
     @apply bg-theme-btn-bg text-theme-btn-text px-8 py-3 border-theme-btn-border border-2 rounded hover:shadow;
 
     &.btn-md{
-        @apply py-1 px-3 text-sm;
+        @apply py-1 px-3 text-sm ;
     }
 
     &.btn-xs{
@@ -11,7 +11,7 @@
     }
 
     &.btn-sm{
-        @apply py-1 px-2 text-sm;
+        @apply py-1 px-2 text-sm h-[2.25rem];
     }
 
     &.btn-color-type-2{

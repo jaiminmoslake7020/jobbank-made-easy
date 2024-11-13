@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
-import { AppService, SearchJobsDbManager } from '../services/';
+import { AppService } from '../services/';
 import { SessionBodyDto } from '../types';
 import { AuthGuard } from '../guards';
 import { User } from '@prisma/client';
@@ -10,10 +10,7 @@ export type ExampleResponseType = {
 
 @Controller()
 export class AppController {
-  constructor(
-    private readonly appService: AppService,
-    private readonly searchJobsDbManager: SearchJobsDbManager,
-  ) {}
+  constructor(private readonly appService: AppService) {}
 
   @Post('/session')
   async authSession(@Body() session: SessionBodyDto): Promise<any> {

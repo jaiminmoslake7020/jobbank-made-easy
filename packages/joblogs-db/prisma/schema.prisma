@@ -21,37 +21,55 @@ model User {
   auth_token_expiry          BigInt?
   name                       String           @db.VarChar(255)
   JobApplication             JobApplication[]
+  Company                    Company[]
+}
+
+enum SalaryType {
+  HOURLY
+  MONTHLY
+  ANNUALLY
 }
 
 model JobApplication {
-  id                      Int                       @id @default(autoincrement())
-  User                    User                      @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: Cascade)
-  userId                  Int
-  job_link_id             String                    @db.VarChar(1024)
-  jobTitle                String                    @db.VarChar(255)
-  salary                  String                    @db.VarChar(255)
-  date                    DateTime
-  JobSource               JobSource                 @relation(fields: [jobSourceId], references: [id], onUpdate: NoAction, onDelete: Cascade)
-  jobSourceId             Int
-  JobApplicationMedium    JobApplicationMedium      @relation(fields: [jobApplicationMediumId], references: [id])
-  jobApplicationMediumId  Int
-  JobType                 JobType                   @relation(fields: [jobTypeId], references: [id])
-  jobTypeId               Int
-  Address                 Address                   @relation(fields: [addressId], references: [id])
-  addressId               Int
-  JobPresenceType         JobPresenceType?          @relation(fields: [jobPresenceTypeId], references: [id])
-  jobPresenceTypeId       Int?
-  companyJobCode          String?
+  id                     Int                  @id @default(autoincrement())
+  User                   User                 @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  userId                 Int
+  jobLink                String               @db.VarChar(1024)
+  jobTitle               String               @db.VarChar(255)
+  companyJobCode         String?
+  salary                 String               @db.VarChar(255)
+  salaryMentionedType    SalaryType
+  applicationDate        DateTime
+  postedDate             DateTime
+  JobSource              JobSource            @relation(fields: [jobSourceId], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  jobSourceId            Int
+  JobApplicationMedium   JobApplicationMedium @relation(fields: [jobApplicationMediumId], references: [id])
+  jobApplicationMediumId Int
+  mediumAdditionalInfo   String?              @db.VarChar(1024)
+  JobType                JobType              @relation(fields: [jobTypeId], references: [id])
+  jobTypeId              Int
+  Address                Address              @relation(fields: [addressId], references: [id])
+  addressId              Int
+  JobPresenceType        JobPresenceType?     @relation(fields: [jobPresenceTypeId], references: [id])
+  jobPresenceTypeId      Int?
+  Company                Company?             @relation(fields: [companyId], references: [id])
+  companyId              Int?
+
   JobApplicationResponses JobApplicationResponses[]
 }
 
 model Company {
-  id        Int     @id @default(autoincrement())
-  name      String  @db.VarChar(255)
-  email     String? @db.VarChar(255)
-  phone     String? @db.VarChar(255)
-  Address   Address @relation(fields: [addressId], references: [id])
-  addressId Int
+  id             Int              @id @default(autoincrement())
+  name           String           @db.VarChar(255)
+  email          String?          @db.VarChar(255)
+  website        String?          @db.VarChar(255)
+  subsidiary     String?          @db.VarChar(255)
+  phone          String?          @db.VarChar(255)
+  Address        Address          @relation(fields: [addressId], references: [id])
+  addressId      Int
+  User           User?            @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  userId         Int?
+  JobApplication JobApplication[]
 }
 
 model Address {
@@ -74,10 +92,7 @@ model JobType {
 
 model JobResponseType {
   id                      Int                       @id @default(autoincrement())
-  name                    String                    @db.VarChar(20)
-  date                    DateTime
-  InterviewType           InterviewType?            @relation(fields: [interviewTypeId], references: [id])
-  interviewTypeId         Int?
+  name                    String                    @db.VarChar(255)
   JobApplicationResponses JobApplicationResponses[]
 }
 
@@ -87,12 +102,15 @@ model JobApplicationResponses {
   jobApplicationId  Int
   JobResponseType   JobResponseType @relation(fields: [jobResponseTypeId], references: [id])
   jobResponseTypeId Int
+  InterviewType     InterviewType?  @relation(fields: [interviewTypeId], references: [id])
+  interviewTypeId   Int?
+  date              DateTime
 }
 
 model InterviewType {
-  id              Int               @id @default(autoincrement())
-  name            String            @db.VarChar(10)
-  JobResponseType JobResponseType[]
+  id                      Int                       @id @default(autoincrement())
+  name                    String                    @db.VarChar(255)
+  JobApplicationResponses JobApplicationResponses[]
 }
 
 model JobPresenceType {
@@ -111,6 +129,5 @@ model JobSource {
 model JobApplicationMedium {
   id             Int              @id @default(autoincrement())
   name           String           @db.VarChar(20)
-  additionalInfo String?          @db.VarChar(1024)
   JobApplication JobApplication[]
 }

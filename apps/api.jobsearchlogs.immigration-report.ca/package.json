@@ -40,7 +40,8 @@
     "next-auth": "4.24.7",
     "googleapis": "144.0.0",
     "jsonwebtoken": "^9.0.2",
-    "joblogs-db": "*"
+    "joblogs-db": "*",
+    "class-validator": "^0.14.1"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.6",

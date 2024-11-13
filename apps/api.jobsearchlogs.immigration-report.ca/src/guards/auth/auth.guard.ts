@@ -24,9 +24,10 @@ export class AuthGuard implements CanActivate {
   }
   async validateRequest(request: any): Promise<User> {
     const authorization = request.headers.authorization;
+    if (!authorization) {
+      throw new ForbiddenException('User needs to be authenticated.');
+    }
     const token = authorization.replace('Bearer ', '').trim();
-    console.log('validateRequest', token);
-
     this.userDbService.initiateConnection();
     const user = await this.userDbService.findFirst(token, true, false);
     await this.userDbService.disconnect();

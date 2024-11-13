@@ -2,7 +2,7 @@
   @apply flex flex-col gap-4 p-4 w-container items-start justify-start;
 
   .job-application-list__button-row{
-    @apply flex justify-end w-full;
+    @apply flex justify-end w-full gap-6;
   }
 
 
