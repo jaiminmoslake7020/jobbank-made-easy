@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import './modal.scss';
 import {Fireworks} from '../../Animations';
 
@@ -7,15 +7,15 @@ export type ModalPropTypes = {
     modalStyleClass?: string,
     modalZIndex: number,
     isOpen: boolean,
-    modalHeader?: React.ReactNode,
-    modalBody?: React.ReactNode,
-    modalFooter?: React.ReactNode,
+    modalHeader?: React.ReactNode | React.ReactElement | React.JSX.Element,
+    modalBody?: React.ReactNode | React.ReactElement | React.JSX.Element,
+    modalFooter?: React.ReactNode | React.ReactElement | React.JSX.Element,
     removeModal: Function,
     hasFireworksBg?: boolean,
 };
 
 export type ModalBodyWrapperPropTypes = {
-    children: React.ReactNode
+    children: React.ReactNode | React.ReactElement | React.JSX.Element
 };
 
 export const ModalBodyWrapper = ({children}: ModalBodyWrapperPropTypes) => {

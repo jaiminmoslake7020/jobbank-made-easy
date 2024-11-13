@@ -9,11 +9,22 @@ export const useModals = () => {
         setModals(prev => [...prev, newModal]);
     }, []);
 
+    const upsertModal = useCallback((newModal:ModalPropTypes) => {
+        setModals(prev => {
+            const isModalExistsInner = prev.filter((item) => item.modalKey === newModal.modalKey).length > 0
+            if (isModalExistsInner) {
+                return prev;
+            } else {
+                return [...prev, newModal];
+            }
+        });
+    }, []);
+
     const removeModal = useCallback((removeModalKey: string) => {
         setModals(prev => prev.filter(({modalKey}) => modalKey !== removeModalKey));
-    }, [modals]);
+    }, []);
 
     return {
-        addModal, removeModal, modals
+        addModal, removeModal, modals, upsertModal
     };
 }

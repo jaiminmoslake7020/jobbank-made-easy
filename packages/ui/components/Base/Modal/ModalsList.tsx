@@ -10,7 +10,10 @@ export const ModalsList = (props: ModalsListPropTypes) => {
         modals
     } = props;
     return (
-        <>{modals.map(({ modalKey ,...modalData}) => <Modal key={modalKey} modalKey={modalKey} {...modalData} />)}</>
+        <>
+            <div className={` modals-list modals-length-${modals.length} `} />
+            {modals.map(({ modalKey ,...modalData}) => <Modal key={modalKey} modalKey={modalKey} {...modalData} />)}
+        </>
     );
 }
 

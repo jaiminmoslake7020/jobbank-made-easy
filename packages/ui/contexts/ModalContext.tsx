@@ -4,6 +4,7 @@ import {ModalPropTypes} from '../components/Base';
 
 export interface ModalsContextType {
     addModal: (modal:ModalPropTypes) => void; // Function to update the user
+    upsertModal: (modal:ModalPropTypes) => void; // Function to update the user
     removeModal: (modalKey:string) => void; // Function to update the user
     modals: ModalPropTypes[]
 }
@@ -12,12 +13,13 @@ export interface ModalsContextType {
 export const ModalsContext: React.Context<ModalsContextType> = createContext({
     modals: [] as ModalPropTypes[],
     addModal: (modal:ModalPropTypes) => {},
+    upsertModal: (modal:ModalPropTypes) => {},
     removeModal: (modalKey:string) => {},
 });
 
 // Create a provider component
 export const ModalsProvider = ({ children }: { children:React.ReactNode }) => {
-    const { addModal, removeModal, modals } = useModals();
+    const { addModal, removeModal, modals, upsertModal } = useModals();
 
     const modalsLength = modals.length;
     useEffect(() => {
@@ -53,7 +55,7 @@ export const ModalsProvider = ({ children }: { children:React.ReactNode }) => {
     }, [modalOnTopKey])
 
     return (
-        <ModalsContext.Provider value={{ addModal, removeModal, modals }}>
+        <ModalsContext.Provider value={{ addModal, removeModal, modals, upsertModal }}>
             {children}
         </ModalsContext.Provider>
     );

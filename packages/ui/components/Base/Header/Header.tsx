@@ -53,7 +53,7 @@ export const Header = (props: HeaderPropTypes) => {
                     <FaIcon icon={"bars"} />
                 </button>
             </header>
-            <Sidebar themes={themes} theme={theme} setTheme={setTheme} nav={nav} />
+            <Sidebar themes={themes} theme={theme} setTheme={setTheme} nav={nav} userComponent={userComponent} />
         </>
     );
 }

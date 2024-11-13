@@ -1,0 +1,148 @@
+@charset "UTF-8";
+.section {
+  @apply min-h-[100dvh] lg:min-h-[100vh];
+  @apply px-4 sm:px-6 md:px-8 xl:px-0 py-8;
+  @apply 2xl:w-[1280px] xl:w-[1024px];
+  @apply flex justify-center items-center;
+}
+.section h1 {
+  @apply text-4xl;
+}
+
+.main-content {
+  @apply min-w-[100dvw] lg:min-w-[100vw];
+  @apply min-h-[100dvh] lg:min-h-[100vh];
+  @apply flex flex-col items-center justify-start pt-20 pb-20 gap-16;
+}
+
+.job-application-create {
+  @apply flex flex-col gap-4 p-4 w-container items-start justify-start;
+}
+.job-application-create .job-application-create__button-row {
+  @apply flex justify-end w-full;
+}
+
+.job-application-list {
+  @apply flex flex-col gap-4 p-4 w-container items-start justify-start;
+}
+.job-application-list .job-application-list__button-row {
+  @apply flex justify-end w-full gap-6;
+}
+
+.company-create {
+  @apply mt-8;
+}
+
+.form {
+  @apply w-full max-w-container p-6 bg-white rounded-lg shadow-md;
+}
+.form .control-group {
+  @apply mb-4 w-full;
+}
+.form .control-group.has-error .control-group__feedback {
+  @apply text-red-600 block;
+}
+.form .control-group.has-error .control-group__input {
+  @apply border-red-300;
+}
+.form .control-group.has-error .control-group__label {
+  @apply text-red-500;
+}
+.form .control-group.has-success .control-group__hint {
+  @apply text-green-600 block;
+}
+.form .control-group.has-success .control-group__input {
+  @apply border-green-300;
+}
+.form .control-group.has-success .control-group__label {
+  @apply text-green-500;
+}
+.form .control-group .control-group__label {
+  @apply block text-gray-700 text-sm font-bold mb-2;
+}
+.form .control-group .control-group__input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500;
+}
+.form .control-group .control-group__select {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500;
+}
+.form .control-group .control-group__select ::after {
+  content: "▼"; /* Custom caret symbol */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust as needed */
+  transform: translateY(-50%);
+  pointer-events: none; /* Ignore clicks on the caret */
+  color: #555;
+  font-size: 12px;
+}
+.form .control-group .control-group__feedback {
+  @apply text-xs hidden mt-2 pl-2;
+}
+.form .control-group .control-group__hint {
+  @apply text-xs text-slate-200 mt-2 pl-2;
+}
+.form .control-group-btn-row {
+  @apply flex justify-center w-full;
+}
+.form .control-group-btn-row .control-group-btn-row__button {
+  @apply w-fit px-4 bg-indigo-600 text-white font-bold py-2 rounded-md hover:bg-indigo-700 focus:outline-none;
+}
+
+.job-application-create__form .group-holder {
+  @apply flex flex-col lg:flex-row gap-4 lg:gap-6 w-full;
+}
+.job-application-create__form .group-holder .control-group {
+  @apply w-full lg:w-1/2;
+}
+
+.job-application-list {
+  @apply flex flex-col gap-4 p-4 w-container items-start justify-start;
+}
+.job-application-list .job-application-list__button-row {
+  @apply flex justify-end w-full gap-6;
+}
+
+.nav .nav-link {
+  @apply px-8 py-3 text-content;
+}
+
+.main-header .logo .logo-box img.logo-img {
+  @apply max-w-24 md:max-w-44;
+}
+.main-header .user-component {
+  @apply hidden md:flex;
+}
+
+.sidebar {
+  @apply justify-start gap-12 !important;
+}
+.sidebar .user-component {
+  @apply flex justify-center;
+}
+.sidebar .website-info {
+  @apply absolute bottom-8 left-16;
+}
+.sidebar .website-info i.fas {
+  @apply text-red-500;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  .max-w-container {
+    @apply 2xl:max-w-screen-xl xl:max-w-screen-lg lg:max-w-screen-md md:max-w-screen-sm max-w-[90vw];
+  }
+  .w-container {
+    @apply 2xl:w-[1281px] xl:w-[1024px] lg:w-[768px] md:w-[641px] w-[90vw];
+  }
+}
+@layer components {
+  .App {
+    transition: background-color 0.5s linear, color 0.5s linear;
+    @apply bg-bkg w-screen flex flex-col relative font-mono text-content;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

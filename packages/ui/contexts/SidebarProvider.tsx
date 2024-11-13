@@ -1,4 +1,5 @@
 import React, {createContext, useEffect, useState} from 'react';
+import {NextComponentType} from 'next';
 
 export interface SidebarContextType {
     sidebar: boolean;
@@ -13,7 +14,7 @@ export const SidebarContext: React.Context<SidebarContextType> = createContext({
 });
 
 // Create a provider component
-export const SidebarProvider = ({ children }: { children : React.ReactNode } ) => {
+export const SidebarProvider = ({ children }: { children : React.ReactNode | React.ReactElement | React.JSX.Element | any } ) => {
     const [sidebar, showSidebar] = useState<boolean>(false);
 
     useEffect(() => {
