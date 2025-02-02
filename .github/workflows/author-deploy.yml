@@ -16,6 +16,9 @@ jobs:
       - name: Install dependencies
         run: yarn install  # or your package manager (yarn, pnpm, etc.)
 
+      - name: Install Netlify CLI
+        run: yarn global add netlify-cli
+
       - name: Build the project
         run: cd apps/author.immigration-report.ca && ./scripts/prod-new.sh "${{ github.ref_name }}-${{ github.sha }}"  # or the command you use to build your project
         env:
