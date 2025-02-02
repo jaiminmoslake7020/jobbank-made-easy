@@ -1,10 +1,14 @@
 import React, {useContext} from 'react';
 import {ModalsContext} from 'ui';
-import {ModalsList} from 'ui/components/Base/Modal';
+import dynamic from 'next/dynamic';
+
+const ModalsListWithNoSSR = dynamic(() => import('ui/components/Base/Modal/ModalsList'), {
+    ssr: false,
+});
 
 export const ModalsListWrapper = () => {
     const {
         modals
     } = useContext(ModalsContext);
-    return <ModalsList modals={modals} />;
+    return <ModalsListWithNoSSR modals={modals} />;
 }

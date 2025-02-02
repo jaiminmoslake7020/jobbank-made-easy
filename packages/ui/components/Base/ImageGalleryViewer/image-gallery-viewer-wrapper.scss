@@ -7,7 +7,7 @@
     @apply flex justify-center items-center;
     @apply h-[calc(100dvh_-_9rem)] lg:h-[unset];
     @apply lg:h-[calc(100vh_-_2rem)];
-    @apply overflow-scroll;
+    @apply overflow-y-auto overflow-x-clip;
 
     &.as-portrait{
       img {
@@ -40,6 +40,14 @@
             @apply w-full md:w-[22rem] h-[auto];
           }
         }
+
+        &.ss-mobile-view{
+          @apply items-start;
+          img {
+            @apply w-[22rem];
+          }
+        }
+
       }
 
       &.ss-mobile-view{
@@ -77,6 +85,7 @@
     @apply lg:max-h-[calc(100vh_-_2.5rem)] ;
     @apply min-h-[7rem] lg:min-h-[unset];
     @apply overflow-x-scroll lg:overflow-y-auto;
+    @apply overflow-y-auto lg:overflow-x-clip;
 
     .image-list-container{
       @apply w-fit lg:w-full ;

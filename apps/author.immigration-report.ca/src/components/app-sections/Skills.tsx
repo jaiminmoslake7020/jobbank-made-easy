@@ -3,7 +3,7 @@ import {useScreenType} from '../../utils/utils';
 import {useWindowSize} from 'ui';
 
 const skillsList = [
-    'PHP', 'MySql', 'JavaScript', 'TypeScript', 'ReactJs', 'Redux', 'Rest API', 'Swagger', 'OpenAPI V3', 'React Native', 'NodeJS', 'ExpressJs', 'NestJs', 'TypeOrm', 'Sequelize',
+    'PHP', 'MySql', 'JavaScript', 'TypeScript', 'ReactJs', 'Redux', 'Rest API', 'Webpack', 'babel', 'Vite', 'Swagger', 'OpenAPI V3', 'React Native', 'NodeJS', 'ExpressJs', 'NestJs', 'TypeOrm', 'Sequelize',
     'Agile Development', 'Yii2 Framework', 'Yii Framework', 'Symphony', 'TailwindCSS', 'StoryBook', 'AWS EC2', 'AWS RDS', 'AWS S3', 'AWS SQS', 'AWS Lambda', 'AWS CloudFront',
     'AWS Incognito', 'AWS Console', 'GIT', 'Github', 'GitLab', 'Gitlab CI/CD pipelines', 'Github Actions', 'CSS', 'HTML', 'Jquery', 'Bootstrap', 'Docker', 'PostgreSql'
 ];

@@ -1,7 +1,13 @@
+import JpLogo from '../assets/images/logo-inverse.png';
 import emplaceLogo from '../assets/images/companies/emplace.svg';
 import umbracityLogo from '../assets/images/companies/umbracity.png';
 import processFastLogo from '../assets/images/companies/processFast.png';
 import {ProjectBoxPropTypes} from '../types';
+
+import ticTacToeSc1 from '../assets/images/projects/tic-tac-toe/sc1.png';
+import ticTacToeSc2 from '../assets/images/projects/tic-tac-toe/sc2.png';
+import ticTacToeSc3 from '../assets/images/projects/tic-tac-toe/sc3.png';
+import ticTacToeSc4 from '../assets/images/projects/tic-tac-toe/sc4.png';
 
 import buyer1 from '../assets/images/projects/buyer/1.png';
 import buyer2 from '../assets/images/projects/buyer/2.png';
@@ -53,6 +59,26 @@ import weather2 from '../assets/images/projects/weather/2.png';
 
 
 export const projects = [
+    {
+        projectName: "Tic Tac Toe",
+        companyName: "Personal Project",
+        projectUrl: "https://tic-tac-toe-prod.netlify.app/",
+        projectTech: "TypeScript, Firebase, Webpack",
+        projectLogo: JpLogo,
+        logoAppearance: "white-text",
+        projectPoints: [
+            'I built this app using TypeScript, Webpack, and Babel. Firebase is used for storing game data and authentication.',
+            'This is a simple Tic Tac Toe game for two players. You can play with a friend, a random online person, against a computer program, or an LLM model. It is simple but fun to play.',
+            'It functions like modern JS frameworks, adding everything to index.html through JS.'
+        ],
+        techStack: 'TypeScript, Open AI API, AWS, Tailwind, SCSS, Webpack, Github CD pipelines',
+        images: [
+            ticTacToeSc1,
+            ticTacToeSc2,
+            ticTacToeSc3,
+            ticTacToeSc4
+        ]
+    },
     {
         projectName: "Buyer Platform",
         companyName: "Emplace Technology Inc",
